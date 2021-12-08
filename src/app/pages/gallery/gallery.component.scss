@@ -1,0 +1,96 @@
+.first {
+  justify-content: center;
+}
+.product-img {
+  width: 150px;
+  height: 150px;
+  margin: 40px;
+  margin-bottom: 150px;
+}
+.product-img-2 {
+  width: 150px;
+  height: 150px;
+  margin-top: 20px;
+}
+.product-name {
+  text-align: center;
+}
+.product-info {
+  margin-top: 50px;
+  color: red;
+  text-align: center;
+}
+.flip-card {
+  background-color: transparent;
+  min-width: 400px;
+  max-width: 30%;
+  min-height: 600px;
+  border: 25px solid transparent;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+
+/* Style the back side */
+.flip-card-back {
+  background-color: white;
+  color: white;
+  transform: rotateY(180deg);
+}
+.page {
+  margin-top: calc(100vh - 250px);
+  margin-bottom: calc(20vh - 30px);
+}
+.tbl-property {
+  justify-content: center;
+  table-layout: auto;
+  max-width: 96%;
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.td-property {
+  text-align: left;
+}
+
+@media screen and (max-width: 375px) {
+  .flip-card {
+    min-width: 330px;
+  }
+  .mt-5{
+    margin-top: 30px !important;
+  }
+}
+.header{
+  border-bottom: 5px solid #407c38;
+}

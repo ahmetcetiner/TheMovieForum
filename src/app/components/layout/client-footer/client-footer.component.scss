@@ -1,0 +1,30 @@
+.cursor-pointer {
+  cursor: pointer;
+}
+.bg-banner {
+  background-image: url("../../../../assets/images/banner.png");
+  background-position: bottom center;
+  bottom: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 70vh;
+  width: 100%;
+}
+.text-success {
+  color: #0e7c0e !important;
+}
+
+.footer-bg {
+  background-color: #1b1b1c;
+}
+.footer-text {
+  font-size: small;
+  text-align: left !important;
+}
+.footer-bottom {
+  background-color: #0e550e;
+}
+
+.bg-green {
+  background-color: #116811 !important;
+}

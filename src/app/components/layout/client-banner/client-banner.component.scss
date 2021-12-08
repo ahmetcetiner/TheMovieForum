@@ -1,0 +1,140 @@
+.bg-banner {
+  background-image: url("../../../../assets/images/banner.png");
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 70vh;
+  width: 100%;
+  position: absolute;
+  z-index: -2;
+  top: 0;
+  left: 0;
+}
+.banner-title {
+  font-size: 32px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.rounded-padding {
+  padding: 12px 12px 12px 12px;
+}
+
+.rounded-padding:hover {
+  color: white !important;
+  background-color: green !important;
+}
+
+.bg-opacity {
+  position: absolute;
+  height: 70vh;
+  background-color: black;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+.text-width {
+  width: calc(100% - 15px);
+}
+
+.phone-top {
+  margin-top: 10px;
+}
+
+.menu {
+  background-color: rgba(16, 16, 16, 0.54);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.navbar-bar {
+  background-color: transparent;
+}
+
+.navbar-bar :hover {
+  color: green !important;
+}
+
+.text-underline-none {
+  text-decoration: none !important;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgba(16, 16, 16, 0.54);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  margin-top: 14px;
+}
+
+.dropdown-content a {
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  color: green;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  color: green;
+}
+
+.who-we-are {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 2.6rem;
+}
+
+.title-font {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1rem;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.mt-7 {
+  margin-top: 130px;
+}
+
+@media screen and (max-width: 375px) {
+  .mt-7 {
+    margin-top: 30px;
+  }
+}
+
+.wrap-text {
+  white-space: nowrap;
+}
+
+@media screen and (min-width: 980px) {
+  .page {
+    display: block !important;
+  }
+  .wrap {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .page {
+    display: none !important;
+  }
+  .wrap {
+    display: block !important;
+  }
+}
