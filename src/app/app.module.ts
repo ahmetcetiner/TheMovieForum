@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -9,6 +10,7 @@ import {
 } from './components/layout';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { ClientFooterComponent } from './components/layout/client-footer/client-footer.component';
+import { BreadCrumbComponent } from './pages/bread-crumb/bread-crumb.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import { ClientFooterComponent } from './components/layout/client-footer/client-
     ClientBannerComponent,
     ContactUsComponent,
     ClientFooterComponent,
+    BreadCrumbComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
