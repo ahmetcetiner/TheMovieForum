@@ -9,6 +9,10 @@ import {
 } from './components/layout';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { ClientFooterComponent } from './components/layout/client-footer/client-footer.component';
+import { LoginComponent } from './pages/login/login.component';
+import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { CommentComponent } from './pages/comment/comment.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,8 +24,11 @@ import { ClientFooterComponent } from './components/layout/client-footer/client-
     ClientBannerComponent,
     ContactUsComponent,
     ClientFooterComponent,
+    LoginComponent,
+    SignUpComponent,
+    CommentComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule,FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
