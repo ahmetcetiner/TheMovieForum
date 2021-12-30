@@ -20,6 +20,7 @@
     "@angular/platform-browser-dynamic": "~10.1.2",
     "@angular/router": "~10.1.2",
     "@fortawesome/fontawesome-free": "^5.15.4",
+    "gulp-cli": "^2.3.0",
     "jquery": "^3.6.0",
     "rxjs": "~6.6.0",
     "styled-component": "^2.8.0",
