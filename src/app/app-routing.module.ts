@@ -4,6 +4,9 @@ import {
   GalleryComponent,
   AboutUsComponent,
   ContactUsComponent,
+  LoginComponent,
+  SignUpComponent,
+  CommentComponent,
 } from './pages';
 import { Routes, RouterModule } from '@angular/router';
 import { ClientLayoutComponent } from './components';
@@ -33,6 +36,20 @@ const routes: Routes = [
         path: 'contact-us',
         component: ContactUsComponent,
         data: { title: 'İletişim' },
+      },
+      {
+        path: 'login',
+        component: LoginComponent,
+        data: { title: 'Giriş' },
+      },
+      {
+        path: 'signup',
+        component: SignUpComponent,
+        data: { title: 'Kayıt Ol' },
+      },{
+        path: 'comment',
+        component: CommentComponent,
+        data: { title: 'Yorumlar' },
       },
     ],
   },
