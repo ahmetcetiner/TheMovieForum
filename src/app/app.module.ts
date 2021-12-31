@@ -1,3 +1,5 @@
+import { ThumbComponent } from './pages/Thumb/Thumb.component';
+import { MovieComponent } from './pages/movie/movie.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -15,6 +17,7 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { CommentComponent } from './pages/comment/comment.component';
 import { FormsModule } from '@angular/forms';
 import { BreadCrumbComponent } from './pages/bread-crumb/bread-crumb.component';
+import { MovieInfoComponent } from './pages/movie-info/movie-info.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,9 @@ import { BreadCrumbComponent } from './pages/bread-crumb/bread-crumb.component';
     SignUpComponent,
     CommentComponent,
     BreadCrumbComponent,
+    MovieComponent,
+    MovieInfoComponent,
+    ThumbComponent
   ],
   imports: [BrowserModule, AppRoutingModule,FormsModule,HttpClientModule],
   providers: [],
