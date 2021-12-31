@@ -1,3 +1,4 @@
+import { MovieComponent } from './pages/movie/movie.component';
 import { NgModule } from '@angular/core';
 import {
   HomepageComponent,
@@ -10,6 +11,7 @@ import {
 } from './pages';
 import { Routes, RouterModule } from '@angular/router';
 import { ClientLayoutComponent } from './components';
+
 
 const routes: Routes = [
   {
@@ -50,6 +52,11 @@ const routes: Routes = [
         path: 'comment',
         component: CommentComponent,
         data: { title: 'Yorumlar' },
+      },
+      {
+        path: 'movie/:movieId',
+        component: MovieComponent,
+        data: { title: 'Movie' },
       },
     ],
   },
