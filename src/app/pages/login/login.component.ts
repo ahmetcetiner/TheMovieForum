@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { User } from './user-info';
+import { User } from '../../model/user-info';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
