@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +14,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { CommentComponent } from './pages/comment/comment.component';
 import { FormsModule } from '@angular/forms';
+import { BreadCrumbComponent } from './pages/bread-crumb/bread-crumb.component';
 
 @NgModule({
   declarations: [
@@ -27,8 +29,9 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     SignUpComponent,
     CommentComponent,
+    BreadCrumbComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule,FormsModule],
+  imports: [BrowserModule, AppRoutingModule,FormsModule,HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
