@@ -1,24 +1,32 @@
 import { MovieService } from './../../services/movie.service';
-import { Component, OnInit } from '@angular/core';
-import { Movie } from 'src/app/model/movie';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-bread-crumb',
   templateUrl: './bread-crumb.component.html',
-  styleUrls: ['./bread-crumb.component.scss']
+  styleUrls: ['./bread-crumb.component.scss'],
+  providers: [MovieService],
 })
 export class BreadCrumbComponent implements OnInit {
+  constructor(
+    private movieService: MovieService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
-  
-  constructor(private movieService : MovieService) { }
-  movieTitle : string
+  //movieTitle: string;
 
+  @Input() movieTitle = '';
 
-   async ngOnInit() {
-    this.movieService.getMovieById("634649").subscribe(data => {
-       this.movieTitle=data.title
-       
-    })
+  async ngOnInit() {
+  /*  this.activatedRoute.params.subscribe((params) => {
+      this.getMovieById(params["movieId"]);
+    });*/
   }
 
+  /*getMovieById(movieId) {
+    this.movieService.getMovieById(movieId).subscribe((data) => {
+      this.movieTitle = data.title;
+    });
+  }*/
 }
