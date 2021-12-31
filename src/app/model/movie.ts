@@ -7,6 +7,7 @@ export class Movie {
     runtime:number;
     budget:number;
     revenue:number;
-    backdrop_path:string
+    backdrop_path:string;
+    poster_path:string;
 
 }
