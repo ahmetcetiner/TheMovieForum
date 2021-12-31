@@ -2,22 +2,27 @@
   justify-content: center;
 }
 .product-img {
-  width: 150px;
-  height: 150px;
+  width: 270px;
+  height: 430px;
   margin: 40px;
-  margin-bottom: 150px;
+  margin-bottom: 10px;
+  justify-content: center;
 }
 .product-img-2 {
   width: 150px;
   height: 150px;
   margin-top: 20px;
 }
-.product-name {
+
+.footer-ico {
+  width: 16px;
+  height: 16px;
   text-align: center;
 }
-.product-info {
-  margin-top: 50px;
-  color: red;
+.footer {
+  width: 90%;
+  margin:10px;
+  height: 40px;
   text-align: center;
 }
 .flip-card {
@@ -67,10 +72,7 @@
   color: white;
   transform: rotateY(180deg);
 }
-.page {
-  margin-top: calc(100vh - 250px);
-  margin-bottom: calc(20vh - 30px);
-}
+
 .tbl-property {
   justify-content: center;
   table-layout: auto;
