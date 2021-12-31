@@ -1,4 +1,6 @@
+import { MovieService } from './../../services/movie.service';
 import { Component, OnInit } from '@angular/core';
+import { Movie } from 'src/app/model/movie';
 
 @Component({
   selector: 'app-bread-crumb',
@@ -7,10 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BreadCrumbComponent implements OnInit {
 
-  movieTitle:string = "Deneme"
-  constructor() { }
+  
+  constructor(private movieService : MovieService) { }
+  movieTitle : string
 
-  ngOnInit() {
+
+   async ngOnInit() {
+    this.movieService.getMovieById("634649").subscribe(data => {
+       this.movieTitle=data.title
+       
+    })
   }
 
 }
