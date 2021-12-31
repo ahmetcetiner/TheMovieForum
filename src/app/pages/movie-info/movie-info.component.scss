@@ -1,0 +1,89 @@
+.wrapper{
+  background-image: var(--background);  
+  background-size: cover;
+  background-position: center;
+  padding: 40px 20px;
+  animation: animateMovieInfo 1s;
+
+  @keyframes animateMovieInfo{
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+};
+
+.content {
+  display: flex;
+  max-width:1280px;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 30px;
+
+  @media screen and (max-width: 768px) {
+    display: block;
+    max-height: none;
+  }
+};
+
+.text{
+  width: 100%;
+  padding: 20px 40px;
+  color: var(--white);
+  overflow: hidden;
+
+  .rating-directors {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .score {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    background: #fff;
+    color: #000;
+    font-weight: 800;
+    border-radius: 50%;
+    margin: 0;
+  }
+
+  .director {
+    margin: 0 0 0 40px;
+    p {
+      margin: 0;
+    }
+  }
+
+h1 {
+    @media screen and (max-width: 768px) {
+      font-size: 1.5rem;
+    }
+  }
+};
+
+.image {
+    width: 100%;
+    max-width: 720px;
+    transition: all 0.3s;
+    object-fit: cover;
+    border-radius: 30px;
+    animation: animateThumb 0.5s;
+
+    :hover{
+        opacity: 0.8;
+    }
+
+    @keyframes animateThumb {
+        from{
+            opacity: 0;
+        }to{
+            opacity: 1;
+        }
+    }
+};
