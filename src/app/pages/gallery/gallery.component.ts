@@ -25,7 +25,7 @@ export class GalleryComponent implements OnInit {
   movies: Array<Movie> = new Array<Movie>();
   movieIds: Array<string> = new Array<string>();
 
-  imagePath:string
+  imagePath:Array<string> = new Array<string>();
 
   ngOnInit(): void {
     this.movieIds.push("624860");
@@ -40,19 +40,11 @@ export class GalleryComponent implements OnInit {
 
     console.log(this.imagePath); 
     
-    
   }
-
   getMovies(movieId: string) {
     this.movieService.getMovieById(movieId).subscribe(data => {
       this.movies.push(data)
-      this.imagePath=IMAGE_BASE_URL+BACKDROP_SIZE+data.backdrop_path
-    })
-  }
-
-  mapMovie(movies: Array<Movie>){
-    movies.map(e=>{
-      console.log("deneme"+e.title)
+      this.imagePath.push(IMAGE_BASE_URL+BACKDROP_SIZE+data.backdrop_path)
     })
   }
 }

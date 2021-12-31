@@ -1,8 +1,8 @@
 <div class="col page">
   <div class="row first mb-5">
-    <div class="flip-card" [routerLink]="['/login']">
+    <div class="flip-card" [routerLink]="['/login']"  *ngFor="let img of imagePath ">
       <div class="flip-card-front shadow">
-        <img class="product-img justify-content-center" src={{imagePath}} />
+        <img class="product-img justify-content-center" src={{img}} />
         <div class="shadow footer">
           <div class="row w-100 ml-2">
             <h3 class="col-2">1</h3>
