@@ -12,7 +12,8 @@ import {
 } from 'src/config';
 import { Observable } from 'rxjs';
 import { Movie } from '../model/movie';
-
+import { Actor } from '../model/actor';
+import { Credits } from '../model/credit';
 @Injectable({
   providedIn: 'root'
 })
@@ -21,7 +22,12 @@ export class MovieService {
   constructor(private httpClient : HttpClient) { }
   
   getMovieById(movieId:string):Observable<Movie>{
-    return this.httpClient.get<Movie>( API_URL+"movie/"+movieId+"?api_key="+API_KEY)
-   
+    return this.httpClient.get<Movie>( API_URL+"movie/"+movieId+"?api_key="+API_KEY)   
   }
+
+  getActorsByMovieId(movieId:string):Observable<Credits>{
+    return this.httpClient.get<Credits>( API_URL+"movie/"+movieId+"/credits?api_key="+API_KEY) 
+  
+  }
+
 }
