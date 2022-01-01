@@ -1,7 +1,14 @@
+
 .wrapper{
-  background-image: var(--background);  
-  background-size: cover;
-  background-position: center;
+  background:  linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 41%,
+    rgba(0, 0, 0, 0.65) 100%
+  ),var(--background);  
+  background-size:   cover;
+  min-height: 750px;
+  position: relative;
+  background-position:  center;
   padding: 40px 20px;
   animation: animateMovieInfo 1s;
 
@@ -13,6 +20,11 @@
       opacity: 1;
     }
   }
+  @media screen and (max-width: 768px) {
+    max-width: 1270px;
+  }
+
+  
 };
 
 .content {
@@ -21,17 +33,22 @@
   margin: 0 auto;
   background: rgba(0, 0, 0, 0.7);
   border-radius: 30px;
-
-  @media screen and (max-width: 768px) {
+  max-height: 700px; 
+  min-height: 400px;
+  height: 45%;
+  
+};
+@media screen and (max-width: 768px) {
+  .content{
     display: block;
     max-height: none;
   }
-};
+}
 
 .text{
   width: 100%;
   padding: 20px 40px;
-  color: var(--white);
+  color: #fff;
   overflow: hidden;
 
   .rating-directors {
@@ -68,22 +85,62 @@ h1 {
 };
 
 .image {
-    width: 100%;
-    max-width: 720px;
+    width: 100%;   
     transition: all 0.3s;
     object-fit: cover;
     border-radius: 30px;
-    animation: animateThumb 0.5s;
+    animation: animateThumb 0.5s; 
+    height: 100%;
+    
 
-    :hover{
-        opacity: 0.8;
+    @media screen and (min-width: 768px) {
+      max-width: 420px;
+      height: auto;
+      width: auto;
     }
 
     @keyframes animateThumb {
         from{
             opacity: 0;
         }to{
-            opacity: 1;
+            opacity: 2;
         }
     }
+    &:hover{
+      opacity: 0.8;
+    }
+};
+
+
+.bar-wrapper {
+  display: flex;
+  align-items: center;
+  min-height: 100px;
+  background: #1c1c1c;
+  padding: 0 20px;
+};
+
+.bar-content {
+  display: flex;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  .column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #353535;
+    border-radius: 20px;
+    margin: 0 20px;
+    flex: 1;
+    color: #fff; 
+    font-size: 1.5rem;
+ 
+  }
+  @media screen and (max-width: 768px) {
+    display: block;
+    .column {
+      margin: 20px 10px;
+    }
+  }
 };

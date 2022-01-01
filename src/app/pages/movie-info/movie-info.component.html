@@ -1,25 +1,32 @@
-<div class="wrapper" style="--background: url({{imageUrl}});">
+<div class="wrapper" style="--background: url({{ imageUrl }});">
   <div class="content">
-    <!-- <app-Thumb [image] = "imagePath" ></app-Thumb> -->
-    <img src={{backdropImageUrl}} alt='movie-thumb' class="image" />
+    <img class="image" src="{{ backdropImageUrl }}" alt="movie-thumb" />
 
-    <span class="text">
-      <h1>{{movie.title}}</h1>
+    <div class="text">
+      <h1>{{ movie.title }}</h1>
       <h3>PLOT</h3>
-      <p>{{movie.overview}}</p>
-      <p>{{movie.poster_path}}</p>
-      <p>{{imagePath}}</p>
+      <p>{{ movie.overview }}</p>
+      <p>{{ movie.poster_path }}</p>
 
       <div className="rating-directors">
         <div>
           <h3>RATING</h3>
-          <div className="score">{{movie.vote_average}}</div>
+          <div className="score">{{ movie.vote_average }}</div>
         </div>
         <div className="director">
-          <h3>DIRECTOR</h3>          
-            <p>Barış Arslan</p>         
+          <h3>DIRECTOR</h3>
+          <p>Barış Arslan</p>
         </div>
       </div>
-    </span>
+    </div>
+  </div>
+</div>
+<div class="bar-wrapper">
+  <div class="bar-content">
+    <div class="m-2 row  w-100">
+      <button class="column p-2">Actors</button>        
+      <button class="column p-2">Reviews</button>
+      <button class="column p-2"> Discussions</button>
+    </div>
   </div>
 </div>
