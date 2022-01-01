@@ -31,6 +31,9 @@ export class GalleryComponent implements OnInit {
   ngOnInit(): void {
     this.movieIds.push("624860");
     this.movieIds.push("634649");
+    this.movieIds.push("102382");
+    this.movieIds.push("831223");
+    this.movieIds.push("585245");
     
     this.movieIds.forEach(element => {
       this.getMovies(element);

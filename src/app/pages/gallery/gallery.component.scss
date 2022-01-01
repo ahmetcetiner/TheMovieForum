@@ -12,13 +12,15 @@
   justify-content: center;
 }
 .mt-6{
-  margin-top: 490px;
+  margin-top: 350px;
   margin-bottom: 0pc;
 }
 .movie-title{
   font-style: italic;
-  font-size: 1rem;
+  font-size: 0.7rem;
   color:#8D99AE;
+  justify-content: center;
+  text-align: center;
 }
 .footer-ico {
   width: 20px;
@@ -39,9 +41,9 @@
 }
 .flip-card {
   background-color: transparent;
-  min-width: 400px;
+  min-width: 300px;
   max-width: 30%;
-  min-height: 600px;
+  min-height: 420px;
   border: 25px solid transparent;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
