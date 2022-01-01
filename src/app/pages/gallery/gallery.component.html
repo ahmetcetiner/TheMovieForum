@@ -1,15 +1,13 @@
 <div class="col page">
   <div class="row first mb-5">
-    <div class="flip-card" [routerLink]="['/login']"  *ngFor="let img of imagePath ">
-      <div class="flip-card-front shadow">
-        <img class="product-img justify-content-center" src={{img}} />
-        <div class="shadow footer">
+    <div class="flip-card"  *ngFor="let mov of movies ">
+      <div  routerLink="/movie/{{mov.movieId}}" class="flip-card-front shadow movie-bg " style="--background:url({{mov.imageUrl}})">
+        <div class="shadow footer mt-6">
           <div class="row w-100 ml-2">
-            <h3 class="col-2">1</h3>
-            <div class="col-6"></div>
-            <div class="col-4">
+            <div class="col-7 m-2"><div class=" movie-title">{{mov.movieName}}</div></div>
+            <div class="col-3 m-2 row">
               <img class="footer-ico m-2 " src="../../../assets/images/icons8_star.ico" />
-              <img class="footer-ico m-2 " src="../../../assets/images/icons8_bookmark.ico" />
+              <div class="footer-ico m-2 text-algiment-center">{{mov.movieRate}}</div>
             </div>
           </div>
         </div>

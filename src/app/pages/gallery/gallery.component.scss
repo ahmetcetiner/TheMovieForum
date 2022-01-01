@@ -1,29 +1,36 @@
 .first {
   justify-content: center;
 }
-.product-img {
-  width: 270px;
-  height: 430px;
-  margin: 40px;
-  margin-bottom: 10px;
+.border-img{
+  object-fit: cover;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+}
+.movie-bg{
+  background-image: var(--background);
+  background-size: cover;
   justify-content: center;
 }
-.product-img-2 {
-  width: 150px;
-  height: 150px;
-  margin-top: 20px;
+.mt-6{
+  margin-top: 490px;
+  margin-bottom: 0pc;
 }
-
+.movie-title{
+  font-style: italic;
+  font-size: 1rem;
+  color:#8D99AE;
+}
 .footer-ico {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   text-align: center;
   justify-content: center;
+  color:#8D99AE;
+  margin-right: 0px !important;
 }
 .footer {
   width: 100%;
-  height: 40px;
-  margin-top: 29px;
+  height: 60px;
   background-color: #2B2D42;
   text-align: center;
   justify-content: center;
@@ -38,25 +45,8 @@
   border: 25px solid transparent;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
-
-/* This container is needed to position the front and back side */
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-}
-
-/* Do an horizontal flip when you move the mouse over the flip box container */
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
-
 /* Position the front and back side */
-.flip-card-front,
-.flip-card-back {
+.flip-card-front{
   position: absolute;
   width: 100%;
   height: 100%;
@@ -64,40 +54,8 @@
   -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
 }
-
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
   background-color: rgb(255, 255, 255);
   color: black;
-}
-
-/* Style the back side */
-.flip-card-back {
-  background-color: white;
-  color: white;
-  transform: rotateY(180deg);
-}
-
-.tbl-property {
-  justify-content: center;
-  table-layout: auto;
-  max-width: 96%;
-  margin-top: 25px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.td-property {
-  text-align: left;
-}
-
-@media screen and (max-width: 375px) {
-  .flip-card {
-    min-width: 330px;
-  }
-  .mt-5{
-    margin-top: 30px !important;
-  }
-}
-.header{
-  border-bottom: 5px solid #407c38;
 }
