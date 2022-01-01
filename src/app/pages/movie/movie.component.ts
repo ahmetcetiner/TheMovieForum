@@ -2,11 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Movie } from 'src/app/model/movie';
 import { MovieService } from 'src/app/services/movie.service';
-import {
-  BACKDROP_SIZE,
-  IMAGE_BASE_URL, POSTER_SIZE
-} from 'src/config';
-
 
 @Component({
   selector: 'app-movie',
