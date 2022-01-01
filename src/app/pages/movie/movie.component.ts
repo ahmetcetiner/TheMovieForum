@@ -20,9 +20,7 @@ export class MovieComponent implements OnInit {
     private activatedRoute: ActivatedRoute) { }
 
   movie !: Movie
-  movieTitle : string;
-  imageUrl : string
-  backdropImageUrl : string
+  movieTitle !: string;
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params) => {
@@ -34,8 +32,6 @@ export class MovieComponent implements OnInit {
     this.movieService.getMovieById(movieId).subscribe((data) => {
       this.movie = data;
       this.movieTitle=data.title;
-      this.imageUrl = IMAGE_BASE_URL+BACKDROP_SIZE+data.backdrop_path;
-      this.backdropImageUrl = IMAGE_BASE_URL+BACKDROP_SIZE+data.poster_path;
     });
   }
 
