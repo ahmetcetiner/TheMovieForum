@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { FavListInfo } from 'src/app/model/favListInfo';
 import { Movie } from 'src/app/model/movie';
 import { MovieService } from 'src/app/services/movie.service';
 import {
@@ -22,7 +23,7 @@ export class GalleryComponent implements OnInit {
   @Input() imageUrl: ""
   @Input() backdropImageUrl: ""
 
-  movies: Array<Movie> = new Array<Movie>();
+  movies: Array<FavListInfo> = new Array<FavListInfo>();
   movieIds: Array<string> = new Array<string>();
 
   imagePath:Array<string> = new Array<string>();
@@ -33,18 +34,15 @@ export class GalleryComponent implements OnInit {
     
     this.movieIds.forEach(element => {
       this.getMovies(element);
-    });
-
-    console.log(this.movieIds)
+    });  
     console.log(this.movies)
-
-    console.log(this.imagePath); 
-    
   }
+
+
   getMovies(movieId: string) {
     this.movieService.getMovieById(movieId).subscribe(data => {
-      this.movies.push(data)
-      this.imagePath.push(IMAGE_BASE_URL+BACKDROP_SIZE+data.backdrop_path)
+      this.imagePath.push(IMAGE_BASE_URL+BACKDROP_SIZE+data.poster_path)
+      this.movies.push(new FavListInfo(IMAGE_BASE_URL+BACKDROP_SIZE+data.poster_path,data.title,data.vote_average,data.id))
     })
   }
 }
