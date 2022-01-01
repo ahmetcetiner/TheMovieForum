@@ -1,21 +1,21 @@
-<div class="wrapper" style="--background: url({{ imageUrl }});">
+<div class="wrapper" style="--background: url({{ imagePath }});">
   <div class="content">
-    <img class="image" src="{{ backdropImageUrl }}" alt="movie-thumb" />
+    <div class="content-image">
+      <img class="image" src="{{ backdropImageUrl }}" alt="movie-thumb" />
+    </div>
 
     <div class="text">
       <h1>{{ movie.title }}</h1>
       <h3>PLOT</h3>
       <p>{{ movie.overview }}</p>
-      <p>{{ imagePath }}</p>
-
-      <div className="rating-directors">
+      <div class="rating-directors">
         <div>
           <h3>RATING</h3>
-          <div className="score">{{ movie.vote_average }}</div>
+          <div class="score">{{ movie.vote_average }}</div>
         </div>
-        <div className="director">
-          <h3>DIRECTOR</h3>
-          <p>Barış Arslan</p>
+        <div class="director">
+          <h3>DIRECTOR{{directors.length>1 ?"S":""}}</h3>         
+            <p *ngFor="let director of directors">{{director.name}}</p>  
         </div>
       </div>
     </div>
@@ -33,7 +33,10 @@
   </div>
 </div>
 <div *ngIf="sendModule == 'actor'">
-  <app-actor></app-actor>
+  <div *ngFor="let actor of actors"> 
+        <app-actor [takenActor]="actor"></app-actor>      
+  </div>
+  
 </div>
 <div *ngIf="sendModule == 'reviews'">
   <app-gallery></app-gallery>
@@ -42,4 +45,3 @@
 <div *ngIf="sendModule == 'discussions'">
   <app-actor></app-actor>
 </div>
-
