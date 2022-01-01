@@ -1,3 +1,4 @@
+import { ActorComponent } from './pages/actor/actor.component';
 import { MovieComponent } from './pages/movie/movie.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -34,6 +35,7 @@ import { MovieInfoComponent } from './pages/movie-info/movie-info.component';
     BreadCrumbComponent,
     MovieComponent,
     MovieInfoComponent,
+    ActorComponent
   ],
   imports: [BrowserModule, AppRoutingModule,FormsModule,HttpClientModule],
   providers: [],
