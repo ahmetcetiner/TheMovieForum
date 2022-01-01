@@ -17,6 +17,7 @@ import { CommentComponent } from './pages/comment/comment.component';
 import { FormsModule } from '@angular/forms';
 import { BreadCrumbComponent } from './pages/bread-crumb/bread-crumb.component';
 import { MovieInfoComponent } from './pages/movie-info/movie-info.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { MovieInfoComponent } from './pages/movie-info/movie-info.component';
     BreadCrumbComponent,
     MovieComponent,
     MovieInfoComponent,
+    ProfilePageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule,FormsModule,HttpClientModule],
   providers: [],

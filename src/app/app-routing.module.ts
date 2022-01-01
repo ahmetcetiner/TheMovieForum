@@ -11,6 +11,7 @@ import {
 } from './pages';
 import { Routes, RouterModule } from '@angular/router';
 import { ClientLayoutComponent } from './components';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 
 
 const routes: Routes = [
@@ -58,6 +59,11 @@ const routes: Routes = [
         component: MovieComponent,
         data: { title: 'Movie' },
       },
+      {
+        path: 'profile',
+        component: ProfilePageComponent,
+        data: { title: 'Profile' },
+      }
     ],
   },
 ];

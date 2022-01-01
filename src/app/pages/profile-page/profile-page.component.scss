@@ -1,0 +1,43 @@
+.profile-img{
+    border-radius: 100%;
+    object-fit:cover;
+    width:100%;
+    height: 100%;
+}
+.row{
+    width: 99%;
+}
+.edit-btn{
+    border-radius: 12px;
+    width:fit-content;
+    height: fit-content;
+    border: none;
+    padding: 7px;
+}
+.item-border{
+    height:fit-content;
+}
+.brdr{
+    border:3px solid #8d99ae;
+    border-radius: 12px;
+    width:fit-content;
+    padding: 3px;
+    background-color: #edf2f4;
+}
+.line{
+    border-bottom: 5px solid #2b2d42;
+}
+.container-down{
+    width: 80% !important;
+    margin-left: 10%;
+  }
+  .container-up{
+    width: 80% !important;
+    margin-left: 10%;
+}
+.favtext{
+      font-size: 1.9rem;
+      color: #8d99ae;
+      text-align: center;
+      justify-content: center;
+}
