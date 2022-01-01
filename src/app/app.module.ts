@@ -1,3 +1,4 @@
+import { ActorComponent } from './pages/actor/actor.component';
 import { MovieComponent } from './pages/movie/movie.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -36,6 +37,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
     MovieComponent,
     MovieInfoComponent,
     ProfilePageComponent,
+    ActorComponent
   ],
   imports: [BrowserModule, AppRoutingModule,FormsModule,HttpClientModule],
   providers: [],

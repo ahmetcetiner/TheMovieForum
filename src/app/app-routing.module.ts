@@ -1,3 +1,4 @@
+import { ActorComponent } from './pages/actor/actor.component';
 import { MovieComponent } from './pages/movie/movie.component';
 import { NgModule } from '@angular/core';
 import {
@@ -63,7 +64,12 @@ const routes: Routes = [
         path: 'profile',
         component: ProfilePageComponent,
         data: { title: 'Profile' },
-      }
+      },
+      {
+        path: 'movie/:movieId/actors',
+        component: ActorComponent,
+        data: { title: 'Actors' },
+      },
     ],
   },
 ];

@@ -36,7 +36,6 @@ export class MovieComponent implements OnInit {
       this.movieTitle=data.title;
       this.imageUrl = IMAGE_BASE_URL+BACKDROP_SIZE+data.backdrop_path;
       this.backdropImageUrl = IMAGE_BASE_URL+BACKDROP_SIZE+data.poster_path;
-
     });
   }
 
