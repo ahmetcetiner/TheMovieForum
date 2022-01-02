@@ -1,3 +1,4 @@
+import { PopularMovie } from './../model/popularMovie';
 import { Injectable } from '@angular/core';
 import API from '../../API';
 import { HttpClient } from "@angular/common/http";
@@ -14,6 +15,7 @@ import { Observable } from 'rxjs';
 import { Movie } from '../model/movie';
 import { Actor } from '../model/actor';
 import { Credits } from '../model/credit';
+import { stringify } from 'querystring';
 @Injectable({
   providedIn: 'root'
 })
@@ -26,8 +28,11 @@ export class MovieService {
   }
 
   getActorsByMovieId(movieId:string):Observable<Credits>{
-    return this.httpClient.get<Credits>( API_URL+"movie/"+movieId+"/credits?api_key="+API_KEY) 
-  
+    return this.httpClient.get<Credits>( API_URL+"movie/"+movieId+"/credits?api_key="+API_KEY)   
+  }
+
+  getBackdropImage():Observable<PopularMovie>{    
+    return this.httpClient.get<PopularMovie>(POPULAR_BASE_URL)
   }
 
 }
