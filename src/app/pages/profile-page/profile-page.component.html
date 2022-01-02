@@ -1,28 +1,28 @@
 <div class="w-100 mb-5 container-up">
     <div class="row">
-        <div class="col-4">
-            <img class="profile-img mt-5" src="../../../assets/images/WhatsApp Image 2021-11-19 at 10.56.32.jpeg">
+        <div class="com-3">
+            <img class="profile-img mt-5" src="https://ui-avatars.com/api/?size=128">
         </div>
-        <div class="col-8">
-            <div class="row m-3 ml-5">
-                <h3 class=" mt-5 ">Ahmet CETINER</h3>
-                <button class="edit-btn mt-5 ml-5 shadow">Edit Profile</button>
+        <div class="com-7 ml-5">
+            <div class="ml-0 row float-xl-right">
+                <h3 class=" mt-5 items">Ahmet CETINER</h3>
+                <button class="edit-btn mt-5 ml-5 shadow items float-right" data-toggle="modal" data-target=".bd-example-modal-lg">Edit Profile</button>
             </div>
-            <div class="container row">
-                <div class="col col-6 row">
-                    <div class="brdr m-1">
+            <div class="container">
+                <div class="category row">
+                    <div class="brdr m-1 items">
                         <div class="item-border ">test sdad asdasd asdasd</div>
                     </div>
-                    <div class="brdr m-1">
+                    <div class="brdr m-1 items">
                         <div class="item-border ">test asdasd asdasd</div>
                     </div>
-                    <div class="brdr m-1">
+                    <div class="brdr m-1 items">
                         <div class="item-border ">test sdad asdasd</div>
                     </div>
-                    <div class="brdr m-1">
+                    <div class="brdr m-1 items">
                         <div class="item-border "> sdad asdasd asdasd</div>
                     </div>
-                    <div class="brdr m-1">
+                    <div class="brdr m-1 items">
                         <div class="item-border ">test sdad asdasd </div>
                     </div>
                 </div>
@@ -31,9 +31,17 @@
     </div>
 </div>
 <div>
-<p class="favtext mb-0">Favory List</p>
+    <p class="favtext mb-0">Favory List</p>
 </div>
 <div class="line"></div>
 <div class="container-down">
     <app-gallery></app-gallery>
 </div>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <app-profile-edit-page></app-profile-edit-page>
+      </div>
+    </div>
+  </div>
