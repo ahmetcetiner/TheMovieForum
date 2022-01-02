@@ -11,5 +11,9 @@ export class ProfileEditPageComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  imageUrl: string
+  avatarClick(imageUrl: string) {
+    this.imageUrl=imageUrl;
+  }
 
 }
