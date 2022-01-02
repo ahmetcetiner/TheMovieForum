@@ -1,0 +1,46 @@
+.profile-img{
+    border-radius: 100%;
+    object-fit:cover;
+    object-position: center;
+    width: 5vw;
+    height: 5vw;
+    min-width: 75px;
+    min-height: 75px;
+    max-width: 120px;
+    max-height: 120px;
+    margin: 20px;
+}
+.card-info{
+width: 50%;
+@media screen and (max-width: 575px) {
+    width: 70%;
+  }
+}
+.card{
+    width: 100%;
+    height: fit-content;
+}
+.title{
+    margin-top: 30px;
+    font-size: 1.5rem;
+}
+.userName{
+    font-size: 0.9rem;
+    font-style: italic;
+}
+.number{
+    width: 32px;
+    height: 32px;
+    background-color: white;
+    object-position: center;
+}
+.center{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    @media screen and (max-width: 575px) {
+        display: none;
+      }
+}
