@@ -9,11 +9,12 @@
     max-width: 120px;
     max-height: 120px;
     margin: 20px;
-    margin-left: 40px !important;
 }
 .card-info{
-margin-left: 5%;
 width: 50%;
+@media screen and (max-width: 575px) {
+    width: 70%;
+  }
 }
 .card{
     width: 100%;
@@ -21,4 +22,25 @@ width: 50%;
 }
 .title{
     margin-top: 30px;
+    font-size: 1.5rem;
+}
+.userName{
+    font-size: 0.9rem;
+    font-style: italic;
+}
+.number{
+    width: 32px;
+    height: 32px;
+    background-color: white;
+    object-position: center;
+}
+.center{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    @media screen and (max-width: 575px) {
+        display: none;
+      }
 }
