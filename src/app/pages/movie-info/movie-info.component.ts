@@ -5,6 +5,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Movie } from 'src/app/model/movie';
 import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE } from 'src/config';
 import { Crew } from 'src/app/model/crew';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-movie-info',
@@ -23,12 +24,19 @@ export class MovieInfoComponent implements OnInit {
   imageUrl: string;
   movie!: Movie;
   backdropImageUrl: string;
+  runtime : string;
+  revenue : string;
+  budget : string;
+
+  datepipe :DatePipe= new DatePipe('en-US')  
+  release_date:string;
 
   @Input() set submittedMovie(movie: Movie) {
     this.movie = movie;
     this.imagePath =        IMAGE_BASE_URL + BACKDROP_SIZE + movie.poster_path;
     this.imageUrl =         IMAGE_BASE_URL + BACKDROP_SIZE + movie.backdrop_path;
     this.backdropImageUrl = IMAGE_BASE_URL + BACKDROP_SIZE + movie.poster_path;
+    this.release_date = this.datepipe.transform(movie.release_date, 'dd/MM/yyyy')
   }
 
   actors : Actor[]
@@ -41,7 +49,9 @@ export class MovieInfoComponent implements OnInit {
        this.actors=data.cast
        this.directors= data.crew.filter(member => member.job=="Director");
      })
-     
+     this.runtime = this.calcTime(this.movie.runtime)
+     this.revenue = this.calcTime(this.movie.revenue)
+     this.budget = this.calcTime(this.movie.budget)
   }
 
   getModule(moduleName) {
@@ -61,5 +71,19 @@ export class MovieInfoComponent implements OnInit {
     }
   }
 
-  get
+  // Convert time to hours and minutes
+  calcTime(time){
+  let hours = Math.floor(time / 60);
+  let mins = time % 60;
+  return `${hours}h ${mins}m`;
+};
+  // Convert a number to money formatting
+  convertMoney(money){
+  let formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+  });
+  return formatter.format(money);
+};
 }
