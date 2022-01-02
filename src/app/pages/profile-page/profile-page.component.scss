@@ -4,14 +4,14 @@
     object-position: center;
     width:20vw;
     height: 20vw;
-    min-width: 200px;
-    min-height: 200px;
+    min-width: 150px;
+    min-height: 150px;
 }
 .row{
     width: 99%;
 }
 .edit-btn{
-    border-radius: 12px;
+    border-radius: 7px;
     width:fit-content;
     height: fit-content;
     border: none;
@@ -39,10 +39,10 @@
     margin-left: 10%;
 }
 .favtext{
-      font-size: 1.9rem;
-      color: #8d99ae;
-      text-align: center;
-      justify-content: center;
+    font-size: 1.9rem;
+    color: #8d99ae;
+    text-align: center;
+    justify-content: center;
 }
 .category{
     width: 80%;
@@ -62,4 +62,7 @@
 .pop-up{
     width: 60%;
     background-color: white;
+}
+.round{
+    border-radius: 20px !important;
 }
