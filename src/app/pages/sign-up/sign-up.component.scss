@@ -1,7 +1,10 @@
 body {
-  background: #2B2D42;
-  font-family: 'Roboto', sans-serif;
-  background-image: url("../../../assets/images/login-bg.jpg");
+  background:  linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 41%,
+    rgba(0, 0, 0, 0.65) 100%
+  ),var(--background);
+  font-family: Abel, sans-serif !important;
   background-color: transparent;
   background-position: center;
   background-repeat: no-repeat;
@@ -9,27 +12,32 @@ body {
 }
 
 .login-box {
-  margin: 19vh;
-  height: auto;
+  margin: 50px;
+  height: 770px;
+  min-width: 350px; 
+  width: 90% !important;
   background: #2B2D42;
   text-align: center;
-  box-shadow: 0 3px 6px rgb(43, 45, 66), 0 3px 6px rgb(43,45,66);
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 30px;
 }
 
 .login-title {
-  margin-top: 15px;
-  margin-bottom: 100px;
+  margin-top: 30px ;
+  margin-bottom: 80px;
   text-align: center;
-  font-size: 30px;
+  font-size: 35px;
   letter-spacing: 2px;
-  margin-top: 15px;
   font-weight: bold;
   color: #EDF2F4;
 }
 
 .login-form {
-  margin-top: 25px;
-  text-align: left;
+  margin-top: 20px;
+  text-align: center;
+  justify-content: center;
+  margin: auto; 
+  width: 70%;  
 }
 
 input[type=text] {
@@ -39,12 +47,25 @@ input[type=text] {
   border-top: 0px;
   border-radius: 0px;
   font-weight: bold;
+  text-align: center;
   outline: 0;
   margin-bottom: 20px;
   padding-left: 0px;
   color: #EDF2F4;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px #2B2D42 inset !important;
+}
+
+input:-webkit-autofill{
+  -webkit-text-fill-color:  #EDF2F4 !important;
+  font-weight: bold !important;
+  font-size: 20px  !important;
+}
 input[type=password] {
   background-color: #2B2D42;
   border: none;
@@ -83,7 +104,7 @@ label {
 }
 
 .form-control-label {
-  font-size: 10px;
+  font-size: 17px;
   color: #8D99AE;
   font-weight: bold;
   letter-spacing: 1px;
@@ -104,14 +125,14 @@ label {
 }
 
 .login-btm {
-  float: left;
-}
-
-.login-button {
+  padding: 0px;
+  padding-right: 0px;
+  margin-bottom: 25px;
   padding-right: 0px;
   text-align: right;
   margin-bottom: 25px;
 }
+
 
 .login-text {
   text-align: left;
@@ -119,6 +140,3 @@ label {
   color: #8D99AE;
 }
 
-.loginbttm {
-  padding: 0px;
-}
