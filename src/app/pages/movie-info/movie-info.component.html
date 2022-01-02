@@ -14,8 +14,8 @@
           <div class="score">{{ movie.vote_average }}</div>
         </div>
         <div class="director">
-          <h3>DIRECTOR{{directors.length>1 ?"S":""}}</h3>         
-            <p *ngFor="let director of directors">{{director.name}}</p>  
+          <h3>DIRECTOR{{directors.length>1 ?"S":""}}</h3>
+          <p *ngFor="let director of directors">{{director.name}}</p>
         </div>
       </div>
     </div>
@@ -33,10 +33,13 @@
   </div>
 </div>
 <div *ngIf="sendModule == 'actor'">
-  <div *ngFor="let actor of actors"> 
-        <app-actor [takenActor]="actor"></app-actor>      
+  <div class="container">
+    <div class="row ml-5">
+      <div *ngFor="let actor of actors">
+        <app-actor [takenActor]="actor"></app-actor>
+      </div>
+    </div>
   </div>
-  
 </div>
 <div *ngIf="sendModule == 'reviews'">
   <app-gallery></app-gallery>
