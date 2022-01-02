@@ -1,3 +1,4 @@
+import { Genre } from './genre';
 export class Movie {
     id :number;
     original_title:string;
@@ -9,5 +10,7 @@ export class Movie {
     revenue:number;
     backdrop_path:string;
     poster_path:string;
+    release_date:Date;
+    genres : Genre[]
 
 }

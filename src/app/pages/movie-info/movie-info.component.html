@@ -3,9 +3,31 @@
     <div class="content-image">
       <img class="image" src="{{ backdropImageUrl }}" alt="movie-thumb" />
     </div>
-
     <div class="text">
       <h1>{{ movie.title }}</h1>
+      <div class="facts row">
+        <span class="release">
+          {{ release_date }}
+        </span>
+        <div class="circle"></div>
+        <span class="genres" *ngFor="let genre of movie.genres">
+          <span>{{ genre.name }}</span>
+        </span>
+        <div class="circle"></div>
+        <span class="runtime">2h 23m</span>
+      </div>
+      <ul class="actions row">
+        <li class="" title="Add to your favourite list">
+          <a  href="#"><span class="icons" style="background-image: url('https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-13-heart-white-28d2cc2d6418c5047efcfd2438bfc5d109192671263c270993c05f130cc4584e.svg')"></span></a>
+        </li>
+        <li class="butons" title="Add to your watch list">
+          <a id="watchlist"  href="#"><span class="icons" style="background-image: url('https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-159-thumbnails-list-white-c260ea972eebf812289fd3c41d0d2c1dff33ecbcd62be13fba8eeaf9de173789.svg')"></span></a>
+        </li>
+        <li class="butons" title="Add to your watched list">
+          <a id="watchedlist"   href="#"><span class="icons" style="background-image: url('https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-73-bookmark-white-432e98d550b7e4c80b06272c49475b0db85a60f6fae450420713004b3c9d3ffd.svg');"></span></a>
+        </li>
+      </ul>
+
       <h3>PLOT</h3>
       <p>{{ movie.overview }}</p>
       <div class="rating-directors">
@@ -14,8 +36,8 @@
           <div class="score">{{ movie.vote_average }}</div>
         </div>
         <div class="director">
-          <h3>DIRECTOR{{directors.length>1 ?"S":""}}</h3>
-          <p *ngFor="let director of directors">{{director.name}}</p>
+          <h3>DIRECTOR{{ directors.length > 1 ? "S" : "" }}</h3>
+          <p *ngFor="let director of directors">{{ director.name }}</p>
         </div>
       </div>
     </div>
