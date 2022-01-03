@@ -9,7 +9,7 @@
 
 .rounded-padding:hover {
   color: white !important;
-  background-color: green !important;
+  background-color: #EF233C !important;
 }
 
 .bg-opacity {
@@ -41,7 +41,7 @@
 }
 
 .navbar-bar :hover {
-  color: green !important;
+  color: #EF233C !important;
 }
 
 .text-underline-none {
@@ -70,7 +70,7 @@
 }
 
 .dropdown-content a:hover {
-  color: green;
+  color: #EF233C;
 }
 
 .dropdown:hover .dropdown-content {
@@ -78,7 +78,7 @@
 }
 
 .dropdown:hover .dropbtn {
-  color: green;
+  color: #EF233C;
 }
 
 .who-we-are {
@@ -129,4 +129,14 @@
 .image{
   width:75%;
   height:auto;
+}
+.center{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.dropdown-menu{
+  background-color: #2b2d42;
 }

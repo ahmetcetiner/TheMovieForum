@@ -1,11 +1,11 @@
 <div class="container">
-    <div class="card text-white bg-secondary mt-3 container">
-        <div class="row" *ngfor="let dis of discussions">
+    <div class="card text-white bg-secondary mt-3 container" *ngFor="let dis of discussions">
+        <div class="row">
             <div class="col-sm-1">
                 <div class="ml-2 center">
-                    <img class="ml-2" src="../../../assets/images/icons8_up.ico">
+                    <img src="../../../assets/images/icons8_up.ico">
                     <div class="number">{{dis.discussionRate}}</div>
-                    <img class="ml-2" src="../../../assets/images/icons8_down.ico">
+                    <img src="../../../assets/images/icons8_down.ico">
                 </div>
             </div>
             <div class="col-sm-10">
@@ -14,7 +14,7 @@
                         <img class="profile-img" src={{dis.userPhotoUrl}}>
                         <div class="card-info col-sm-9">
                             <div class="title">{{dis.discussionTitle}}</div>
-                            <div class="userName">{{dis.userName}}+" "+ {{dis.createDate}}</div>
+                            <div class="userName">{{dis.userName}}  {{dis.createDate}}</div>
                         </div>
                     </div>
                 </div>
