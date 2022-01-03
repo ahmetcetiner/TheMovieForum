@@ -1,27 +1,24 @@
 <div class=" container">
-    <div class="card text-white mt-3" >       
+    <div class="card text-white mt-3" *ngFor="let com of comments" >       
         <div class="row card-background" style="--background: url({{backdropImageUrl}})" >
             <div class=" col-sm-1" >
                 <div class="ml-2 center">
                     <img src="../../../assets/images/icons8_up.ico">
-                    <div class="number">1</div>
+                    <div class="number">{{com.commentRate}}</div>
                     <img src="../../../assets/images/icons8_down.ico">
                 </div>
             </div>
             <div class="col-sm-10">
                 <div class="container">
                     <div class="row">
-                        <img class="profile-img" src="https://ui-avatars.com/api/?size=128">
+                        <img class="profile-img" src={{com.userPhotoUrl}}>
                         <div class="card-info col-sm-9">
-                            <div class="title">testtttttttttttttttttttttttttttttttttttttttttttttttttttttttttt</div>
-                            <div class="userName">Mamuttttttttttttttttttttttttttttttttttttttttttttttttttttttttt</div>
+                            <div class="title">{{com.commentTitle}}</div>
+                            <div class="userName">{{com.userName}}      {{com.createDate}}</div>
                         </div>
                     </div>
                     <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's
-                            content.</p>
+                        <p class="card-text">{{com.commentText}}</p>
                     </div>
                 </div>
             </div>
