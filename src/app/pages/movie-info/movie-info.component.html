@@ -1,4 +1,5 @@
-<div class="wrapper" style="--background: url({{ imagePath }});">
+<div class="wrapper" style="--background: url({{ imageUrl }});">
+  <app-bread-crumb [movieTitle] = "movie.title"></app-bread-crumb>   
   <div class="content">
     <div class="content-image">
       <img class="image" src="{{ backdropImageUrl }}" alt="movie-thumb" />
@@ -42,15 +43,15 @@
       </div>
     </div>
   </div>
-</div>
-<div class="bar-wrapper">
-  <div class="bar-content">
-    <div class="m-2 row w-100">
-      <button class="column p-2" (click)="getModule('actor')">Actors</button>
-      <button class="column p-2" (click)="getModule('reviews')">Reviews</button>
-      <button class="column p-2" (click)="getModule('discussions')">
-        Discussions
-      </button>
+  <div class="bar-wrapper">
+    <div class="bar-content">
+      <div class=" modal-button m-2 row w-100">
+        <button class="btn btn-outline-primary column p-2" (click)="getModule('actor')">Actors</button>
+        <button class="btn btn-outline-primary column p-2" (click)="getModule('reviews')">Reviews</button>
+        <button class="btn btn-outline-primary column p-2" (click)="getModule('discussions')">
+          Discussions
+        </button>
+      </div>
     </div>
   </div>
 </div>
@@ -64,7 +65,7 @@
   </div>
 </div>
 <div *ngIf="sendModule == 'reviews'">
-  <app-comment></app-comment>
+  <app-reviews [movieId]="movie.id"></app-reviews> 
 </div>
 
 <div *ngIf="sendModule == 'discussions'">

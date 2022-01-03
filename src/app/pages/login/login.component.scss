@@ -14,9 +14,10 @@ body {
 .login-box {
   margin: 19vh;
   height: auto;
-  background: #2B2D42;
+  background: #2b2d42b6;
   text-align: center;
   box-shadow: 0 3px 6px rgb(43, 45, 66), 0 3px 6px rgb(43,45,66);
+  border-radius: 30px;
 }
 
 .login-title {
@@ -32,16 +33,21 @@ body {
 
 .login-form {
   margin-top: 25px;
-  text-align: left;
+  text-align: center;
+  justify-content: center;
+  margin: auto; 
+  width: 80%;  
 }
 
 input[type=text] {
-  background-color: #2B2D42;
+  background-color: #2b2d42c9;
   border: none;
   border-bottom: 2px solid #d80032;
   border-top: 0px;
   border-radius: 0px;
   font-weight: bold;
+  font-size:20px;
+  text-align: center;
   outline: 0;
   margin-bottom: 20px;
   padding-left: 0px;
@@ -49,7 +55,7 @@ input[type=text] {
 }
 
 input[type=password] {
-  background-color: #2B2D42;
+  background-color: #2b2d42c9;
   border: none;
   border-bottom: 2px solid #d80032;
   border-top: 0px;
@@ -58,7 +64,22 @@ input[type=password] {
   outline: 0;
   padding-left: 0px;
   margin-bottom: 20px;
+  text-align: center;
+  font-size:20px;
   color: #EDF2F4;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px #2B2D42 inset !important;
+}
+
+input:-webkit-autofill{
+  -webkit-text-fill-color:  #EDF2F4 !important;
+  font-weight: bold !important;
+  font-size: 20px  !important;
 }
 
 .form-group {
@@ -86,7 +107,7 @@ label {
 }
 
 .form-control-label {
-  font-size: 10px;
+  font-size: 15px;
   color: #8D99AE;
   font-weight: bold;
   letter-spacing: 1px;
@@ -94,7 +115,7 @@ label {
 
 .btn-outline-primary {
   border-color: #d80032;
-  color: #d80032;
+  color: #ffffff;
   border-radius: 0px;
   font-weight: bold;
   letter-spacing: 1px;
@@ -102,7 +123,7 @@ label {
 }
 
 .btn-outline-primary:hover {
-  background-color: #8D99AE;
+  background-color: #EF233C;
   right: 0px;
 }
 

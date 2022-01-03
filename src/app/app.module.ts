@@ -1,5 +1,5 @@
+import { ReviewsComponent } from './pages/reviews/reviews.component';
 import { ActorComponent } from './pages/actor/actor.component';
-import { MovieComponent } from './pages/movie/movie.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -36,12 +36,12 @@ import { DiscussionsComponent } from './pages/discussions/discussions.component'
     SignUpComponent,
     CommentComponent,
     BreadCrumbComponent,
-    MovieComponent,
     MovieInfoComponent,
     ProfilePageComponent,
     ActorComponent,
     ProfileEditPageComponent,
-    DiscussionsComponent
+    DiscussionsComponent,
+    ReviewsComponent
   ],
   imports: [BrowserModule, AppRoutingModule,FormsModule,HttpClientModule],
   providers: [],
