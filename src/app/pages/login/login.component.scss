@@ -1,7 +1,10 @@
 body {
-  background: #2B2D42;
+  background:  linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 41%,
+    rgba(0, 0, 0, 0.65) 100%
+  ),var(--background);
   font-family: 'Roboto', sans-serif;
-  background-image: url("../../../assets/images/login-bg.jpg");
   background-color: transparent;
   background-position: center;
   background-repeat: no-repeat;
