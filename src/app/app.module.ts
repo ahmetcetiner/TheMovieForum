@@ -1,3 +1,4 @@
+import { ReviewsComponent } from './pages/reviews/reviews.component';
 import { ActorComponent } from './pages/actor/actor.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -39,7 +40,8 @@ import { DiscussionsComponent } from './pages/discussions/discussions.component'
     ProfilePageComponent,
     ActorComponent,
     ProfileEditPageComponent,
-    DiscussionsComponent
+    DiscussionsComponent,
+    ReviewsComponent
   ],
   imports: [BrowserModule, AppRoutingModule,FormsModule,HttpClientModule],
   providers: [],
