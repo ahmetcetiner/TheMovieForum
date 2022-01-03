@@ -6,75 +6,170 @@
           <h1>Sing Up</h1>
         </div>
         <div class="col-lg-12 login-form">
-          <form #signUpForm="ngForm" (ngSubmit)="signUp(signUpForm)">
+          <form
+            [formGroup]="registerForm"
+            (ngSubmit)="register()"
+            class="form-register"
+          >
             <div class="form-group">
               <label class="form-control-label">FIRSTNAME</label>
               <input
                 type="text"
-                class="form-control"
                 id="FirstName"
-                placeholder="First Name"
                 name="FirstName"
-                #userName="ngModel"
-                [(ngModel)]="model.FirstName"
-                required
+                formControlName="FirstName"
+                class="form-control"
+                placeholder="First Name"
                 autofocus
               />
+              <span
+                class="help-block"
+                *ngIf="
+                  registerForm.get('FirstName').hasError('required') &&
+                  registerForm.get('FirstName').dirty
+                "
+              >
+                Firstname is required
+              </span>
             </div>
             <div class="form-group">
               <label class="form-control-label">LASTNAME</label>
-              <input    type="text"
-                class="form-control"
+              <input
+                type="text"
                 id="LastName"
-                placeholder="Last Name"
                 name="LastName"
-                #userName="ngModel"
-                [(ngModel)]="model.LastName"
-                required
-                autofocus />
+                formControlName="LastName"
+                class="form-control"
+                placeholder="Last Name"
+                autofocus
+              />
+              <span
+                class="help-block"
+                *ngIf="
+                  registerForm.get('LastName').hasError('required') &&
+                  registerForm.get('LastName').dirty
+                "
+              >
+              Lastname is required
+              </span>
             </div>
             <div class="form-group">
               <label class="form-control-label">USERNAME</label>
-              <input    type="text"
-                class="form-control"
-                id="UserName"
-                placeholder="User Name"
-                name="UserName"
-                #userName="ngModel"
-                [(ngModel)]="model.UserName"
-                required
-                autofocus />
+              <input
+              type="text"
+              id="UserName"
+              name="UserName"
+              formControlName="UserName"
+              class="form-control"
+              placeholder="User Name"
+              autofocus
+            />
+            <span
+              class="help-block"
+              *ngIf="
+                registerForm.get('UserName').hasError('required') &&
+                registerForm.get('UserName').dirty
+              "
+            >
+            Username is required
+            </span>
             </div>
             <div class="form-group">
               <label class="form-control-label">E-MAIL</label>
-              <input    type="text"
-                class="form-control"
-                id="Email"
-                placeholder="E-Mail"
-                name="Email"
-                #userName="ngModel"
-                [(ngModel)]="model.Email"
-                required
-                autofocus />
+              <input
+              type="text"
+              id="Email"
+              name="Email"
+              formControlName="Email"
+              class="form-control"
+              placeholder="E-mail"
+              autofocus
+            />
+            <span
+              class="help-block"
+              *ngIf="
+                registerForm.get('Email').hasError('required') &&
+                registerForm.get('Email').dirty
+              "
+            >
+            E-mail is required
+            </span>
             </div>
             <div class="form-group">
               <label class="form-control-label">PASSWORD</label>
-              <input type="Password"
-              class="form-control"
-              id="Password"
-              placeholder="Password"
-              name="Password"
-              #password="ngModel"
-              [(ngModel)]="model.Password" />
+              <input
+                type="password"
+                id="Password"
+                name="Password"
+                formControlName="Password"
+                class="form-control"
+                placeholder="Password"
+              />
+              <span
+                class="help-block"
+                *ngIf="
+                  registerForm.get('Password').hasError('required') &&
+                  registerForm.get('Password').dirty
+                "
+              >
+                Password is required
+              </span>
+              <span
+                class="help-block"
+                *ngIf="
+                  registerForm.get('Password').hasError('minlength') &&
+                  registerForm.get('Password').dirty
+                "
+              >
+                Password must be at least 4 characters
+              </span>
+              <span
+                class="help-block"
+                *ngIf="
+                  registerForm.get('Password').hasError('maxlength') &&
+                  registerForm.get('Password').dirty
+                "
+              >
+                Password cannot exceed 8 characters
+              </span>
             </div>
-            <div class="loginbttm">
+            <div class="form-group">
+              <label class="form-control-label">CONFIRM PASSWORD</label>
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                formControlName="confirmPassword"
+                class="form-control"
+                placeholder="Password"
+              />
+              <span
+                class="help-block"
+                *ngIf="
+                  registerForm.get('confirmPassword').hasError('required') &&
+                  registerForm.get('confirmPassword').dirty
+                "
+              >
+                Confirm password is required
+              </span>
+              <span
+                class="help-block"
+                *ngIf="
+                  registerForm.get('confirmPassword').dirty &&
+                  registerForm.hasError('mismatch')
+                "
+              >
+                Confirm password must match password
+              </span>
+            </div>
+            <div class="login-btn">
               <div class="col-lg-6 login-btm login-text">
                 <!-- Error Message -->
               </div>
               <div>
-                <button type="submit" class="btn btn-outline-primary">
+                <button type="submit" class="btn btn-outline-primary" [disabled]="!registerForm.valid">
                   SIGN UP
-                </button>
+                </button>           
               </div>
             </div>
           </form>

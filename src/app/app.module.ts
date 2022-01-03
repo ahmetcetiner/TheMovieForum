@@ -15,7 +15,7 @@ import { ClientFooterComponent } from './components/layout/client-footer/client-
 import { LoginComponent } from './pages/login/login.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { CommentComponent } from './pages/comment/comment.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BreadCrumbComponent } from './pages/bread-crumb/bread-crumb.component';
 import { MovieInfoComponent } from './pages/movie-info/movie-info.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
@@ -53,6 +53,7 @@ export function tokenGetter() {
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,    
     JwtModule.forRoot({
       config: {
