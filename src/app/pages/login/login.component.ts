@@ -1,10 +1,10 @@
+import { getTestBed } from '@angular/core/testing';
 import { AuthService } from './../../services/auth.service';
 import { LoginUser } from './../../model/loginUser';
-import { PopularMovie } from './../../model/popularMovie';
 import { MovieService } from 'src/app/services/movie.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { User } from '../../model/users';
+import { JwtHelperService } from '@auth0/angular-jwt'
 import {
   BACKDROP_SIZE,
   IMAGE_BASE_URL
@@ -17,13 +17,13 @@ import {
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private movieService:MovieService, private authService: AuthService) { }
+  constructor(private movieService:MovieService, private authService: AuthService,private jwtHelper: JwtHelperService) { }
 
   model: LoginUser = new LoginUser();
   imagePath:string;
   resultIndex : number = Math.floor(Math.random() * 20);
 
-   ngOnInit() {
+   ngOnInit() {    
       this.movieService.getBackdropImage().subscribe(data=>{     
       this.imagePath= IMAGE_BASE_URL+BACKDROP_SIZE+data.results[this.resultIndex].backdrop_path      
     })   
@@ -31,9 +31,7 @@ export class LoginComponent implements OnInit {
   login(form:NgForm){
     this.authService.login(this.model)
   }
-  logOut(){
-    this.authService.logOut();
-  }
+ 
 
   get isAuthenticated(){
      return this.authService.loggedIn();
