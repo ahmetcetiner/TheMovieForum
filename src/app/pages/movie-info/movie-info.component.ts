@@ -1,7 +1,7 @@
 import { Actor } from './../../model/actor';
 import { ActivatedRoute } from '@angular/router';
 import { MovieService } from 'src/app/services/movie.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Movie } from 'src/app/model/movie';
 import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE } from 'src/config';
 import { Crew } from 'src/app/model/crew';
@@ -19,39 +19,57 @@ export class MovieInfoComponent implements OnInit {
     private activatedRoute: ActivatedRoute
   ) {}
 
-  
-  imagePath: string;
   imageUrl: string;
-  movie!: Movie;
   backdropImageUrl: string;
-  runtime : string;
-  revenue : string;
-  budget : string;
+  runtime: string;
+  revenue: string;
+  budget: string;
+  movieId : number;
 
-  datepipe :DatePipe= new DatePipe('en-US')  
-  release_date:string;
+  datepipe: DatePipe = new DatePipe('en-US');
+  release_date: string;
 
-  @Input() set submittedMovie(movie: Movie) {
-    this.movie = movie;
-    this.imagePath =        IMAGE_BASE_URL + BACKDROP_SIZE + movie.poster_path;
-    this.imageUrl =         IMAGE_BASE_URL + BACKDROP_SIZE + movie.backdrop_path;
-    this.backdropImageUrl = IMAGE_BASE_URL + BACKDROP_SIZE + movie.poster_path;
-    this.release_date = this.datepipe.transform(movie.release_date, 'dd/MM/yyyy')
-  }
+  actors: Actor[];
+  directors: Crew[];
 
-  actors : Actor[]
-  directors : Crew[]
+  sendModule: string = 'actor';
 
-  sendModule: string = "actor";
+  movie!: Movie;
+ 
 
   ngOnInit() {
-     this.movieService.getActorsByMovieId(this.movie.id.toString()).subscribe((data) => {
-       this.actors=data.cast
-       this.directors= data.crew.filter(member => member.job=="Director");
-     })
-     this.runtime = this.calcTime(this.movie.runtime)
-     this.revenue = this.calcTime(this.movie.revenue)
-     this.budget = this.calcTime(this.movie.budget)
+    this.activatedRoute.params.subscribe((params) => {
+      this.getMovieById(params['movieId']);
+      this.getActorsById(params['movieId']);
+    });
+
+    
+    this.runtime = this.calcTime(this.movie.runtime);
+    this.revenue = this.calcTime(this.movie.revenue);
+    this.budget = this.calcTime(this.movie.budget);
+  }
+
+  getActorsById(movieId){
+    this.movieService
+    .getActorsByMovieId(movieId.toString())
+    .subscribe((data) => {
+      this.actors = data.cast;
+      this.directors = data.crew.filter((member) => member.job == 'Director');
+    });
+  }
+
+  getMovieById(movieId) {
+    this.movieService.getMovieById(movieId).subscribe((data) => {
+      this.movie = data;
+      this.movieId = data.id
+      this.imageUrl = IMAGE_BASE_URL + BACKDROP_SIZE + data.backdrop_path;
+      this.backdropImageUrl = IMAGE_BASE_URL + BACKDROP_SIZE + data.poster_path;
+      this.release_date = this.datepipe.transform(
+        data.release_date,
+        'dd/MM/yyyy'
+      );
+      
+    });
   }
 
   getModule(moduleName) {
@@ -72,18 +90,19 @@ export class MovieInfoComponent implements OnInit {
   }
 
   // Convert time to hours and minutes
-  calcTime(time){
-  let hours = Math.floor(time / 60);
-  let mins = time % 60;
-  return `${hours}h ${mins}m`;
-};
+  calcTime(time) {
+    let hours = Math.floor(time / 60);
+    let mins = time % 60;
+    return `${hours}h ${mins}m`;
+  }
+
   // Convert a number to money formatting
-  convertMoney(money){
-  let formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 0,
-  });
-  return formatter.format(money);
-};
+  convertMoney(money) {
+    let formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 0,
+    });
+    return formatter.format(money);
+  }
 }
