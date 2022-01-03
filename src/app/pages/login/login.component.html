@@ -1,4 +1,5 @@
-<body style="--background: url({{ imagePath }});">
+<body style="--background: url({{ imagePath }});" >
+  <!-- *ngIf="!isAuthenticated" -->
   <div class="container rounded">
     <div class="row">
       <div class="col-lg-6 col-md-8 login-box">
@@ -6,17 +7,17 @@
           <h1>Sign In</h1>
         </div>
         <div class="col-lg-12 login-form">
-          <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+          <form  #loginForm="ngForm" (ngSubmit)="login(loginForm)">
             <div class="form-group">
-              <label class="form-control-label">USERNAME</label>
+              <label class="form-control-label">EMAIL</label>
               <input
                 type="text"
                 class="form-control"
-                id="UserName"
-                placeholder="Username"
-                name="UserName"
+                id="Email"
+                placeholder="Email"
+                name="Email"
                 #userName="ngModel"
-                [(ngModel)]="model.UserName"
+                [(ngModel)]="model.Email"
                 required
                 autofocus
               />
@@ -26,11 +27,11 @@
               <input
                 type="password"
                 class="form-control"
-                id="Password"
-                placeholder="Password"
-                name="Password"
+                id="Pasword"
+                placeholder="Pasword"
+                name="Pasword"
                 #password="ngModel"
-                [(ngModel)]="model.Password"
+                [(ngModel)]="model.Pasword"
               />
             </div>
             <div class="loginbttm">
@@ -40,7 +41,7 @@
               <div
                 class="col-lg-7 login-btm login-button justify-content-center"
               >
-                <button type="submit" class="btn btn-outline-primary">
+                <button type="submit" class="btn btn-outline-primary" [disabled] = "!loginForm.valid">
                   LOGIN
                 </button>
               </div>
