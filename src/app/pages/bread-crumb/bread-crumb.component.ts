@@ -19,14 +19,6 @@ export class BreadCrumbComponent implements OnInit {
   @Input() movieTitle = '';
 
   async ngOnInit() {
-  /*  this.activatedRoute.params.subscribe((params) => {
-      this.getMovieById(params["movieId"]);
-    });*/
   }
 
-  /*getMovieById(movieId) {
-    this.movieService.getMovieById(movieId).subscribe((data) => {
-      this.movieTitle = data.title;
-    });
-  }*/
 }
