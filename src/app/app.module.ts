@@ -21,6 +21,12 @@ import { MovieInfoComponent } from './pages/movie-info/movie-info.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { ProfileEditPageComponent } from './pages/profile-edit-page/profile-edit-page.component';
 import { DiscussionsComponent } from './pages/discussions/discussions.component';
+import { JwtModule } from '@auth0/angular-jwt';
+import { AuthGuard } from './guards/auth.guard';
+
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 
 @NgModule({
   declarations: [
@@ -41,10 +47,22 @@ import { DiscussionsComponent } from './pages/discussions/discussions.component'
     ActorComponent,
     ProfileEditPageComponent,
     DiscussionsComponent,
-    ReviewsComponent
+    ReviewsComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule,FormsModule,HttpClientModule],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,    
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ['localhost:4200'],
+        disallowedRoutes: ['localhost:4200/profile/'],
+      },
+    }),
+  ],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
