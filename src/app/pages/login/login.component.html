@@ -4,13 +4,12 @@
             <div class="col-lg-6 col-md-8 login-box">
                 <div class="col-lg-12 login-title">
                     <h1>Sign In</h1>
-                </div>
-                <div class="col-lg-12 login-form">
+                </div>               
                     <div class="col-lg-12 login-form">
                         <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
                             <div class="form-group">
                                 <label class="form-control-label">USERNAME</label>
-                                <input type="text" class="form-control" id="userName" placeholder="username"
+                                <input type="text" class="form-control" id="userName" placeholder="Username"
                                     name="userName" #userName="ngModel" [(ngModel)]="model.userName" required
                                     autofocus />
                             </div>
@@ -19,7 +18,7 @@
                                 <input type="password" class="form-control" id="password" placeholder="Password"
                                     name="password" #password="ngModel" [(ngModel)]="model.password" />
                             </div>
-                            <div class="col-lg-12 loginbttm">
+                            <div class="loginbttm">
                                 <div class="col-lg-6 login-btm login-text">
                                     <!-- Error Message -->
                                 </div>
@@ -28,11 +27,12 @@
                                 </div>
                             </div>
                         </form>
-                    </div>
-                </div>
+                    </div>    
+                    <div class="loginbttm">          
                 <div class="col-lg-3 col-md-2 m-3">
                     <a [routerLink]="['/signup']" class="form-control-label">SIGN UP</a>
                 </div>
+            </div>
             </div>
         </div>
     </div>
