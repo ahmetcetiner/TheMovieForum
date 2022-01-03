@@ -1,7 +1,7 @@
 .profile-img{
     border-radius: 100%;
     object-fit:cover;
-    object-position: center;
+    object-position: center; 
     width: 5vw;
     height: 5vw;
     min-width: 75px;
@@ -16,9 +16,22 @@ width: 50%;
     width: 70%;
   }
 }
-.card{
+.sasa{
+    
+}
+
+.card-background{
+    background:  linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.685) 41%,
+        rgba(0, 0, 0, 0.733) 100%
+      ),var(--background);       
+      background-size: cover;            
+}
+.card{    
     width: 100%;
     height: fit-content;
+    margin : 20px
 }
 .title{
     margin-top: 30px;
@@ -29,9 +42,16 @@ width: 50%;
     font-style: italic;
 }
 .number{
-    width: 32px;
-    height: 32px;
-    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    background: #fff;
+    color: #000;
+    font-weight: 800;
+    border-radius: 50%;
+    margin: 0;
     object-position: center;
 }
 .center{
