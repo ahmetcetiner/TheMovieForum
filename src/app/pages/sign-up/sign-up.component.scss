@@ -16,9 +16,8 @@ body {
   height: 770px;
   min-width: 350px; 
   width: 90% !important;
-  background: #2B2D42;
-  text-align: center;
-  background: rgba(0, 0, 0, 0.8);
+  background: #2b2d42b6;
+  text-align: center;  
   border-radius: 30px;
 }
 
@@ -41,12 +40,13 @@ body {
 }
 
 input[type=text] {
-  background-color: #2B2D42;
+  background-color: #2b2d42c9;
   border: none;
   border-bottom: 2px solid #d80032;
   border-top: 0px;
   border-radius: 0px;
   font-weight: bold;
+  font-size:20px;
   text-align: center;
   outline: 0;
   margin-bottom: 20px;
@@ -67,13 +67,14 @@ input:-webkit-autofill{
   font-size: 20px  !important;
 }
 input[type=password] {
-  background-color: #2B2D42;
+  background-color: #2b2d42c9;
   border: none;
   border-bottom: 2px solid #d80032;
   border-top: 0px;
   border-radius: 0px;
   font-weight: bold;
   outline: 0;
+  font-size:20px;
   padding-left: 0px;
   margin-bottom: 20px;
   color: #EDF2F4;
@@ -104,7 +105,7 @@ label {
 }
 
 .form-control-label {
-  font-size: 17px;
+  font-size: 15px;
   color: #8D99AE;
   font-weight: bold;
   letter-spacing: 1px;
@@ -112,7 +113,7 @@ label {
 
 .btn-outline-primary {
   border-color: #d80032;
-  color: #d80032;
+  color: #ffffff;
   border-radius: 0px;
   font-weight: bold;
   letter-spacing: 1px;
@@ -120,7 +121,7 @@ label {
 }
 
 .btn-outline-primary:hover {
-  background-color: #8D99AE;
+  background-color: #EF233C;
   right: 0px;
 }
 
