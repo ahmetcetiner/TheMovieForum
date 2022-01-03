@@ -1,5 +1,4 @@
 import { ActorComponent } from './pages/actor/actor.component';
-import { MovieComponent } from './pages/movie/movie.component';
 import { NgModule } from '@angular/core';
 import {
   HomepageComponent,
@@ -13,6 +12,7 @@ import {
 import { Routes, RouterModule } from '@angular/router';
 import { ClientLayoutComponent } from './components';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { MovieInfoComponent } from './pages/movie-info/movie-info.component';
 
 
 const routes: Routes = [
@@ -57,7 +57,7 @@ const routes: Routes = [
       },
       {
         path: 'movie/:movieId',
-        component: MovieComponent,
+        component: MovieInfoComponent,
         data: { title: 'Movie' },
       },
       {
