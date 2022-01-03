@@ -1,5 +1,4 @@
 import { ActorComponent } from './pages/actor/actor.component';
-import { MovieComponent } from './pages/movie/movie.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -35,7 +34,6 @@ import { ProfileEditPageComponent } from './pages/profile-edit-page/profile-edit
     SignUpComponent,
     CommentComponent,
     BreadCrumbComponent,
-    MovieComponent,
     MovieInfoComponent,
     ProfilePageComponent,
     ActorComponent,
