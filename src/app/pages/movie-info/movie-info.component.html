@@ -65,7 +65,7 @@
   </div>
 </div>
 <div *ngIf="sendModule == 'reviews'">
-  <app-comment></app-comment>
+  <app-reviews [movieId]="movie.id"></app-reviews> 
 </div>
 
 <div *ngIf="sendModule == 'discussions'">
