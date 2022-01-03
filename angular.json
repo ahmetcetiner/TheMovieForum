@@ -24,8 +24,15 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss"],
-            "scripts": ["node_modules/jquery/dist/jquery.js"]
+            "styles": [
+              "src/styles.scss",                
+              "node_modules/font-awesome/css/font-awesome.min.css",              
+              "node_modules/alertifyjs/build/css/alertify.min.css",
+              "node_modules/alertifyjs/build/css/themes/bootstrap.min.css"],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/alertifyjs/build/alertify.min.js"
+            ]
           },
           "configurations": {
             "production": {
