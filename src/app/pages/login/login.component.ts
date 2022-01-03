@@ -1,3 +1,5 @@
+import { AuthService } from './../../services/auth.service';
+import { LoginUser } from './../../model/loginUser';
 import { PopularMovie } from './../../model/popularMovie';
 import { MovieService } from 'src/app/services/movie.service';
 import { Component, OnInit } from '@angular/core';
@@ -15,9 +17,9 @@ import {
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private movieService:MovieService) { }
+  constructor(private movieService:MovieService, private authService: AuthService) { }
 
-  model: User = new User();
+  model: LoginUser = new LoginUser();
   imagePath:string;
   resultIndex : number = Math.floor(Math.random() * 20);
 
@@ -25,10 +27,16 @@ export class LoginComponent implements OnInit {
       this.movieService.getBackdropImage().subscribe(data=>{     
       this.imagePath= IMAGE_BASE_URL+BACKDROP_SIZE+data.results[this.resultIndex].backdrop_path      
     })   
-  
   }
   login(form:NgForm){
-    alert(this.model.Password+this.model.UserName)
+    this.authService.login(this.model)
+  }
+  logOut(){
+    this.authService.logOut();
+  }
+
+  get isAuthenticated(){
+     return this.authService.loggedIn();
   }
 
 }
