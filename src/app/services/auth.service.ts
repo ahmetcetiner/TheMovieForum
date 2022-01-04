@@ -1,14 +1,16 @@
+
+
 import { LoginResponse } from './../model/loginResponse';
 import { RegisterUser } from '../model/registerUser';
 import { LoginUser } from '../model/loginUser';
 import { Injectable } from '@angular/core';
-import { User } from '../model/users';
+
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { JwtHelperService  } from "@auth0/angular-jwt";
 import { AlertifyService } from './alertify.service';
-import { TOKEN_KEY } from 'src/config';
-
+import { TOKEN_KEY,HEROKU_API_URL } from 'src/config';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -21,35 +23,34 @@ export class AuthService {
     private alertifyService: AlertifyService,
   ) {}
 
-  path = 'https://the-movie-forum.herokuapp.com/';
   userToken: any;
-  decodedToken: any;
   jwtHelper= new JwtHelperService();
 
-  login(loginUser: LoginUser) {
+  login(loginUser: LoginUser){
+  
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
-    this.httpClient
-      .post<LoginResponse>(this.path+'login', loginUser, { headers: headers })
-      .subscribe((data) => {
-        this.saveToken(data.token);
-        this.userToken = data['token'];
-       // this.decodedToken = this.jwtHelper.decodeToken(data['token']);
-        this.router.navigateByUrl('/');
-        this.alertifyService.success('Sisteme giriş yapıldı.');
-      });
+    
+     return this.httpClient.post<LoginResponse>(HEROKU_API_URL+'login', loginUser, { headers: headers })
+     .subscribe((data) => {
+      this.saveToken(data.token,data.user.Id);
+      this.userToken = data['token'];  
+      this.router.navigateByUrl('/');
+      this.alertifyService.success('Sisteme giriş yapıldı.');
+    });
   }
 
   register(registerUser: RegisterUser) {
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
     this.httpClient
-      .post(this.path + 'user', registerUser, { headers: headers })
+      .post(HEROKU_API_URL + 'user', registerUser, { headers: headers })
       .subscribe((data) => {});
   }
 
-  saveToken(token) {
+  saveToken(token,id) {
     localStorage.setItem(TOKEN_KEY, token);
+    localStorage.setItem("ID", token);
   }
 
   logOut() {    
