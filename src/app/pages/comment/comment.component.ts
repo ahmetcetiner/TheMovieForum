@@ -16,6 +16,7 @@ export class CommentComponent implements OnInit {
   backdropImageUrl: string;
   reviewInput: boolean;
   reviewText: Text;
+  reviewTitle: string;
 
   @Input() set movieId(id) {
     this.myMovieId = id;
@@ -37,7 +38,7 @@ export class CommentComponent implements OnInit {
     this.reviewInput = reviewInput;
   }
   reviewAdd() {
-    alert(this.reviewText);
+    alert(this.reviewText+this.reviewTitle);
   }
 
 }
