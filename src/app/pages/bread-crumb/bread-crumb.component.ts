@@ -1,4 +1,4 @@
-import { MovieService } from './../../services/movie.service';
+import { MovieService } from '../../services/movie-service/movie.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 

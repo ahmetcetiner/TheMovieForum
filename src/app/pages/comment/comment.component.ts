@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Comment } from 'src/app/model/comment';
-import { MovieService } from 'src/app/services/movie.service';
+import { MovieService } from 'src/app/services/movie-service/movie.service';
 import { BACKDROP_SIZE, IMAGE_BASE_URL } from 'src/config';
 
 @Component({

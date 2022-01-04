@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FavListInfo } from 'src/app/model/favListInfo';
 import { Movie } from 'src/app/model/movie';
-import { MovieService } from 'src/app/services/movie.service';
+import { MovieService } from 'src/app/services/movie-service/movie.service';
 import {
   BACKDROP_SIZE,
   IMAGE_BASE_URL, POSTER_SIZE

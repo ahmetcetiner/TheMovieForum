@@ -1,6 +1,6 @@
-import { PopularMovie } from './../model/popularMovie';
+import { PopularMovie } from '../../model/popularMovie';
 import { Injectable } from '@angular/core';
-import API from '../../API';
+import API from '../../../API';
 import { HttpClient } from "@angular/common/http";
 import {
   SEARCH_BASE_URL,
@@ -12,9 +12,9 @@ import {
   SESSION_ID_URL
 } from 'src/config';
 import { Observable } from 'rxjs';
-import { Movie } from '../model/movie';
-import { Actor } from '../model/actor';
-import { Credits } from '../model/credit';
+import { Movie } from '../../model/movie';
+import { Actor } from '../../model/actor';
+import { Credits } from '../../model/credit';
 import { stringify } from 'querystring';
 @Injectable({
   providedIn: 'root'
