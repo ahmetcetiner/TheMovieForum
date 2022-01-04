@@ -33,6 +33,10 @@ export function tokenGetter() {
   return localStorage.getItem('token');
 }
 
+export function idGetter() {
+  return localStorage.getItem('Id');
+}
+
 @NgModule({
   declarations: [
     AppComponent,
