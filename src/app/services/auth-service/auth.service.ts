@@ -1,5 +1,5 @@
 import { LoginResponse } from '../../model/loginResponse';
-import { RegisterUser, } from '../../model/registerUser';
+import { RegisterUser } from '../../model/registerUser';
 import { LoginUser } from '../../model/loginUser';
 import { Injectable } from '@angular/core';
 
@@ -48,7 +48,7 @@ export class AuthService {
 
   saveToken(token, id) {
     localStorage.setItem(TOKEN_KEY, token);
-    localStorage.setItem('ID', token);
+    localStorage.setItem('ID', id);
   }
 
   logOut() {
