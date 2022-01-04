@@ -52,6 +52,7 @@ export function tokenGetter() {
   ],
   imports: [
     BrowserModule,
+    NgxEditorModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
@@ -64,8 +65,6 @@ export function tokenGetter() {
       },
     }),
   ],
-  imports: [BrowserModule, AppRoutingModule,FormsModule,HttpClientModule,NgxEditorModule],
-  providers: [],
   providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
