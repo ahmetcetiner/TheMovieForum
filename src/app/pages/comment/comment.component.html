@@ -1,7 +1,7 @@
 <div class=" container">
-    <div class="card text-white mt-3" *ngFor="let com of comments" >       
-        <div class="row card-background" style="--background: url({{backdropImageUrl}})" >
-            <div class=" col-sm-1" >
+    <div class="card text-white mt-3" *ngFor="let com of comments">
+        <div class="row card-background" style="--background: url({{backdropImageUrl}})">
+            <div class=" col-sm-1">
                 <div class="ml-2 center">
                     <img src="../../../assets/images/icons8_up.ico">
                     <div class="number">{{com.commentRate}}</div>
@@ -14,7 +14,7 @@
                         <img class="profile-img" src={{com.userPhotoUrl}}>
                         <div class="card-info col-sm-9">
                             <div class="title">{{com.commentTitle}}</div>
-                            <div class="userName">{{com.userName}}      {{com.createDate}}</div>
+                            <div class="userName">{{com.userName}} {{com.createDate}}</div>
                         </div>
                     </div>
                     <div class="card-body">
@@ -30,18 +30,15 @@
     <div *ngIf="reviewInput">
         <div class="row container">
             <div class="col-md-12">
-                <div class="NgxEditor__Wrapper">
-                    <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
-                    <ngx-editor
-                      [editor]="editor"
-                      [ngModel]="html"
-                      [disabled]="false"
-                      [placeholder]="'Type here...'"
-                    ></ngx-editor>
-                  </div>
+                <div class="col-md-2 label">Review Title</div>
+                <input class="reviewText" type="text" placeholder="Review Title" [(ngModel)]="reviewTitle">
+                <div class="col-md-2 label">Review Text</div>
+                <textarea class="reviewText" id="reviewText" name="reviewText" rows="4" maxlength="500"
+                    [(ngModel)]="reviewText" placeholder="Review Text"></textarea>
+                <div class="row ml-9">
+                    <button class="review-btn ml-1" (click)="getReviewArea(false)">Cancel</button>
+                    <button class="review-btn ml-1" (click)="reviewAdd()">Add</button>
+                </div>
             </div>
-            <button class="review-btn" (click)="getReviewArea(false)">Cancel</button>
-            <button class="review-btn" (click)="reviewAdd()">Add</button>
         </div>
     </div>
-</div>
