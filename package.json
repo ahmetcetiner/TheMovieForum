@@ -26,6 +26,7 @@
     "font-awesome": "^4.7.0",
     "gulp-cli": "^2.3.0",
     "jquery": "^3.6.0",
+    "ngx-editor": "^9.0.2",
     "rxjs": "~6.6.0",
     "styled-component": "^2.8.0",
     "tslib": "^2.0.0",
