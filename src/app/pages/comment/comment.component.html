@@ -24,4 +24,24 @@
             </div>
         </div>
     </div>
+    <div>
+        <button class="review-btn" (click)="getReviewArea(true)" data-toggle="collapse">New Review</button>
+    </div>
+    <div *ngIf="reviewInput">
+        <div class="row container">
+            <div class="col-md-12">
+                <div class="NgxEditor__Wrapper">
+                    <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
+                    <ngx-editor
+                      [editor]="editor"
+                      [ngModel]="html"
+                      [disabled]="false"
+                      [placeholder]="'Type here...'"
+                    ></ngx-editor>
+                  </div>
+            </div>
+            <button class="review-btn" (click)="getReviewArea(false)">Cancel</button>
+            <button class="review-btn" (click)="reviewAdd()">Add</button>
+        </div>
+    </div>
 </div>

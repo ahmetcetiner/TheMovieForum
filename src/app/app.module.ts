@@ -21,6 +21,7 @@ import { MovieInfoComponent } from './pages/movie-info/movie-info.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { ProfileEditPageComponent } from './pages/profile-edit-page/profile-edit-page.component';
 import { DiscussionsComponent } from './pages/discussions/discussions.component';
+import { NgxEditorModule } from 'ngx-editor';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import { DiscussionsComponent } from './pages/discussions/discussions.component'
     DiscussionsComponent,
     ReviewsComponent
   ],
-  imports: [BrowserModule, AppRoutingModule,FormsModule,HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule,FormsModule,HttpClientModule,NgxEditorModule],
   providers: [],
   bootstrap: [AppComponent],
 })
