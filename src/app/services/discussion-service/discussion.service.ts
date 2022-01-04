@@ -87,7 +87,7 @@ constructor(private httpClient: HttpClient) { }
     headers = headers.append('token', tokenGetter());
 
     return this.httpClient.put<Discussion>(
-      HEROKU_API_URL + 'review',
+      HEROKU_API_URL + 'discussion',
       {
         UserId: discussion.UserId,
         Name: discussion.Name,
