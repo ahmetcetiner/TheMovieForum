@@ -7,7 +7,7 @@
           <h1>Sign In</h1>
         </div>
         <div class="col-lg-12 login-form">
-          <form  #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+          <form  #loginForm="ngForm" (ngSubmit)="login()">
             <div class="form-group">
               <label class="form-control-label">EMAIL</label>
               <input
@@ -31,7 +31,7 @@
                 placeholder="Pasword"
                 name="Pasword"
                 #password="ngModel"
-                [(ngModel)]="model.Pasword"
+                [(ngModel)]="model.Password"
               />
             </div>
             <div class="loginbttm">

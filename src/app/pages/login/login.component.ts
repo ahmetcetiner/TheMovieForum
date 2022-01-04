@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
       this.imagePath= IMAGE_BASE_URL+BACKDROP_SIZE+data.results[this.resultIndex].backdrop_path      
     })   
   }
-  login(form:NgForm){
+  login(){
     this.authService.login(this.model)
   }
  
