@@ -15,13 +15,19 @@ import { ClientFooterComponent } from './components/layout/client-footer/client-
 import { LoginComponent } from './pages/login/login.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { CommentComponent } from './pages/comment/comment.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BreadCrumbComponent } from './pages/bread-crumb/bread-crumb.component';
 import { MovieInfoComponent } from './pages/movie-info/movie-info.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { ProfileEditPageComponent } from './pages/profile-edit-page/profile-edit-page.component';
 import { DiscussionsComponent } from './pages/discussions/discussions.component';
 import { NgxEditorModule } from 'ngx-editor';
+import { JwtModule } from '@auth0/angular-jwt';
+import { AuthGuard } from './guards/auth.guard';
+
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 
 @NgModule({
   declarations: [
@@ -42,10 +48,25 @@ import { NgxEditorModule } from 'ngx-editor';
     ActorComponent,
     ProfileEditPageComponent,
     DiscussionsComponent,
-    ReviewsComponent
+    ReviewsComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,    
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ['localhost:4200'],
+        disallowedRoutes: ['localhost:4200/profile/'],
+      },
+    }),
   ],
   imports: [BrowserModule, AppRoutingModule,FormsModule,HttpClientModule,NgxEditorModule],
   providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -18,14 +18,21 @@
         </div>
         <div class="col text-center navbar-bar">
           <a [routerLink]="['/contact-us']" class="text-light text-underline-none wrap-text center">İletişim</a>
-        </div>
-        <div class="col text-center navbar-bar">
-          <a [routerLink]="['/login']" class="text-light text-underline-none wrap-text center dropdown-toggle"
-            id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">login</a>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a routerLink="profile" class="text-light text-underline-none wrap-text container">Profile</a>
-            <div>test</div>
-            <div>test</div>
+        </div>  
+        <div *ngIf="!isAuthenticated" class="col text-center navbar-bar">
+          <a [routerLink]="['/login']" class="text-light text-underline-none wrap-text center login-button">
+            <img class="image" src="../../../../assets/images/icons8_enter.ico" alt="" />
+          </a>
+        </div>              
+
+        <div *ngIf="isAuthenticated" class="col text-center navbar-bar">
+          <a routerLink="#" class="text-light text-underline-none wrap-text center  login-button"
+            id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img  class="image" src="https://img.icons8.com/ios/100/ffffff/guest-male.png"/>
+          </a>
+          <div class="dropdown-menu " aria-labelledby="dropdownMenuLink">
+            <a routerLink="profile" class="text-light text-underline-none wrap-text container">Profile</a>           
+            <a (click)="logOut()" routerLink="#"class="text-light text-underline-none wrap-text container">LogOut</a>
           </div>
         </div>
       </div>

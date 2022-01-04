@@ -13,6 +13,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ClientLayoutComponent } from './components';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { MovieInfoComponent } from './pages/movie-info/movie-info.component';
+import { AuthGuard } from 'src/app/guards/auth.guard';
 
 
 const routes: Routes = [
@@ -45,11 +46,13 @@ const routes: Routes = [
         path: 'login',
         component: LoginComponent,
         data: { title: 'Giriş' },
+        canActivate:[AuthGuard]
       },
       {
         path: 'signup',
         component: SignUpComponent,
         data: { title: 'Kayıt Ol' },
+        canActivate:[AuthGuard]
       },{
         path: 'comment',
         component: CommentComponent,

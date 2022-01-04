@@ -18,7 +18,7 @@ export class AuthService {
   constructor(
     private httpClient: HttpClient,
     private router: Router,
-    private alertifyService: AlertifyService
+    private alertifyService: AlertifyService,
   ) {}
 
   path = 'https://the-movie-forum.herokuapp.com/';
@@ -30,7 +30,7 @@ export class AuthService {
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
     this.httpClient
-      .post<LoginResponse>('https://the-movie-forum.herokuapp.com/login', loginUser, { headers: headers })
+      .post<LoginResponse>(this.path+'login', loginUser, { headers: headers })
       .subscribe((data) => {
         this.saveToken(data.token);
         this.userToken = data['token'];
@@ -52,12 +52,14 @@ export class AuthService {
     localStorage.setItem(TOKEN_KEY, token);
   }
 
-  logOut() {
+  logOut() {    
     localStorage.removeItem(TOKEN_KEY);
+    this.router.navigateByUrl("/")
+    this.alertifyService.error('Sistemden çıkış yapıldı.');
   }
 
-  loggedIn() {
-    return this.jwtHelper.isTokenExpired(TOKEN_KEY);
+  loggedIn() {   
+   return localStorage.getItem(TOKEN_KEY) !==  null;
   }
 
   get token(){

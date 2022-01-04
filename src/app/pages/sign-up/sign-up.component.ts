@@ -1,9 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { PopularMovie } from 'src/app/model/popularMovie';
 import { MovieService } from 'src/app/services/movie.service';
 import { BACKDROP_SIZE, IMAGE_BASE_URL } from 'src/config';
-import { NgForm } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl,
+  FormArray,
+} from '@angular/forms';
 import { User } from 'src/app/model/users';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -11,18 +17,53 @@ import { User } from 'src/app/model/users';
   styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent implements OnInit {
-  constructor(private movieService: MovieService) {}
+  constructor(
+    private movieService: MovieService,
+    private authService: AuthService,
+    private formBuilder: FormBuilder
+  ) {}
 
-  model: User = new User();
+  registerForm : FormGroup;
+  registerUser:any={}
+ // model: User = new User();
   imagePath: string;
   resultIndex: number = Math.floor(Math.random() * 20);
 
   ngOnInit() {
+    this.createRegisterForm()
     this.movieService.getBackdropImage().subscribe((data) => {
-      this.imagePath = IMAGE_BASE_URL + BACKDROP_SIZE + data.results[this.resultIndex].backdrop_path;
+      this.imagePath =
+        IMAGE_BASE_URL +
+        BACKDROP_SIZE +
+        data.results[this.resultIndex].backdrop_path;
     });
   }
-  signUp(form:NgForm){
-    alert(this.model.Password+this.model.UserName)
+  createRegisterForm(){
+    this.registerForm = this.formBuilder.group(
+      {
+        UserName:["",Validators.required],
+        FirstName:["",Validators.required],
+        LastName:["",Validators.required],
+        Email:["",Validators.required],
+        AvatarUrl:["",Validators.required],
+        Password:["",[Validators.required,
+        Validators.minLength(4),
+        Validators.maxLength(8)]],
+        confirmPassword:["",Validators.required]
+      },
+      {validator:this.passwordMatchValidator}
+    )
+  }
+
+  passwordMatchValidator(g:FormGroup){
+    return g.get('Password').value === 
+    g.get('confirmPassword').value?null:{mismatch:true}
+  }
+
+  register() {
+    if(this.registerForm.valid){
+      this.registerUser = Object.assign({},this.registerForm.value)
+      this.authService.register(this.registerUser)
+    }
   }
 }
