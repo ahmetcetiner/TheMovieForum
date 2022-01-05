@@ -152,3 +152,22 @@
   align-content: center;
   padding: 8px;
 }
+.img{
+  background-image:url("../../../../assets/images/icons8_search.ico") ;
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  margin-left: 5px;
+  &:hover{
+    background-image:url("../../../../assets/images/icons8_search_1.ico") ;
+  }
+}
+.input{
+  background: #2b2d42;
+  border: 2px solid #2b2d4263;
+  border-radius: 10px;
+  width: 20vw;
+  &:hover{
+    border: 2px solid #EF233C;
+  }
+}

@@ -12,7 +12,7 @@ export class ClientBannerComponent implements OnInit {
     private authService: AuthService,
     private userService: UserService
   ) {}
-
+    serchText:string;
   ngOnInit(): void {
     console.log(this.authService.loggedIn());
   }
@@ -22,5 +22,9 @@ export class ClientBannerComponent implements OnInit {
   }
   logOut() {
     this.authService.logOut();
+  }
+  getSerch()
+  {
+    alert(this.serchText)
   }
 }
