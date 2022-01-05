@@ -1,0 +1,43 @@
+.userImage{
+    border-radius: 100%;
+    object-fit:cover;
+    object-position: center;
+    width: 5vw;
+    height: 5vw;
+    min-width: 75px;
+    min-height: 75px;
+    max-width: 120px;
+    max-height: 120px;
+    margin: 20px;
+}
+.discussions{
+    background-color: #2B2D42;
+    border-radius: 10px;
+    &:hover{
+        border: 2px solid #EF233C;
+    }
+}
+.container,.col-md-3{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+.col-md-3{
+    margin-left: 15px !important;
+    background-color: #2B2D42;
+}
+p{
+    padding-left: 20px !important;
+    margin-bottom: 5px !important;
+}
+.userName{
+    font-size: 0.7rem;
+    padding-left: 30px !important;
+}
+.discussion-messages{
+    border-radius: 25px;
+    background-color: #EDF2F4;
+    margin-top: 20px;
+}
+.text{
+    color:black
+}
