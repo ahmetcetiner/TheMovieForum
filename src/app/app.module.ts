@@ -28,6 +28,8 @@ import { DiscussionsComponent } from './pages/discussions/discussions.component'
 import { NgxEditorModule } from 'ngx-editor';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AuthGuard } from './guards/auth.guard';
+import { DiscussionMessageComponent } from './pages/discussion-message/discussion-message.component';
+import { MessageComponent } from './pages/message/message.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -57,6 +59,8 @@ export function idGetter() {
     ProfileEditPageComponent,
     DiscussionsComponent,
     ReviewsComponent,
+    DiscussionMessageComponent,
+    MessageComponent,
   ],
   imports: [
     BrowserModule,

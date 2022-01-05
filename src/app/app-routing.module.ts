@@ -14,6 +14,7 @@ import { ClientLayoutComponent } from './components';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { MovieInfoComponent } from './pages/movie-info/movie-info.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
+import { DiscussionMessageComponent } from './pages/discussion-message/discussion-message.component';
 
 
 const routes: Routes = [
@@ -71,6 +72,11 @@ const routes: Routes = [
       {
         path: 'movie/:movieId/actors',
         component: ActorComponent,
+        data: { title: 'Actors' },
+      },
+      {
+        path: 'a',
+        component: DiscussionMessageComponent,
         data: { title: 'Actors' },
       },
     ],
