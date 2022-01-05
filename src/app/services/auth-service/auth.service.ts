@@ -1,15 +1,13 @@
-import { LoginResponse } from './../model/loginResponse';
-import { RegisterUser } from '../model/registerUser';
-import { LoginUser } from '../model/loginUser';
+import { LoginResponse } from '../../model/loginResponse';
+import { RegisterUser } from '../../model/registerUser';
+import { LoginUser } from '../../model/loginUser';
 import { Injectable } from '@angular/core';
-import { User } from '../model/users';
+
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { JwtHelperService  } from "@auth0/angular-jwt";
-import { AlertifyService } from './alertify.service';
-import { TOKEN_KEY } from 'src/config';
-
-
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { AlertifyService } from '../alertify-service/alertify.service';
+import { TOKEN_KEY, HEROKU_API_URL } from 'src/config';
 
 @Injectable({
   providedIn: 'root',
@@ -18,23 +16,23 @@ export class AuthService {
   constructor(
     private httpClient: HttpClient,
     private router: Router,
-    private alertifyService: AlertifyService,
+    private alertifyService: AlertifyService
   ) {}
 
-  path = 'https://the-movie-forum.herokuapp.com/';
   userToken: any;
-  decodedToken: any;
-  jwtHelper= new JwtHelperService();
+  jwtHelper = new JwtHelperService();
 
   login(loginUser: LoginUser) {
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
-    this.httpClient
-      .post<LoginResponse>(this.path+'login', loginUser, { headers: headers })
+
+    return this.httpClient
+      .post<LoginResponse>(HEROKU_API_URL + 'login', loginUser, {
+        headers: headers,
+      })
       .subscribe((data) => {
-        this.saveToken(data.token);
+        this.saveToken(data.token, data.user.Id);
         this.userToken = data['token'];
-       // this.decodedToken = this.jwtHelper.decodeToken(data['token']);
         this.router.navigateByUrl('/');
         this.alertifyService.success('Sisteme giriş yapıldı.');
       });
@@ -44,31 +42,29 @@ export class AuthService {
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
     this.httpClient
-      .post(this.path + 'user', registerUser, { headers: headers })
+      .post(HEROKU_API_URL + 'user', registerUser, { headers: headers })
       .subscribe((data) => {});
   }
 
-  saveToken(token) {
+  saveToken(token, id) {
     localStorage.setItem(TOKEN_KEY, token);
+    localStorage.setItem('ID', id);
   }
 
-  logOut() {    
+  logOut() {
     localStorage.removeItem(TOKEN_KEY);
-    this.router.navigateByUrl("/")
+    this.router.navigateByUrl('/');
     this.alertifyService.error('Sistemden çıkış yapıldı.');
   }
 
-  loggedIn() {   
-   return localStorage.getItem(TOKEN_KEY) !==  null;
+  loggedIn() {
+    return localStorage.getItem(TOKEN_KEY) !== null;
   }
 
-  get token(){
+  get token() {
     return localStorage.getItem(TOKEN_KEY);
   }
-  getCurrentUser(){
+  getCurrentUser() {
     return this.jwtHelper.decodeToken(localStorage.getItem(TOKEN_KEY)).nameid;
   }
-
-
-
 }

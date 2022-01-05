@@ -1,6 +1,6 @@
 import { Actor } from './../../model/actor';
 import { ActivatedRoute } from '@angular/router';
-import { MovieService } from 'src/app/services/movie.service';
+import { MovieService } from 'src/app/services/movie-service/movie.service';
 import { Component, OnInit } from '@angular/core';
 import { Movie } from 'src/app/model/movie';
 import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE } from 'src/config';

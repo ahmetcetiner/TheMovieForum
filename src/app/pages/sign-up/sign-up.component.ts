@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieService } from 'src/app/services/movie.service';
+import { MovieService } from 'src/app/services/movie-service/movie.service';
 import { BACKDROP_SIZE, IMAGE_BASE_URL } from 'src/config';
 import {
   FormBuilder,
@@ -9,7 +9,7 @@ import {
   FormArray,
 } from '@angular/forms';
 import { User } from 'src/app/model/users';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/services/auth-service/auth.service';
 
 @Component({
   selector: 'app-sign-up',

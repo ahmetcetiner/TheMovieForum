@@ -1,5 +1,5 @@
-import { MovieService } from 'src/app/services/movie.service';
-import { ReviewService } from './../../services/review.service';
+import { MovieService } from 'src/app/services/movie-service/movie.service';
+import { ReviewService } from '../../services/review-service/review.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { IMAGE_BASE_URL, BACKDROP_SIZE } from 'src/config';
 

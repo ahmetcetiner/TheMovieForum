@@ -1,7 +1,7 @@
 import { getTestBed } from '@angular/core/testing';
-import { AuthService } from './../../services/auth.service';
+import { AuthService } from '../../services/auth-service/auth.service';
 import { LoginUser } from './../../model/loginUser';
-import { MovieService } from 'src/app/services/movie.service';
+import { MovieService } from 'src/app/services/movie-service/movie.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { JwtHelperService } from '@auth0/angular-jwt'
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
       this.imagePath= IMAGE_BASE_URL+BACKDROP_SIZE+data.results[this.resultIndex].backdrop_path      
     })   
   }
-  login(form:NgForm){
+  login(){
     this.authService.login(this.model)
   }
  
