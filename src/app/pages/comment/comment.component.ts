@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Review } from 'src/app/model/review';
 import { MovieService } from 'src/app/services/movie-service/movie.service';
+import { ReviewService } from 'src/app/services/review-service/review.service';
 import { BACKDROP_SIZE, IMAGE_BASE_URL } from 'src/config';
 
 @Component({
@@ -10,7 +11,10 @@ import { BACKDROP_SIZE, IMAGE_BASE_URL } from 'src/config';
 })
 export class CommentComponent implements OnInit {
 
-  constructor(private movieService: MovieService) { }
+  constructor(
+    private movieService: MovieService,
+    private reviewService: ReviewService
+    ) { }
 
   myMovieId: number;
   backdropImageUrl: string;
@@ -31,8 +35,7 @@ export class CommentComponent implements OnInit {
   }
 
   getComments() {
-    //this.reviews.push(new Review("https://ui-avatars.com/api/?size=128", "ahmetcetinerr", "02/01/2022", "Natashanin kendini feda etmesi.", 250, "Some quick example text to build on the card title and make up the bulk of the cards content."))
-    //this.reviews.push(new Review("https://ui-avatars.com/api/?size=128", "ahmetcetinerr", "02/01/2022", "Natashanin kendini feda etmesi.", 250, "Some quick example text to build on the card title and make up the bulk of the cards content."))
+    
   }
   getReviewArea(reviewInput: boolean) {
     this.reviewInput = reviewInput;

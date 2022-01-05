@@ -1,10 +1,10 @@
 <div class=" container">
-    <div class="card text-white mt-3" *ngFor="let com of reviews">
+    <div class="card text-white mt-3" *ngFor="let review of reviews">
         <div class="row card-background" style="--background: url({{backdropImageUrl}})">
             <div class=" col-sm-1">
                 <div class="ml-2 center">
                     <img src="../../../assets/images/icons8_up.ico">
-                    <div class="number">{{com.commentRate}}</div>
+                    <div class="number">{{review.commentRate}}</div>
                     <img src="../../../assets/images/icons8_down.ico">
                 </div>
             </div>
@@ -13,12 +13,12 @@
                     <div class="row">
                         <img class="profile-img" src={{com.userPhotoUrl}}>
                         <div class="card-info col-sm-9">
-                            <div class="title">{{com.commentTitle}}</div>
-                            <div class="userName">{{com.userName}} {{com.createDate}}</div>
+                            <div class="title">{{review.commentTitle}}</div>
+                            <div class="userName">{{review.userName}} {{review.createDate}}</div>
                         </div>
                     </div>
                     <div class="card-body">
-                        <p class="card-text">{{com.commentText}}</p>
+                        <p class="card-text">{{review.commentText}}</p>
                     </div>
                 </div>
             </div>
