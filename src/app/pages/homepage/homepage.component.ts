@@ -1,6 +1,7 @@
 import { UserService } from './../../services/user-service/user.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/model/users';
+import { idGetter } from 'src/app/app.module';
 
 @Component({
   selector: 'app-homepage',
@@ -11,13 +12,22 @@ export class HomepageComponent implements OnInit {
 
   constructor(private userService : UserService) { }
 
-  user : User;
+  user : User[];
 
   ngOnInit(): void {
-    /*this.userService.getUserById(8).subscribe(data=>{
+    console.log(idGetter())
+    this.userService.getUserById(idGetter()).subscribe(data=>{
       this.user=data
       console.log(data)
-    })*/
+    })
+  }
+  
+  getUser(){
+    let id = idGetter();
+    this.userService.getUserById(id).subscribe(data=>{
+      this.user=data
+      console.log(data)
+    })
   }
 
 }
