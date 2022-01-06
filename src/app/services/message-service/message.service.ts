@@ -11,22 +11,17 @@ import { HEROKU_API_URL } from 'src/config';
 export class MessageService {
 
 constructor(private httpClient: HttpClient) { }
-/*getMessageById(id: number) {
+getMessageById(id: number) {
     let headers = new HttpHeaders();
-    let params = new HttpParams();
-
-    const options ={ params: new HttpParams().set('Id', "8")} ;
  
     headers = headers.append('Content-Type', 'application/json');
     headers = headers.append('token', tokenGetter());
 
-    params = params.append('Id',id.toString())
     return this.httpClient.get<Message>(
-      HEROKU_API_URL + 'message',
-      {headers:headers}
-                 
+      HEROKU_API_URL + 'message/'+id.toString(),
+      {headers:headers}                 
     );
-  }*/
+  }
 
   /*getMessageByMovieId(id: number) {
     let headers = new HttpHeaders();
@@ -57,6 +52,23 @@ constructor(private httpClient: HttpClient) { }
     params = params.append('Id',id.toString())
     return this.httpClient.get<Message>(
       HEROKU_API_URL + 'messages',
+      {headers:headers}
+                 
+    );
+  }*/
+
+    /*getMessageByDiscussionId(id: number) {
+    let headers = new HttpHeaders();
+    let params = new HttpParams();
+
+    const options ={ params: new HttpParams().set('Id', "8")} ;
+ 
+    headers = headers.append('Content-Type', 'application/json');
+    headers = headers.append('token', tokenGetter());
+
+    params = params.append('Id',id.toString())
+    return this.httpClient.get<Message>(
+      HEROKU_API_URL + 'discussionMessages',
       {headers:headers}
                  
     );
