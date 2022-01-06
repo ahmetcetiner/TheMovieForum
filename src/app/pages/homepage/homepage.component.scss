@@ -1,273 +1,87 @@
-.page {
-  margin-top: calc(70vh - 80px);
+.profile-img{
+  border-radius: 100%;
+  object-fit:cover;
+  object-position: center; 
+  width: 5vw;
+  height: 5vw;
+  min-width: 75px;
+  min-height: 75px;
+  max-width: 120px;
+  max-height: 120px;
+  margin: 20px;
+}
+.card-info{
+width: 50%;
+@media screen and (max-width: 575px) {
+  width: 70%;
+}
 }
 
-@media screen and (max-width: 1300px) {
-  .page {
-    margin-top: calc(70vh - 80px);
-  }
+.card-background{
+  background:  linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.685) 41%,
+      rgba(0, 0, 0, 0.733) 100%
+    ),var(--background);       
+    background-size: cover;            
 }
-
-@media screen and (min-width: 541px) and (max-width: 970px) {
-  .page {
-    margin-top: calc(70vh - 110px);
-  }
+.card{    
+  width: 100%;
+  height: fit-content;
+  margin : 20px
 }
-@media screen and (min-width: 330px) and (max-width: 540px) {
-  .page {
-    margin-top: calc(70vh - 140px);
-  }
+.title{
+  margin-top: 30px;
+  font-size: 1.5rem;
 }
-.text-success {
-  color: rgb(14, 124, 14) !important;
+.userName{
+  font-size: 0.9rem;
+  font-style: italic;
 }
-
-.banner-title {
-  font-size: 32px;
-  font-family: Georgia, "Times New Roman", Times, serif;
+.number{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  background: #fff;
+  color: #000;
+  font-weight: 800;
+  border-radius: 50%;
+  margin: 0;
+  object-position: center;
 }
-
-.rounded-padding {
-  padding: 12px 12px 12px 12px;
-}
-
-.rounded-padding:hover {
-  color: white !important;
-  background-color: green !important;
-}
-
-.bg-opacity {
+.center{
+  margin: 0;
   position: absolute;
-  height: 70vh;
-  background-color: black;
-  opacity: 0.3;
-  z-index: -1;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  @media screen and (max-width: 575px) {
+      display: none;
+    }
 }
-
-.text-width {
-  width: calc(100% - 15px);
-}
-
-.phone-top {
-  margin-top: 10px;
-}
-
-.menu {
-  background-color: rgba(16, 16, 16, 0.54);
-}
-
-.cursor-pointer {
-  cursor: pointer;
-}
-
-.navbar-bar {
-  background-color: transparent;
-}
-
-.navbar-bar :hover {
-  color: green !important;
-}
-
-.text-underline-none {
-  text-decoration: none !important;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: rgba(16, 16, 16, 0.54);
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-  margin-top: 14px;
-}
-
-.dropdown-content a {
+.review-btn{
+  background-color: #2B2D42;
   color: white;
-  text-decoration: none;
-  display: block;
+  padding: 5px;
+  border-radius: 10px;
+  margin-bottom: 1vw;
+  margin-top: 1vw;
+  margin-left: calc(100% - 7vw);
+  width: 135px;
+  height: 37px;
 }
-
-.dropdown-content a:hover {
-  color: green;
+.reviewText{
+  width: 55vw;
+  resize: none;
+  margin: 10px;
 }
-
-.dropdown:hover .dropdown-content {
-  display: block;
+.ml-9{
+  margin-left: 40vw;
 }
-
-.dropdown:hover .dropbtn {
-  color: green;
-}
-
-.who-we-are {
-  font-family: Verdana, Geneva, sans-serif;
-  font-size: 2.6rem;
-}
-
-.title-font {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 1rem;
-}
-
-.cursor-pointer {
-  cursor: pointer;
-}
-
-.mt-7 {
-  margin-top: 130px;
-}
-
-@media screen and (max-width: 375px) {
-  .mt-7 {
-    margin-top: 30px;
-  }
-}
-
-.wrap-text {
-  white-space: nowrap;
-}
-
-.bg-green {
-  background-color: #0e7c0e !important;
-}
-
-.msg-font {
-  font-size: x-large;
-}
-
-.about-intro-area {
-  @media screen and (min-width: 1240px) {
-    padding: 125px;
-  }
-  @media screen and (max-width: 1240px) and (min-width: 990px) {
-    padding: 100px;
-  }
-  @media screen and (max-width: 990px) and (min-width: 370px) {
-    padding: 50px;
-  }
-  @media screen and (max-width: 370px) {
-    padding: 25px;
-  }
-  & .header {
-    text-align: center;
-    @media screen and (min-width: 1240px) {
-      font-size: 30px;
-      border: 25px solid #407c38;
-      background: white;
-      padding: 45px;
-      padding-top: 75px;
-      padding-bottom: 75px;
-      max-width: 1050px;
-    }
-    @media screen and (max-width: 1240px) and (min-width: 990px) {
-      font-size: 30px;
-      border: 25px solid #407c38;
-      background: white;
-      padding: 45px;
-      padding-top: 75px;
-      padding-bottom: 75px;
-      margin-bottom: 75px;
-    }
-    @media screen and (max-width: 990px) and (min-width: 370px) {
-      font-size: 35px;
-      border: 25px solid #407c38;
-      padding: 45px;
-      margin-bottom: 50px;
-    }
-    @media screen and (max-width: 370px) {
-      font-size: 20px;
-      border: 20px solid #407c38;
-      padding: 45px;
-      margin-bottom: 25px;
-    }
-  }
-  & .intri-content {
-    //margin-top: -7px;
-    & span {
-      color: theme-color;
-      font-weight: 700;
-      position: relative;
-      padding-bottom: 20px;
-      &::before {
-        position: absolute;
-        content: "";
-        right: -100px;
-        top: 10px;
-        height: 2px;
-        width: 70px;
-        background: theme-color;
-      }
-    }
-    & .title {
-      font-size: 60px;
-      line-height: 70px;
-      padding-bottom: 18px;
-      @media #{lg} {
-        font-size: 50px;
-        line-height: 60px;
-      }
-      @media #{xs} {
-        font-size: 36px;
-        line-height: 46px;
-      }
-    }
-    & .text-1 {
-      font-size: 24px;
-      color: #4f859e;
-      line-height: 36px;
-      margin-bottom: 25px;
-      @media #{lg} {
-        font-size: 18px;
-      }
-      @media #{xs} {
-        font-size: 16px;
-      }
-    }
-    & a {
-      border-radius: 0;
-      padding: 0 45px;
-      margin-top: 45px;
-      background: theme-color;
-      color: white;
-      border-color: theme-color;
-      &:hover {
-        background-color: transparent;
-        color: theme-color;
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 650px) {
-  .about-intro-area {
-    padding: 10px;
-  }
-}
-@media screen and (max-width: 991px) {
-  .dsplybig {
-    display: none;
-  }
-}
-@media screen and (min-width: 992px) {
-  .dsplysml {
-    display: none;
-  }
-}
-@media screen and (max-width: 767px) {
-  .m-5 {
-    margin: 25px !important;
-  }
-  .p-5 {
-    padding: 25px !important;
-  }
-}
-
-.nowrap {
-  white-space: nowrap;
+.label{
+  font-weight: bold;
+  margin-left: 15px;
+  border-bottom: 3px solid #2B2D42;
 }
