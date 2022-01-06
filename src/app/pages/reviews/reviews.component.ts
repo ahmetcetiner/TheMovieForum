@@ -1,4 +1,3 @@
-import { ReviewModel } from './../../model/reviewModel';
 import { map } from 'rxjs/operators';
 import { MovieService } from 'src/app/services/movie-service/movie.service';
 import { ReviewService } from '../../services/review-service/review.service';
