@@ -11,56 +11,43 @@ import { HEROKU_API_URL } from 'src/config';
 export class DiscussionService {
 
 constructor(private httpClient: HttpClient) { }
- /*getDiscussionById(id: number) {
+ getDiscussionById(id: number) {
     let headers = new HttpHeaders();
-    let params = new HttpParams();
-
-    const options ={ params: new HttpParams().set('Id', "8")} ;
- 
+   
     headers = headers.append('Content-Type', 'application/json');
     headers = headers.append('token', tokenGetter());
 
-    params = params.append('Id',id.toString())
     return this.httpClient.get<Discussion>(
-      HEROKU_API_URL + 'discussion',
+      HEROKU_API_URL + 'discussion/'+id.toString(),
+      {headers:headers}                 
+    );
+  }
+
+  getDiscussionByMovieId(id: number) {
+    let headers = new HttpHeaders();
+    
+    headers = headers.append('Content-Type', 'application/json');
+    headers = headers.append('token', tokenGetter());
+   
+    return this.httpClient.get<Discussion>(
+      HEROKU_API_URL + 'moviediscussionAll/'+id.toString(),
       {headers:headers}
                  
     );
-  }*/
+  }
 
-  /*getDiscussionByMovieId(id: number) {
+  getDiscussionByUserId(id: number) {
     let headers = new HttpHeaders();
-    let params = new HttpParams();
-
-    const options ={ params: new HttpParams().set('Id', "8")} ;
  
     headers = headers.append('Content-Type', 'application/json');
     headers = headers.append('token', tokenGetter());
-
-    params = params.append('Id',id.toString())
+  
     return this.httpClient.get<Discussion>(
-      HEROKU_API_URL + 'moviediscussionAll',
+      HEROKU_API_URL + 'discussions/'+id.toString(),
       {headers:headers}
                  
     );
-  }*/
-
-  /*getDiscussionByUserId(id: number) {
-    let headers = new HttpHeaders();
-    let params = new HttpParams();
-
-    const options ={ params: new HttpParams().set('Id', "8")} ;
- 
-    headers = headers.append('Content-Type', 'application/json');
-    headers = headers.append('token', tokenGetter());
-
-    params = params.append('Id',id.toString())
-    return this.httpClient.get<Discussion>(
-      HEROKU_API_URL + 'discussions',
-      {headers:headers}
-                 
-    );
-  }*/
+  }
 
   getDiscussions(): Observable<Discussion[]> {
     let headers = new HttpHeaders();
@@ -76,7 +63,8 @@ constructor(private httpClient: HttpClient) { }
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
     headers = headers.append('token', tokenGetter());
-    return this.httpClient.put<Discussion>(HEROKU_API_URL + 'discussion', discussion, {
+    
+    return this.httpClient.put(HEROKU_API_URL + 'discussion', discussion, {
       headers: headers,
     });
   }
@@ -86,13 +74,13 @@ constructor(private httpClient: HttpClient) { }
     headers = headers.append('Content-Type', 'application/json');
     headers = headers.append('token', tokenGetter());
 
-    return this.httpClient.put<Discussion>(
+    return this.httpClient.post(
       HEROKU_API_URL + 'discussion',
       {
-        UserId: discussion.UserId,
-        Name: discussion.Name,
-        MovieId: discussion.MovieId,
-        CreatedDate:discussion.CreatedDate
+        "UserId": discussion.UserId,
+        "Name": discussion.Name,
+        "MovieId": discussion.MovieId,
+        "CreatedDate":discussion.CreatedDate
       },
       { headers: headers }
     );
