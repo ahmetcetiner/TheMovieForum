@@ -17,7 +17,6 @@ export class CommentComponent implements OnInit {
     ) { }
 
   myMovieId: number;
-  backdropImageUrl: string;
   reviewInput: boolean;
   reviewText: Text;
   reviewTitle: string;
@@ -25,23 +24,17 @@ export class CommentComponent implements OnInit {
   @Input() set movieId(id) {
     this.myMovieId = id;
   }
-  reviews: Array<Review> = new Array<Review>();
+  
   ngOnInit(): void {
-    this.movieService.getMovieById(this.myMovieId.toString()).subscribe(data => {
-      this.backdropImageUrl = IMAGE_BASE_URL + BACKDROP_SIZE + data.backdrop_path
-    })
-    this.getComments()
+
     this.getReviewArea(this.reviewInput)
   }
 
-  getComments() {
-    
-  }
   getReviewArea(reviewInput: boolean) {
     this.reviewInput = reviewInput;
   }
   reviewAdd() {
-    alert(this.reviewText+this.reviewTitle);
+   this.reviewService.addReview()
   }
 
 }
