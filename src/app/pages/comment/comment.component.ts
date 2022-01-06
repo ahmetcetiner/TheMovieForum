@@ -34,7 +34,7 @@ export class CommentComponent implements OnInit {
     this.reviewInput = reviewInput;
   }
   reviewAdd() {
-   this.reviewService.addReview()
+   //this.reviewService.addReview()
   }
 
 }
