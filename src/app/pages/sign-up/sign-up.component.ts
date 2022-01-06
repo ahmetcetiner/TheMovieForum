@@ -1,3 +1,4 @@
+import { AvatarService } from './../../services/avatar-service/avatar.service';
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from 'src/app/services/movie-service/movie.service';
 import { BACKDROP_SIZE, IMAGE_BASE_URL } from 'src/config';
@@ -20,12 +21,13 @@ export class SignUpComponent implements OnInit {
   constructor(
     private movieService: MovieService,
     private authService: AuthService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private avatarService:AvatarService
   ) {}
 
   registerForm : FormGroup;
   registerUser:any={}
- // model: User = new User();
+
   imagePath: string;
   resultIndex: number = Math.floor(Math.random() * 20);
 
@@ -45,7 +47,7 @@ export class SignUpComponent implements OnInit {
         FirstName:["",Validators.required],
         LastName:["",Validators.required],
         Email:["",Validators.required],
-        AvatarUrl:["",Validators.required],
+        AvatarUrl:[""],
         Password:["",[Validators.required,
         Validators.minLength(4),
         Validators.maxLength(8)]],
@@ -62,7 +64,14 @@ export class SignUpComponent implements OnInit {
 
   register() {
     if(this.registerForm.valid){
+    
+      let firstName = this.registerForm.controls["FirstName"].value
+      let lastName = this.registerForm.controls["LastName"].value
+
+      this.registerForm.controls["AvatarUrl"].setValue( this.avatarService.setAvatarUrl(firstName,lastName))
+
       this.registerUser = Object.assign({},this.registerForm.value)
+      console.log(this.registerUser)
       this.authService.register(this.registerUser)
     }
   }
