@@ -1,2 +1,31 @@
-<h2>{{myMovieId}} dene</h2>
 <app-comment [movieId] = "myMovieId"></app-comment>
+
+<h2>{{myMovieId}}</h2>
+
+<div class=" container">
+    <div class="card text-white mt-3" *ngFor="let review of reviews;let i = index">
+        <div class="row card-background" style="--background: url({{backdropImageUrl}})">
+            <div class=" col-sm-1">
+                <div class="ml-2 center">
+                    <img (click) ="like(review.Id)" src="../../../assets/images/icons8_up.ico">                   
+                    <div id="likeScore" class="number">{{likeCount[i]}}</div>
+                    <img (click) ="disLike(review.Id)"  src="../../../assets/images/icons8_down.ico">
+                </div>
+            </div>
+            <div class="col-sm-10">
+                <div class="container">
+                    <div class="row">
+                        <img class="profile-img" src={{users[i].AvatarUrl}}>
+                        <div class="card-info col-sm-9">
+                            <div class="title">{{review.Title}}</div>
+                            <div class="userName">{{users[i].UserName}} adlı kullanıcının {{review.createDate}} tarihli yorumu.</div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{review.MessageText}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
