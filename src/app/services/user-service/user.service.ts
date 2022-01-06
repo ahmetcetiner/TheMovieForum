@@ -11,22 +11,18 @@ import { tokenGetter } from '../../app.module';
 export class UserService {
   constructor(private httpClient: HttpClient) {}
 
-  /*getUserById(id: number) {
+  getUserById(id: string) {
     let headers = new HttpHeaders();
-    let params = new HttpParams();
-
-    const options ={ params: new HttpParams().set('Id', "8")} ;
  
     headers = headers.append('Content-Type', 'application/json');
     headers = headers.append('token', tokenGetter());
 
-    params = params.append('Id',id.toString())
-    return this.httpClient.get<User>(
-      HEROKU_API_URL + 'user',
+    return this.httpClient.get<User[]>(
+      HEROKU_API_URL + 'user/'+id,
       {headers:headers}
                  
     );
-  }*/
+  }
 
   getUsers(): Observable<User[]> {
     let headers = new HttpHeaders();
