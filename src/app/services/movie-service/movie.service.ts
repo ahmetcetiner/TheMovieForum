@@ -26,7 +26,6 @@ export class MovieService {
   getMovieById(movieId:string):Observable<Movie>{
     return this.httpClient.get<Movie>( API_URL+"movie/"+movieId+"?api_key="+API_KEY).pipe(
       tap(data=>{
-        console.log(JSON.stringify(data))
       }),
       catchError(this.handleError)
     )   
