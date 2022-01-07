@@ -1,20 +1,13 @@
-<div class="container">
-    <div class="card text-white bg-secondary mt-3 container" *ngFor="let dis of discussions">
-        <div class="row">
-            <div class="col-sm-1">
-                <div class="ml-2 center">
-                    <img src="../../../assets/images/icons8_up.ico">
-                    <div class="number">{{dis.discussionRate}}</div>
-                    <img src="../../../assets/images/icons8_down.ico">
-                </div>
-            </div>
+<div class="container mb-5">
+    <div class="card text-white bg-secondary mt-3 mb-3 container" *ngFor="let discussion of discussions;let i = index">
+        <div class="row card-background" routerLink="/discussion/{{review.MovieId}} style="--background: url({{backdropImageUrl}})">           
             <div class="col-sm-10">
                 <div class="container">
                     <div class="row">
-                        <img class="profile-img" src={{dis.userPhotoUrl}}>
+                        <img class="profile-img" src={{users[i].AvatarUrl}}>
                         <div class="card-info col-sm-9">
-                            <div class="title">{{dis.discussionTitle}}</div>
-                            <div class="userName">{{dis.userName}}  {{dis.createDate}}</div>
+                            <div class="title">{{discussion.Name}}</div>
+                            <div class="userName">{{users[i].UserName}} tarafından  {{release_dates[i]}} oluşturuldu.</div>
                         </div>
                     </div>
                 </div>
