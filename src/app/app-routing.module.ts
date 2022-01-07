@@ -54,7 +54,7 @@ const routes: Routes = [
         canActivate:[HomeGuard]
       },
       {
-        path: 'profile',
+        path: 'profile/:userId',
         component: ProfilePageComponent,
         data: { title: 'Profile' },
         canActivate:[HomeGuard]
