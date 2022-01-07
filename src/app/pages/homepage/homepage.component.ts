@@ -55,14 +55,13 @@ getDates(data){
     this.release_dates.push(release_date)   
     
   });
-  console.log(this.release_dates)
 }
 getUsers(data){
   data.map(review => {
     this.userService.getUserById(review.UserId.toString()).subscribe(data=>{
       this.users.push(data[0])      
     })
-    console.log(this.users)
+    
   });
 }
 
@@ -72,7 +71,7 @@ getMovieImage(data){
       this.imageUrls.push(IMAGE_BASE_URL + BACKDROP_SIZE + data.backdrop_path)
       
     })
-    console.log(this.imageUrls)
+   
   });
 }
 getUser(userId : number){
