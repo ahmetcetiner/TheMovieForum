@@ -1,3 +1,4 @@
+import { idGetter } from 'src/app/app.module';
 import { UserService } from '../../../services/user-service/user.service';
 import { AuthService } from '../../../services/auth-service/auth.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,9 +13,11 @@ export class ClientBannerComponent implements OnInit {
     private authService: AuthService,
     private userService: UserService
   ) {}
+  userId : string
     serchText:string;
   ngOnInit(): void {
-    console.log(this.authService.loggedIn());
+
+    this.setUserId()
   }
 
   get isAuthenticated() {
@@ -26,5 +29,9 @@ export class ClientBannerComponent implements OnInit {
   getSerch()
   {
     alert(this.serchText)
+  }
+
+  setUserId(){
+    this.userId=idGetter();
   }
 }

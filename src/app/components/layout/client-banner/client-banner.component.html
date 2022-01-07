@@ -23,7 +23,7 @@
             <img class="image" src="https://img.icons8.com/ios/100/ffffff/guest-male.png" />
           </a>
           <div class="dropdown-menu " aria-labelledby="dropdownMenuLink">
-            <a routerLink="profile" class="text-light text-underline-none wrap-text container">Profile</a><br>
+            <a routerLink="profile/{{userId}}"  class="text-light text-underline-none wrap-text container">Profile</a><br>
             <a (click)="logOut()" routerLink="#" class="text-light text-underline-none wrap-text container">LogOut</a>
           </div>
         </div>
