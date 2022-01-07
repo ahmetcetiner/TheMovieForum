@@ -51,13 +51,9 @@ export class ReviewService {
   }
 
   getReviews(): Observable<Review[]> {
-    let headers = new HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    headers = headers.append('token', tokenGetter());
+    let headers = new HttpHeaders();    
 
-    return this.httpClient.get<Review[]>(HEROKU_API_URL + 'reviewAll', {
-      headers: headers,
-    });
+    return this.httpClient.get<Review[]>(HEROKU_API_URL + 'reviewAll');
   }
 
   updateReview(review: Review) {
