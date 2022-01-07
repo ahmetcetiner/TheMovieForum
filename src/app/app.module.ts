@@ -1,3 +1,4 @@
+import { HomeGuard } from './guards/home.guard';
 import { ReviewsComponent } from './pages/reviews/reviews.component';
 import { ActorComponent } from './pages/actor/actor.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -77,7 +78,7 @@ export function idGetter() {
       },
     }),
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard,HomeGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

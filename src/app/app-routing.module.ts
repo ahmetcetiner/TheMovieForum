@@ -15,6 +15,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
 import { MovieInfoComponent } from './pages/movie-info/movie-info.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { DiscussionMessageComponent } from './pages/discussion-message/discussion-message.component';
+import { HomeGuard } from './guards/home.guard';
 
 
 const routes: Routes = [
@@ -32,16 +33,7 @@ const routes: Routes = [
         path: '',
         component: HomepageComponent,
         data: { title: 'Anasayfa' },
-      },
-      {
-        path: 'about-us',
-        component: AboutUsComponent,
-        data: { title: 'Hakkımızda' },
-      },
-      {
-        path: 'contact-us',
-        component: ContactUsComponent,
-        data: { title: 'İletişim' },
+        canActivate:[HomeGuard]
       },
       {
         path: 'login',
@@ -54,20 +46,18 @@ const routes: Routes = [
         component: SignUpComponent,
         data: { title: 'Kayıt Ol' },
         canActivate:[AuthGuard]
-      },{
-        path: 'comment',
-        component: CommentComponent,
-        data: { title: 'Yorumlar' },
       },
       {
         path: 'movie/:movieId',
         component: MovieInfoComponent,
         data: { title: 'Movie' },
+        canActivate:[HomeGuard]
       },
       {
         path: 'profile',
         component: ProfilePageComponent,
         data: { title: 'Profile' },
+        canActivate:[HomeGuard]
       },
       {
         path: 'movie/:movieId/actors',
@@ -75,9 +65,9 @@ const routes: Routes = [
         data: { title: 'Actors' },
       },
       {
-        path: 'a',
+        path: 'discussion/:movieId',
         component: DiscussionMessageComponent,
-        data: { title: 'Actors' },
+        data: { title: 'Discussion' },
       },
     ],
   },
