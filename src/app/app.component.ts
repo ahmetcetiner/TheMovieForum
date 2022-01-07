@@ -13,7 +13,7 @@ export class AppComponent {
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {}
-  title = 'FK-PLASTİK';
+  title = 'The Movie Forum';
   ngOnInit() {
     this.router.events
       .pipe(
@@ -32,7 +32,7 @@ export class AppComponent {
       )
       .subscribe((title) => {
         this.titleService.setTitle(
-          `${title != null ? `${title} - ` : ``} F-KA-PLASTİK`
+          `${title != null ? `${title} - ` : ``} The Movie Forum`
         );
       });
   }
