@@ -3,5 +3,5 @@ export class Discussion{
     UserId: number;
     Name: string;
     MovieId: number;
-    CreatedDate: Date;
+    CreatedDate: string;
 }
