@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth-service/auth.service';
 import { UserService } from './../../services/user-service/user.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { User } from 'src/app/model/users';
@@ -17,7 +18,8 @@ export class HomepageComponent implements OnInit {
 
   constructor(private reviewService:ReviewService,
     private movieService:MovieService,
-    private userService:UserService,) { }
+    private userService:UserService,
+    private authService: AuthService) { }
 
 backdropImageUrl : string
 reviews : Review[]
@@ -35,12 +37,12 @@ this.getReviews()
 }
 
 getReviews(){
-  console.log("başladı")
   this.reviewService.getReviews().subscribe(data=>{
     this.reviews=data 
+    console.log(data)
     this.getDates(data)
-    this.getMovieImage(data) 
-    this.getUsers(data)    
+    this.getMovieImage( this.reviews) 
+    this.getUsers( this.reviews)    
   })  
 }
 
@@ -50,16 +52,17 @@ getDates(data){
       review.CreatedDate,
       'dd/MM/yyyy'
     );    
-    console.log(release_date)
-    console.log(review)
     this.release_dates.push(release_date)   
+    
   });
+  console.log(this.release_dates)
 }
 getUsers(data){
   data.map(review => {
     this.userService.getUserById(review.UserId.toString()).subscribe(data=>{
-      this.users.push(data[0])
+      this.users.push(data[0])      
     })
+    console.log(this.users)
   });
 }
 
@@ -67,8 +70,9 @@ getMovieImage(data){
   data.map(review => {
     this.movieService.getMovieById(review.MovieId.toString()).subscribe(data=>{
       this.imageUrls.push(IMAGE_BASE_URL + BACKDROP_SIZE + data.backdrop_path)
-      console.log(data.backdrop_path)
+      
     })
+    console.log(this.imageUrls)
   });
 }
 getUser(userId : number){
@@ -100,9 +104,12 @@ disLike(reviewId: number){
     reviewDislike=data[0].ReviewDislike + 1    
     this.reviewService.updateDislikes(reviewId,reviewDislike).subscribe(data=>
       console.log(data))
-  })
+  }) 
   
-  
+}
+
+loggedIn(){
+return  this.authService.loggedIn()
 }
 
 
