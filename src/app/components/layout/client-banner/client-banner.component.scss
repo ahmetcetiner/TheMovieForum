@@ -118,14 +118,6 @@
   }
 }
 
-@media screen and (max-width: 980px) {
-  .page {
-    display: none !important;
-  }
-  .wrap {
-    display: block !important;
-  }
-}
 .image{
   width:75%;
   height:auto;
@@ -166,7 +158,8 @@
   background: #2b2d42;
   border: 2px solid #2b2d4263;
   border-radius: 10px;
-  width: 20vw;
+  width: 40vw;
+  margin-left: 10vw;
   &:hover{
     border: 2px solid #EF233C;
   }
