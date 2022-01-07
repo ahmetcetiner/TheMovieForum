@@ -23,13 +23,13 @@ constructor(private httpClient: HttpClient) { }
     );
   }
 
-  getDiscussionByMovieId(id: number) {
+  getDiscussionByMovieId(id: number) :  Observable<Discussion[]>{
     let headers = new HttpHeaders();
     
     headers = headers.append('Content-Type', 'application/json');
     headers = headers.append('token', tokenGetter());
    
-    return this.httpClient.get<Discussion>(
+    return this.httpClient.get<Discussion[]>(
       HEROKU_API_URL + 'moviediscussionAll/'+id.toString(),
       {headers:headers}
                  
