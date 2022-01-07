@@ -23,12 +23,14 @@ width: 50%;
       rgba(0, 0, 0, 0.685) 41%,
       rgba(0, 0, 0, 0.733) 100%
     ),var(--background);       
-    background-size: cover;            
+    background-size: cover;   
+    border-radius: 15px;         
 }
 .card{    
   width: 100%;
   height: fit-content;
-  margin : 20px
+  margin : 20px;
+
 }
 .title{
   margin-top: 30px;

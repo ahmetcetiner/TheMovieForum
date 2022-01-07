@@ -6,6 +6,7 @@ import { BACKDROP_SIZE, IMAGE_BASE_URL } from 'src/config';
 import { Review } from 'src/app/model/review';
 import { MovieService } from 'src/app/services/movie-service/movie.service';
 import { ReviewService } from 'src/app/services/review-service/review.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-homepage',
@@ -24,6 +25,9 @@ reviewId : number
 users : Array<User> = new Array<User>();
 likeCount : Array<number> = new Array<number>();
 imageUrls:Array<string> = new Array<string>()
+datepipe: DatePipe = new DatePipe('en-US');
+release_dates: Array<string> = new Array<string>();
+
 
 ngOnInit() {
 this.getReviews()
@@ -33,12 +37,24 @@ this.getReviews()
 getReviews(){
   console.log("başladı")
   this.reviewService.getReviews().subscribe(data=>{
-    this.reviews=data    
+    this.reviews=data 
+    this.getDates(data)
     this.getMovieImage(data) 
     this.getUsers(data)    
   })  
 }
 
+getDates(data){
+  data.map(review => {
+     let release_date = this.datepipe.transform(
+      review.CreatedDate,
+      'dd/MM/yyyy'
+    );    
+    console.log(release_date)
+    console.log(review)
+    this.release_dates.push(release_date)   
+  });
+}
 getUsers(data){
   data.map(review => {
     this.userService.getUserById(review.UserId.toString()).subscribe(data=>{
@@ -50,11 +66,10 @@ getUsers(data){
 getMovieImage(data){
   data.map(review => {
     this.movieService.getMovieById(review.MovieId.toString()).subscribe(data=>{
-      this.imageUrls.push(IMAGE_BASE_URL + BACKDROP_SIZE + data[0].backdrop_path)
-      console.log(data[0].backdrop_path)
+      this.imageUrls.push(IMAGE_BASE_URL + BACKDROP_SIZE + data.backdrop_path)
+      console.log(data.backdrop_path)
     })
   });
-  console.log(this.imageUrls)
 }
 getUser(userId : number){
   this.userService.getUserById(userId.toString()).subscribe(data=>{
