@@ -6,6 +6,7 @@ import { IMAGE_BASE_URL, BACKDROP_SIZE } from 'src/config';
 import { Review } from 'src/app/model/review';
 import { UserService } from 'src/app/services/user-service/user.service';
 import { User } from 'src/app/model/users';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-reviews',
@@ -25,6 +26,9 @@ export class ReviewsComponent implements OnInit {
   users : Array<User> = new Array<User>();
   likeCount : Array<number> = new Array<number>();
 
+  datepipe: DatePipe = new DatePipe('en-US');
+release_dates: Array<string> = new Array<string>();
+
   @Input() set movieId(id){
     this.myMovieId=id;    
   }
@@ -39,10 +43,10 @@ export class ReviewsComponent implements OnInit {
   }
 
   getReview(){
-    console.log("başladı")
     this.reviewService.getReviewByMovieId(this.myMovieId).subscribe(data=>{
       this.reviews=data     
-      this.getUsers(data)        
+      this.getUsers(data)      
+      this.getDates(data)  
     }) 
   
   }
@@ -54,6 +58,19 @@ export class ReviewsComponent implements OnInit {
       })
     });
   }
+
+  
+getDates(data){
+  data.map(review => {
+     let release_date = this.datepipe.transform(
+      review.CreatedDate,
+      'dd/MM/yyyy'
+    );    
+    this.release_dates.push(release_date)   
+    
+  });
+  console.log(this.release_dates)
+}
 
   getMovieImage(movieId:number){
     this.movieService.getMovieById(movieId.toString()).subscribe(data => {
