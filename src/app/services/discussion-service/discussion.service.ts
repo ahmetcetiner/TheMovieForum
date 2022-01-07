@@ -51,12 +51,8 @@ constructor(private httpClient: HttpClient) { }
 
   getDiscussions(): Observable<Discussion[]> {
     let headers = new HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    headers = headers.append('token', tokenGetter());
 
-    return this.httpClient.get<Discussion[]>(HEROKU_API_URL + 'discussionAll', {
-      headers: headers,
-    });
+    return this.httpClient.get<Discussion[]>(HEROKU_API_URL + 'discussionAll');
   }
 
   updateDiscussion(discussion: Discussion) {
