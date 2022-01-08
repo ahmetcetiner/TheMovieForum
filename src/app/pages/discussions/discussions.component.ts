@@ -32,13 +32,12 @@ backdropImageUrl : string
       this.getMovieImage(params['movieId'])      
     });
     
-    console.log(this.discussions)
   }
 
   getDiscussions(movieId){
     this.discussionService.getDiscussionByMovieId(movieId).subscribe(data=>{
       this.discussions=data
-      this.getUsers(this.discussions) 
+      console.log(data)
       this.getDates(data)
     })    
    }
@@ -60,13 +59,6 @@ backdropImageUrl : string
     });
   }
 
-   getUsers(discussions){
-    discussions.map(discussion => {
-      this.userService.getUserById(discussion.UserId.toString()).subscribe(data=>{
-        this.users.push(data[0])
-      })
-    });
-   }
 
 
 }
