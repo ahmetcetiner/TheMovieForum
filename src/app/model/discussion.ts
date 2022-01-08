@@ -6,5 +6,9 @@ export class Discussion{
     Name: string;
     MovieId: number;
     CreatedDate: string;
+    FirstName !: string;
+    LastName !: string;  
+    UserName!: string;
+    AvatarUrl !: string;
     Messages : Message[]
 }
