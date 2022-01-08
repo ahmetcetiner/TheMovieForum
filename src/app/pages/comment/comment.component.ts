@@ -55,7 +55,7 @@ export class CommentComponent implements OnInit {
   reviewAdd() {
     this.setModel()
     console.log(this.model)
-    this.reviewService.addReview(this.model).subscribe(data=>{})
+    this.reviewService.addReview(this.model)
   }
 
 }
