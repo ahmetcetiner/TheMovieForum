@@ -1,3 +1,7 @@
+import { Message } from 'src/app/model/message';
+import { Discussion } from "./discussion";
+import { Review } from "./review";
+
 export class User {
     Id !: number;
     FirstName !: string;
@@ -7,4 +11,7 @@ export class User {
     Password!: string;
     AvatarUrl !: string;
 
+    Reviews !: Review[]
+    Discussion !: Discussion[]
+    Message !: Message[]
 }
