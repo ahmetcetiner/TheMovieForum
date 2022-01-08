@@ -67,29 +67,6 @@ export class ReviewService {
     });
   }
 
-  updateLikes(reviewId: number,reviewLike:number){
-    let headers = new HttpHeaders();
-    
-    headers = headers.append('Content-Type', 'application/json');
-    headers = headers.append('token', tokenGetter());
-    
-    return this.httpClient.put(HEROKU_API_URL + 'review/like', {"Id":reviewId,"ReviewLike":reviewLike}, {
-      headers: headers,
-    });
-  }
-  
-  updateDislikes(reviewId: number,reviewDislike:number){
-    let headers = new HttpHeaders();
-    
- 
-    headers = headers.append('Content-Type', 'application/json');
-    headers = headers.append('token', tokenGetter());
-
-    return this.httpClient.put<Review>(HEROKU_API_URL + 'review/dislike', {"Id":reviewId,"ReviewDislike":reviewDislike}, {
-      headers: headers,
-    });
-  }
-
   addReview(review: Review) {
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
@@ -102,13 +79,11 @@ export class ReviewService {
         "Title": review.Title,
         "MovieId": review.MovieId,
         "MessageText": review.MessageText,
-        "ReviewLike": review.ReviewLike,
-        "ReviewDislike":review.ReviewDislike,
         "CreatedDate":review.CreatedDate
       },
       { headers: headers }
     ).subscribe(data=>{});
-    this.router.navigateByUrl('/movie/'+review.MovieId);
+   
   }
 
   deletReview(reviewId: number){
