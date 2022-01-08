@@ -35,7 +35,7 @@ import { SearchComponent } from './pages/search/search.component';
 import { PopularMovieComponent } from './pages/popular-movie/popular-movie.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { TrailerComponent } from './pages/trailer/trailer.component';
-
+import { YtPlayerAngularModule } from 'yt-player-angular';
 export function tokenGetter() {
   return localStorage.getItem('token');
 }
@@ -71,6 +71,7 @@ export function idGetter() {
     TrailerComponent,
   ],
   imports: [
+    YtPlayerAngularModule,
     BrowserModule,
     NgxEditorModule,
     AppRoutingModule,
