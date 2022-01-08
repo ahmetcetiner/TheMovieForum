@@ -32,6 +32,9 @@ import { AuthGuard } from './guards/auth.guard';
 import { DiscussionMessageComponent } from './pages/discussion-message/discussion-message.component';
 import { MessageComponent } from './pages/message/message.component';
 import { SearchComponent } from './pages/search/search.component';
+import { PopularMovieComponent } from './pages/popular-movie/popular-movie.component';
+import { YouTubePlayerModule } from '@angular/youtube-player';
+import { TrailerComponent } from './pages/trailer/trailer.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -64,6 +67,8 @@ export function idGetter() {
     DiscussionMessageComponent,
     MessageComponent,
     SearchComponent,
+    PopularMovieComponent,
+    TrailerComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,7 +76,8 @@ export function idGetter() {
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,    
+    HttpClientModule,
+    YouTubePlayerModule,    
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
