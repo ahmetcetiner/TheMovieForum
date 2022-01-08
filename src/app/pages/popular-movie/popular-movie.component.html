@@ -1,1 +1,17 @@
-<p>popular-movie works!</p>
+<div class="container">
+    <div class="row colum">
+        <div class="m-2" *ngFor="let movie of movies.results">
+            <div (click)="setMovieId(movie.id)" data-toggle="modal" data-target=".bd-example-modal-lg">
+                <img class="movieImg" src={{imageUrl+movie.poster_path}}>
+                <div class="title">{{movie.title}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg round">
+        <div class="modal-content round">
+            <app-trailer [videoId]="videoId"></app-trailer>
+        </div>
+    </div>
+</div>
