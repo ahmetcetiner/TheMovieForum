@@ -1,6 +1,6 @@
 import { MovieService } from 'src/app/services/movie-service/movie.service';
-import { Discussion } from './../../model/discussion';
-import { DiscussionService } from './../../services/discussion-service/discussion.service';
+import { Discussion } from 'src/app/model/discussion';
+import { DiscussionService } from 'src/app/services/discussion-service/discussion.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/model/users';

@@ -1,13 +1,13 @@
 <div class="row">
-    <div class="col-md-3" *ngFor="">
-        <div class="discussions shadow m-1">
-            <div class="p-1">
-                <p>discussions title</p>
-                <p class="userName">username</p>
+    <div class="col-md-3">
+        <div class="discussions shadow m-1" *ngFor="let discussion of discussions">
+            <div class="p-1" (click)="setDiscussionId(discussion.Id)">
+                <p>{{discussion.Name}}</p>
+                <p class="userName">{{discussion.UserName}}</p>
             </div>
-        </div>    
+        </div>
     </div>
     <div class="col-md-8">
-        <app-message></app-message>
+        <app-message [discussionId]="discussionId"></app-message>
     </div>
 </div>
