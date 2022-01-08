@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tokenGetter } from 'src/app/app.module';
+import { Discussion } from 'src/app/model/discussion';
 import { Message } from 'src/app/model/message';
 import { HEROKU_API_URL } from 'src/config';
 
@@ -23,65 +24,18 @@ getMessageById(id: number) {
     );
   }
 
-  /*getMessageByMovieId(id: number) {
-    let headers = new HttpHeaders();
-    let params = new HttpParams();
 
-    const options ={ params: new HttpParams().set('Id', "8")} ;
+    getMessageByDiscussionId(id: number):Observable<Message[]> {
+    let headers = new HttpHeaders();   
  
     headers = headers.append('Content-Type', 'application/json');
     headers = headers.append('token', tokenGetter());
-
-    params = params.append('Id',id.toString())
-    return this.httpClient.get<Message>(
-      HEROKU_API_URL + 'movieMessageAll',
+  
+    return this.httpClient.get<Message[]>(
+      HEROKU_API_URL + 'discussionMessages/'+id.toString(),
       {headers:headers}
                  
     );
-  }*/
-
-  /*getMessageByUserId(id: number) {
-    let headers = new HttpHeaders();
-    let params = new HttpParams();
-
-    const options ={ params: new HttpParams().set('Id', "8")} ;
- 
-    headers = headers.append('Content-Type', 'application/json');
-    headers = headers.append('token', tokenGetter());
-
-    params = params.append('Id',id.toString())
-    return this.httpClient.get<Message>(
-      HEROKU_API_URL + 'messages',
-      {headers:headers}
-                 
-    );
-  }*/
-
-    /*getMessageByDiscussionId(id: number) {
-    let headers = new HttpHeaders();
-    let params = new HttpParams();
-
-    const options ={ params: new HttpParams().set('Id', "8")} ;
- 
-    headers = headers.append('Content-Type', 'application/json');
-    headers = headers.append('token', tokenGetter());
-
-    params = params.append('Id',id.toString())
-    return this.httpClient.get<Message>(
-      HEROKU_API_URL + 'discussionMessages',
-      {headers:headers}
-                 
-    );
-  }*/
-
-  getMessages(): Observable<Message[]> {
-    let headers = new HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    headers = headers.append('token', tokenGetter());
-
-    return this.httpClient.get<Message[]>(HEROKU_API_URL + 'messageAll', {
-      headers: headers,
-    });
   }
 
   updateMessage(message: Message) {
@@ -110,11 +64,11 @@ getMessageById(id: number) {
     );
   }
 
-  /*deleteMessage(messageId:number){
+  deleteMessage(messageId:number){
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
     headers = headers.append('token', tokenGetter());
 
-    return this.httpClient.delete( HEROKU_API_URL + 'message',)
-  }*/
+    return this.httpClient.delete( HEROKU_API_URL + 'message/'+messageId, { headers: headers })
+  }
 }
