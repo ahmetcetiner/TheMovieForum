@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { tokenGetter } from 'src/app/app.module';
 import { Review } from 'src/app/model/review';
@@ -9,7 +10,8 @@ import { HEROKU_API_URL } from 'src/config';
   providedIn: 'root',
 })
 export class ReviewService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient,
+    private router: Router) {}
 
   
   getReviewById(id: number) {
@@ -93,7 +95,7 @@ export class ReviewService {
     headers = headers.append('Content-Type', 'application/json');
     headers = headers.append('token', tokenGetter());
 
-    return this.httpClient.post(
+    this.httpClient.post(
       HEROKU_API_URL + 'review',
       {
         "UserId": review.UserId,
@@ -105,7 +107,8 @@ export class ReviewService {
         "CreatedDate":review.CreatedDate
       },
       { headers: headers }
-    );
+    ).subscribe(data=>{});
+    this.router.navigateByUrl('/movie/'+review.MovieId);
   }
 
   deletReview(reviewId: number){

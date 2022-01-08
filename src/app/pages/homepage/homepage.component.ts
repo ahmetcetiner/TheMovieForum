@@ -30,10 +30,12 @@ imageUrls:Array<string> = new Array<string>()
 datepipe: DatePipe = new DatePipe('en-US');
 release_dates: Array<string> = new Array<string>();
 
+numberDizi : Array<number> = new Array<number>();
 
 ngOnInit() {
 this.getReviews()
-  
+
+
 }
 
 getReviews(){
@@ -46,8 +48,14 @@ getReviews(){
   })  
 }
 
+setModel(){
+console.log(this.users)
+}
+
 getDates(data){
+  console.log(data)
   data.map(review => {
+   
      let release_date = this.datepipe.transform(
       review.CreatedDate,
       'dd/MM/yyyy'
@@ -57,15 +65,25 @@ getDates(data){
   });
 }
 getUsers(data){
+  console.log( data)
   data.map(review => {
-    this.userService.getUserById(review.UserId.toString()).subscribe(data=>{
+    console.log(review.UserId)
+    this.numberDizi.push(review.UserId)   
+  });
+
+  for(let i=0;i<this.numberDizi.length;i++){
+
+    this.userService.getUserById(this.numberDizi[i].toString()).subscribe(data=>{
+      console.log(this.numberDizi[i])
       this.users.push(data[0])      
     })
-    
-  });
+  }
+  console.log(this.users)
+  console.log(this.numberDizi)
 }
 
 getMovieImage(data){
+  console.log(data)
   data.map(review => {
     this.movieService.getMovieById(review.MovieId.toString()).subscribe(data=>{
       this.imageUrls.push(IMAGE_BASE_URL + BACKDROP_SIZE + data.backdrop_path)
