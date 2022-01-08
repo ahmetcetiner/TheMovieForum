@@ -11,123 +11,54 @@ import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-reviews',
   templateUrl: './reviews.component.html',
-  styleUrls: ['./reviews.component.scss']
+  styleUrls: ['./reviews.component.scss'],
 })
 export class ReviewsComponent implements OnInit {
+  constructor(
+    private reviewService: ReviewService,
+    private movieService: MovieService,
+    private userService: UserService
+  ) {}
 
-  constructor(private reviewService:ReviewService,
-      private movieService:MovieService,
-      private userService:UserService,) { }
-
-  myMovieId : number;
-  backdropImageUrl : string
-  reviews : Review[]
-  reviewId : number
-  users : Array<User> = new Array<User>();
-  likeCount : Array<number> = new Array<number>();
+  myMovieId: number;
+  backdropImageUrl: string;
+  reviews: Review[];
+  reviewId: number;
+  users: Array<User> = new Array<User>();
+  likeCount: Array<number> = new Array<number>();
 
   datepipe: DatePipe = new DatePipe('en-US');
-release_dates: Array<string> = new Array<string>();
+  release_dates: Array<string> = new Array<string>();
 
-  @Input() set movieId(id){
-    this.myMovieId=id;    
+  @Input() set movieId(id) {
+    this.myMovieId = id;
   }
 
   ngOnInit() {
-    this.reviews=[]
-  this.getReview()
-    
-  this.getMovieImage(this.myMovieId)
-
-  this.calculateLikes()
+    this.getReview();
+    this.getMovieImage(this.myMovieId);
   }
 
-  getReview(){
-    this.reviewService.getReviewByMovieId(this.myMovieId).subscribe(data=>{
-      this.reviews=data     
-      this.getUsers(data)      
-      this.getDates(data)  
-      console.log( data)
-    }) 
-    console.log( this.reviews)
-  
-  }
-
-  getUsers(data){
-    console.log( data)
-    data.map(review => {
-      this.userService.getUserById(review.UserId.toString()).subscribe(data=>{
-        this.users.push(data[0])
-      })
+  getReview() {
+    this.reviewService.getReviewByMovieId(this.myMovieId).subscribe((data) => {
+      this.reviews = data;
+      this.getDates(data);
     });
-    console.log( this.users)
-  
+  }
+  getDates(data) {
+    data.map((review) => {
+      let release_date = this.datepipe.transform(
+        review.CreatedDate,
+        'dd/MM/yyyy'
+      );
+      this.release_dates.push(release_date);
+    });
   }
 
-  
-getDates(data){
-  data.map(review => {
-     let release_date = this.datepipe.transform(
-      review.CreatedDate,
-      'dd/MM/yyyy'
-    );    
-    this.release_dates.push(release_date)   
-    
-  });
-  console.log(this.release_dates)
-}
-
-  getMovieImage(movieId:number){
-    this.movieService.getMovieById(movieId.toString()).subscribe(data => {
-      this.backdropImageUrl = IMAGE_BASE_URL + BACKDROP_SIZE + data.backdrop_path
-    })
-  
-  }
-  getUser(userId : number){
-    this.userService.getUserById(userId.toString()).subscribe(data=>{
-      this.users=data
-    console.log(data)
-
-    })
-    console.log(userId)
-    console.log(this.users)
-  }
-
-  like(reviewId: number ){
-    let reviewLike : number  
-    
-    this.reviewService.getReviewById(reviewId).subscribe(data=>{
-      reviewLike=data[0].ReviewLike + 1   
-      this.reviewService.updateLikes(reviewId,reviewLike).subscribe(data=>
-        console.log(data))  
-    })    
-   
-  
-    this.calculateLikes()
-   
-  }
-
-  disLike(reviewId: number){
-    let reviewDislike : number
-
-    console.log(reviewId)
-    this.reviewService.getReviewById(reviewId).subscribe(data=>{
-      reviewDislike=data[0].ReviewDislike + 1    
-      this.reviewService.updateDislikes(reviewId,reviewDislike).subscribe(data=>
-        console.log(data))
-    })
-    
-    this.calculateLikes()
-    
-  }
-
-  calculateLikes(){
-    let totalLike 
-    this.reviewService.getReviewByMovieId(this.myMovieId).subscribe(data=>{
-        data.map(review => {
-          totalLike = review.ReviewLike-review.ReviewDislike
-          this.likeCount.push(totalLike)          
-        })
-    })    
+  getMovieImage(movieId: number) {
+    this.movieService.getMovieById(movieId.toString()).subscribe((data) => {
+      this.backdropImageUrl =
+        IMAGE_BASE_URL + BACKDROP_SIZE + data.backdrop_path;
+    });
   }
 }
