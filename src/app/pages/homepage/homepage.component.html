@@ -1,3 +1,6 @@
+<div>
+    <app-popular-movie></app-popular-movie>
+</div>
 <div class=" container" >
   <div class="card text-white mt-3" *ngFor="let review of reviews;let i = index">
       <div class="row card-background" routerLink="/movie/{{review.MovieId}}" style="--background: url({{imageUrls[i]}})">
