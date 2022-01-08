@@ -44,6 +44,8 @@ export class AuthService {
     this.httpClient
       .post(HEROKU_API_URL + 'user', registerUser, { headers: headers })
       .subscribe((data) => {});
+      this.alertifyService.success('Sisteme kaydınız yapıldı.');
+      this.router.navigateByUrl('/login')
   }
 
   saveToken(token, id) {
