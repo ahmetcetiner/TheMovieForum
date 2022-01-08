@@ -31,12 +31,37 @@
         </div>
     </div>
 </div>
-<div>
-    <p class="favtext mb-0">Favory List</p>
+<div class="bar-wrapper">
+    <div class="bar-content">
+        <div class=" modal-button m-2 row w-100">
+            <button class="btn btn-outline-primary column p-2" (click)="getModule('Favory List')">Favory List</button>
+            <button class="btn btn-outline-primary column p-2" (click)="getModule('Watch List')">Watch List</button>
+            <button class="btn btn-outline-primary column p-2" (click)="getModule('Watched List')">
+                Watched List
+            </button>
+        </div>
+    </div>
 </div>
-<div class="line"></div>
-<div class="container-down">
-    <app-gallery></app-gallery>
+
+<div class="mt-2">
+    <div class="favtext">{{sendModule}}</div>
+    <div class="line"></div>
+</div>
+
+<div *ngIf="sendModule == 'Favory List'">
+    <div class="container-down">
+        <app-gallery></app-gallery>
+    </div>
+</div>
+<div *ngIf="sendModule == 'Watch List'">
+    <div class="container-down">
+        <app-gallery></app-gallery>
+    </div>
+</div>
+<div *ngIf="sendModule == 'Watched List'">
+    <div class="container-down">
+        <app-gallery></app-gallery>
+    </div>
 </div>
 
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"

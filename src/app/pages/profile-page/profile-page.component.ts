@@ -10,6 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProfilePageComponent implements OnInit {
 
+  sendModule: string = 'Favory List';
+
   constructor( private activatedRoute: ActivatedRoute,
     private userService:UserService) { }
 
@@ -25,6 +27,23 @@ export class ProfilePageComponent implements OnInit {
     this.userService.getUserById(userId).subscribe(data=>{
       this.user=data
     })
+  }
+
+  getModule(moduleName) {
+    switch (moduleName) {
+      case 'Favory List':
+        this.sendModule = 'Favory List';
+        break;
+      case 'Watch List':
+        this.sendModule = 'Watch List';
+        break;
+      case 'Watched List':
+        this.sendModule = 'Watched List';
+        break;
+      default:
+        this.sendModule = 'Favory List';
+        break;
+    }
   }
 
 }

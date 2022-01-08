@@ -66,3 +66,37 @@
 .round{
     border-radius: 20px !important;
 }
+.bar-wrapper {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    min-height: 100px;
+    background:rgba(3, 37, 65);
+    padding: 0 20px;
+  };
+  
+.bar-content {
+    display: flex;
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    .column {
+      border-color: #d80032;
+      color: #ffffff;    
+      font-weight: bold;
+      letter-spacing: 1px;
+      box-shadow: 0 1px 3px rgb(43, 45, 66), 0 1px 2px rgb(43, 45, 66);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 20px;
+      margin: 0 20px;
+      flex: 1; 
+      font-size: 1.2rem;
+   
+    }
+}
+.btn-outline-primary:hover {
+  background-color: #EF233C;
+  right: 0px;
+}
