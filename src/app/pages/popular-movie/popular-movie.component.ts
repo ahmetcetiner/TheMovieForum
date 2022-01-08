@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FavListInfo } from 'src/app/model/favListInfo';
 import { Movie } from 'src/app/model/movie';
 import { PopularMovie } from 'src/app/model/popularMovie';
 import { MovieService } from 'src/app/services/movie-service/movie.service';
