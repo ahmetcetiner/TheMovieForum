@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Message } from 'src/app/model/message';
+import { MessageService } from 'src/app/services/message-service/message.service';
 
 @Component({
   selector: 'app-message',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private messageService : MessageService) { }
+  @Input() discussionId: string = ""
+  messasges: Array<Message> = new Array<Message>();
+  _discussionIds="5"
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.getMessages()
   }
 
+  getMessages() {
+    this.messageService.getMessageByDiscussionId(this.discussionId).subscribe(data=>{
+      this.messasges=data
+    })
+  }
 }

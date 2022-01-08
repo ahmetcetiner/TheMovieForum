@@ -1,12 +1,11 @@
 <div class="discussion-messages">
     <div class="container">
-        <div class="row ml-2">
-            <img src="https://ui-avatars.com/api/?size=128" class="userImage">
+        <div class="row ml-2" *ngFor="let messasge of messasges">
+            <img src={{messasge.AvatarUrl}} class="userImage">
             <div class="col-sm-9">
-                <p class="text mt-3">username</p>
-                <p class="text mt-2"> sjkhdakjsahdkjhasdkjhasjkhdkjahsdkjhaskjdhajshdjkashjkd</p>
+                <p class="text mt-3">{{messasge.UserName}}</p>
+                <p class="text mt-2"> {{messasge.MessageText}}</p>
             </div>
         </div>
-
     </div>
 </div>
