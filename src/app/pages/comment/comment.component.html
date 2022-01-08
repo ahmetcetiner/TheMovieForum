@@ -1,20 +1,79 @@
 <div class=" container">    
     <div>
-        <button class="review-btn" (click)="getReviewArea(true)" data-toggle="collapse">New Review</button>
+        <button class="btn btn-outline-primary column p-2" (click)="getReviewArea(true)" data-toggle="collapse">New Review</button>
     </div>
     <div *ngIf="reviewInput">
-        <div class="row container">
-            <div class="col-md-12">
-                <div class="col-md-2 label">Review Title</div>
-                <input class="reviewText" type="text" placeholder="Review Title" [(ngModel)]="reviewTitle">
-                <div class="col-md-2 label">Review Text</div>
-                <textarea class="reviewText" id="reviewText" name="reviewText" rows="4" maxlength="500"
-                    [(ngModel)]="reviewText" placeholder="Review Text"></textarea>
-                <div class="row ml-9">
-                    <button class="review-btn ml-1" (click)="getReviewArea(false)">Cancel</button>
-                    <button class="review-btn ml-1" (click)="reviewAdd()">Add</button>
+        <div class="container background">
+            <div class="row">
+              <div class="col-lg-12 col-md-8 review-box">
+                <div class="col-lg-12 review-title">
+                  <h1>Comment</h1>
                 </div>
+                <div class="col-lg-12 comment-form">
+                  <form
+                    [formGroup]="commentForm"
+                    (ngSubmit)="comment()"
+                    class="form-comment"
+                  >
+                    <div class="form-group">
+                      <label class="form-control-label">Review Title</label>
+                      <input 
+                        type="text"
+                        id="Title"
+                        name="Title"
+                        formControlName="Title"
+                        class="form-control"
+                        placeholder="Review Title"
+                        autofocus
+                        
+                      />
+                      <span
+                        class="help-block"
+                        *ngIf="
+                          commentForm.get('Title').hasError('required') &&
+                          commentForm.get('Title').dirty
+                        "
+                      >
+                      Title is required
+                      </span>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-control-label">Review Text</label>
+                      <textarea
+                        type="text"
+                        id="Text"
+                        name="Text"
+                        formControlName="Text"
+                        class="form-control"
+                        placeholder="Review Text"
+                        rows = "4"
+                      ></textarea>
+                      <span
+                        class="help-block"
+                        *ngIf="
+                          commentForm.get('Text').hasError('required') &&
+                          commentForm.get('Text').dirty
+                        "
+                      >
+                      Lastname is required
+                      </span>
+                    </div>                            
+                    <div class="review-btn">
+                      <div class="col-lg-6 review-btm review-text">
+                        <!-- Error Message -->
+                      </div>
+                      <div > 
+                        <button type="submit" class="btn btn-outline-primary send" [disabled]="!commentForm.valid">
+                          Send
+                        </button>    
+                        <button class="btn btn-outline-primary cancel" (click)="getReviewArea(false)">Cancel</button>       
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="col-lg-3 col-md-2"></div>
+              </div>
             </div>
-        </div>
+          </div>
     </div>
 </div>
