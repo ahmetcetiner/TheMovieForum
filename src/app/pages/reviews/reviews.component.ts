@@ -47,16 +47,21 @@ release_dates: Array<string> = new Array<string>();
       this.reviews=data     
       this.getUsers(data)      
       this.getDates(data)  
+      console.log( data)
     }) 
+    console.log( this.reviews)
   
   }
 
   getUsers(data){
+    console.log( data)
     data.map(review => {
       this.userService.getUserById(review.UserId.toString()).subscribe(data=>{
         this.users.push(data[0])
       })
     });
+    console.log( this.users)
+  
   }
 
   
