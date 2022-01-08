@@ -32,7 +32,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { DiscussionMessageComponent } from './pages/discussion-message/discussion-message.component';
 import { MessageComponent } from './pages/message/message.component';
 import { SearchComponent } from './pages/search/search.component';
-import { PopularMovieComponent } from './popular-movie/popular-movie.component';
+import { PopularMovieComponent } from './pages/popular-movie/popular-movie.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
