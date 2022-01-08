@@ -10,5 +10,4 @@ export class Discussion{
     LastName !: string;  
     UserName!: string;
     AvatarUrl !: string;
-    Messages : Message[]
 }

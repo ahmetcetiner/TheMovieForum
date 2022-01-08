@@ -14,7 +14,6 @@ export class PopularMovieComponent implements OnInit {
 
   constructor(private movieService: MovieService) { }
 
-  @Input() movie: Movie = new Movie();
   
   movies: PopularMovie
   imageUrl= IMAGE_BASE_URL+BACKDROP_SIZE

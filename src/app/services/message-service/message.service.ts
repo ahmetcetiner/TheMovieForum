@@ -25,14 +25,14 @@ getMessageById(id: number) {
   }
 
 
-    getMessageByDiscussionId(id: number):Observable<Message[]> {
+    getMessageByDiscussionId(id: string):Observable<Message[]> {
     let headers = new HttpHeaders();   
  
     headers = headers.append('Content-Type', 'application/json');
     headers = headers.append('token', tokenGetter());
   
     return this.httpClient.get<Message[]>(
-      HEROKU_API_URL + 'discussionMessages/'+id.toString(),
+      HEROKU_API_URL + 'discussionMessages/'+id,
       {headers:headers}
                  
     );
