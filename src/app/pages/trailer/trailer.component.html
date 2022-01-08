@@ -1,1 +1,10 @@
-<youtube-player videoId={{_videoId}} [width]=900 [height]=450></youtube-player>
+
+<iframe id="playerid" type="text/html" width="640" height="390"
+src="//www.youtube.com/embed/sIFYPQjYhv8?rel=0"
+  frameborder="0"></iframe>
+
+  <script>
+var video = $("#playerid").attr("src");
+$("#playerid").attr("src","");
+$("#playerid").attr("src",video);
+  </script>
