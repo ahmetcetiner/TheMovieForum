@@ -44,3 +44,19 @@
     -ms-transform: translateY(50%);
     transform: translateY(50%);
 }
+
+.modala{
+    min-width: 90px;
+    min-height: 50px;
+    width: 1205px;
+    height: 740px;
+    display: none;
+    top: 28.5px;
+    left: 0px;
+    background-color: rgb(0, 0, 0);
+    border-color: rgb(0, 0, 0);
+    position: fixed;
+    z-index: 10004;
+    opacity: 1;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+}
