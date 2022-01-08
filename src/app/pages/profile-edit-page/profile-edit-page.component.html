@@ -1,57 +1,101 @@
 <body>
-    <div class="container">
-        <div class="row m-4 mb-5">
-            <div class="row">
-                <img class="profile-img mt-5 dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false" src={{imageUrl}}>
-                    <div class="hide p-2">Select Photos</div>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <img class="avatar m-2" src="https://ui-avatars.com/api/?size=128"
-                        (click)="avatarClick('https://ui-avatars.com/api/?size=128')">
-                    <img class="avatar m-2" src="https://ui-avatars.com/api/?size=128"
-                        (click)="avatarClick('https://ui-avatars.com/api/?size=128')">
-                    <img class="avatar m-2" src="https://ui-avatars.com/api/?size=128"
-                        (click)="avatarClick('https://ui-avatars.com/api/?size=128')">
-                    <img class="avatar m-2" src="https://ui-avatars.com/api/?size=128"
-                        (click)="avatarClick('https://ui-avatars.com/api/?size=128')">
-                    <img class="avatar m-2" src="../../../assets/images/WhatsApp Image 2021-11-19 at 10.56.32.jpeg"
-                        (click)="avatarClick('../../../assets/images/WhatsApp Image 2021-11-19 at 10.56.32.jpeg')">
+    <div class="container background">
+        <div class="row">
+            <div class="col-lg-12 col-md-8 login-box">
+                <div class="col-lg-12 login-title">
+                    <h1>Profile Edit</h1>
                 </div>
-            </div>
-            <div class="col-lg-6 col-md-8 login-box">
                 <div class="col-lg-12 login-form">
-                    <div class="col-lg-12 login-form">
-                        <form>
-                            <div class="form-group">
-                                <label class="form-control-label">FIRSTNAME</label>
-                                <input type="text" class="form-control">
+                    <form [formGroup]="profileEditForm" (ngSubmit)="setModel()" class="form-register">
+                        <div class="form-group">
+                            <label class="form-control-label">FIRSTNAME</label>
+                            <input type="text" id="FirstName" name="FirstName" formControlName="FirstName" class="form-control" placeholder="First Name" autofocus />
+                            <span class="help-block" *ngIf="
+                            profileEditForm.get('FirstName').hasError('required') &&
+                            profileEditForm.get('FirstName').dirty
+                  ">
+                Firstname is required
+              </span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">LASTNAME</label>
+                            <input type="text" id="LastName" name="LastName" formControlName="LastName" class="form-control" placeholder="Last Name" autofocus />
+                            <span class="help-block" *ngIf="
+                            profileEditForm.get('LastName').hasError('required') &&
+                            profileEditForm.get('LastName').dirty
+                  ">
+                Lastname is required
+              </span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">USERNAME</label>
+                            <input type="text" id="UserName" name="UserName" formControlName="UserName" class="form-control" placeholder="User Name" autofocus />
+                            <span class="help-block" *ngIf="
+                            profileEditForm.get('UserName').hasError('required') &&
+                            profileEditForm.get('UserName').dirty
+                ">
+                Username is required
+              </span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">E-MAIL</label>
+                            <input type="text" id="Email" name="Email" formControlName="Email" class="form-control" placeholder="E-mail" autofocus />
+                            <span class="help-block" *ngIf="
+                            profileEditForm.get('Email').hasError('required') &&
+                            profileEditForm.get('Email').dirty
+                ">
+                E-mail is required
+              </span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">PASSWORD</label>
+                            <input type="password" id="Password" name="Password" formControlName="Password" class="form-control" placeholder="Password" />
+                            <span class="help-block" *ngIf="
+                            profileEditForm.get('Password').hasError('required') &&
+                            profileEditForm.get('Password').dirty
+                  ">
+                Password is required
+              </span>
+                            <span class="help-block" *ngIf="
+                            profileEditForm.get('Password').hasError('minlength') &&
+                            profileEditForm.get('Password').dirty
+                  ">
+                Password must be at least 4 characters
+              </span>
+                            <span class="help-block" *ngIf="
+                            profileEditForm.get('Password').hasError('maxlength') &&
+                            profileEditForm.get('Password').dirty
+                  ">
+                Password cannot exceed 8 characters
+              </span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">CONFIRM PASSWORD</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" formControlName="confirmPassword" class="form-control" placeholder="Password" />
+                            <span class="help-block" *ngIf="
+                            profileEditForm.get('confirmPassword').hasError('required') &&
+                            profileEditForm.get('confirmPassword').dirty
+                  ">
+                Confirm password is required
+              </span>
+                            <span class="help-block" *ngIf="
+                            profileEditForm.get('confirmPassword').dirty &&
+                            profileEditForm.hasError('mismatch')
+                  ">
+                Confirm password must match password
+              </span>
+                        </div>
+                        <div class="login-btn">
+                            <div class="col-lg-6 login-btm login-text">
+                                <!-- Error Message -->
                             </div>
-                            <div class="form-group">
-                                <label class="form-control-label">LASTNAME</label>
-                                <input type="text" class="form-control">
+                            <div>
+                                <button type="submit" class="btn btn-outline-primary">
+                  APPLY
+                </button>
                             </div>
-                            <div class="form-group">
-                                <label class="form-control-label">USERNAME</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">E-MAIL</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">PASSWORD</label>
-                                <input type="password" class="form-control" i>
-                            </div>
-                            <div class="col-lg-12 loginbttm">
-                                <div class="col-lg-6 login-btm login-text">
-                                    <!-- Error Message -->
-                                </div>
-                                <div class="col-lg-7 login-btm login-button justify-content-center">
-                                    <button type="submit" class="btn btn-outline-primary">SIGN UP</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
                 <div class="col-lg-3 col-md-2"></div>
             </div>
