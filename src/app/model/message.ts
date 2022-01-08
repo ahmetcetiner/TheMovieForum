@@ -4,4 +4,9 @@ export class Message {
     MessageText: string;
     DiscussionId: number;
     CreatedDate: Date;
+    FirstName !: string;
+    LastName !: string;  
+    UserName!: string;
+    AvatarUrl !: string;
+
   }
