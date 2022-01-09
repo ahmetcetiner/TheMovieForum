@@ -10,8 +10,8 @@ import { MessageService } from 'src/app/services/message-service/message.service
 export class MessageComponent implements OnInit {
 
   constructor(private messageService : MessageService) { }
-  @Input() discussionId: string = ""
-  messasges: Array<Message> = new Array<Message>();
+  @Input() messasges: Array<Message>
+
   _discussionIds="5"
 
   ngOnInit() {
@@ -19,8 +19,6 @@ export class MessageComponent implements OnInit {
   }
 
   getMessages() {
-    this.messageService.getMessageByDiscussionId(this.discussionId).subscribe(data=>{
-      this.messasges=data
-    })
+    
   }
 }
