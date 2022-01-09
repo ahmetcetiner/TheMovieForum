@@ -1,8 +1,7 @@
 <div class="col page">
     <div class="row first mb-5">
-        <button (click)="getdeneme()">mamut</button>
         <div class="flip-card" *ngFor="let movie of movies ">
-            <div routerLink="/movie/{{movie.id}}" class="flip-card-front shadow movie-bg " style="--background:url({{mov.imageUrl}})">
+            <div routerLink="/movie/{{movie.id}}" class="flip-card-front shadow movie-bg " style="--background:url({{imageUrl}}{{movie.poster_path}})">
                 <div class="shadow footer mt-6">
                     <div class="row w-100 ml-2">
                         <div class="col col-md-9 mt-3">

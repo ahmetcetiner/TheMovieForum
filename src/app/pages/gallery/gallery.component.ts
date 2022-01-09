@@ -1,3 +1,5 @@
+import { ListService } from './../../services/list-service/list.service';
+import { idGetter } from 'src/app/app.module';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { List} from 'src/app/model/list';
@@ -19,13 +21,17 @@ export class GalleryComponent implements OnInit {
   constructor(private movieService: MovieService,
     private activatedRoute: ActivatedRoute) { }
     @Input() movies: Array<Movie>
+  
 
+
+    imageUrl = IMAGE_BASE_URL + BACKDROP_SIZE;
 
   ngOnInit(): void {
-
+  
+    
+    
   }
 
-  getdeneme(){
-    console.log(this.movies)
-  }
+  
+
 }
