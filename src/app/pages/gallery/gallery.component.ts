@@ -27,7 +27,7 @@ export class GalleryComponent implements OnInit {
     imageUrl = IMAGE_BASE_URL + BACKDROP_SIZE;
 
   ngOnInit(): void {
-  
+  console.log(this.movies)
     
     
   }

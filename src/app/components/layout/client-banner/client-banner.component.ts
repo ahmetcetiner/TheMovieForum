@@ -14,7 +14,7 @@ export class ClientBannerComponent implements OnInit {
     private userService: UserService
   ) {}
   userId : string
-    serchText:string;
+  serchText:string;
   ngOnInit(): void {
 
     this.setUserId()
@@ -26,8 +26,7 @@ export class ClientBannerComponent implements OnInit {
   logOut() {
     this.authService.logOut();
   }
-  getSerch()
-  {
+  getSerch(){
     alert(this.serchText)
   }
 
