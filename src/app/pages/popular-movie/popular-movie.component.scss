@@ -35,28 +35,36 @@
     overflow-x: scroll;
 }
 
-.modal-contenta {
-    width: 100% !important;
-    height: 100% !important;
+.modal-content {
+    width: 964px !important;
+    height: 514px !important;
     margin: 0;
+    padding: 32px;
+    padding-top: 0px;
+    background-color: rgba(0, 0, 0, 0.63);
     position: absolute;
     top: 50%;
-    -ms-transform: translateY(50%);
-    transform: translateY(50%);
+    -ms-transform: translateY(40%);
+    transform: translateY(40%);
+    left: -12%;
 }
 
-.modal{
-    min-width: 90px;
-    min-height: 50px;
-    width: 1205px;
-    height: 740px;
+.modal {
     display: none;
-    top: 28.5px;
-    left: 0px;
-    background-color: rgb(0, 0, 0);
-    border-color: rgb(0, 0, 0);
     position: fixed;
     z-index: 10004;
+    background-color: rgba(0, 0, 0, 0.678);
     opacity: 1;
     font-family: 'Source Sans Pro', Arial, sans-serif;
+}
+
+.close {
+    color: white;
+    align-items: flex-end;
+    position: relative;
+    margin: 10px;
+    //top: -32px;
+    width: 50px;
+    height: 50px;
+    left: calc(100% - 30px);
 }
