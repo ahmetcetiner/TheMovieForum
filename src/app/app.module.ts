@@ -33,9 +33,9 @@ import { DiscussionMessageComponent } from './pages/discussion-message/discussio
 import { MessageComponent } from './pages/message/message.component';
 import { SearchComponent } from './pages/search/search.component';
 import { PopularMovieComponent } from './pages/popular-movie/popular-movie.component';
-import { YouTubePlayerModule } from '@angular/youtube-player';
 import { TrailerComponent } from './pages/trailer/trailer.component';
 import { YtPlayerAngularModule } from 'yt-player-angular';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 export function tokenGetter() {
   return localStorage.getItem('token');
 }
@@ -78,7 +78,7 @@ export function idGetter() {
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    YouTubePlayerModule,    
+    YouTubePlayerModule,  
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
