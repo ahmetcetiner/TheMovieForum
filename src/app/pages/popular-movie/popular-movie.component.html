@@ -11,16 +11,15 @@
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class=" modal-dialog modal-lg round">
         <div class="modal-content round">
-            <button (click)="changeState()"  data-dismiss="modal">X</button>   
-                <figure>
-                <ng-container *ngIf="videodisabled; else videoblock">                    
+            <button (click)="changeState()" data-dismiss="modal">X</button>
+            <figure>
+                <ng-container *ngIf="videodisabled; else videoblock">
                 </ng-container>
                 <ng-template #videoblock>
                     <youtube-player width="100%" height="100%" videoId={{videoId}} allowfullscreen></youtube-player>
                 </ng-template>
             </figure>
-                
+
         </div>
     </div>
 </div>
-

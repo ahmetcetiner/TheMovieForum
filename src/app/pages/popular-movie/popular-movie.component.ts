@@ -30,6 +30,7 @@ export class PopularMovieComponent implements OnInit {
     })
   }
   setMovieId(movieId){
+    this.videodisabled=false
     this.movieId=movieId;
     this.getVideos()
   }
@@ -43,15 +44,6 @@ export class PopularMovieComponent implements OnInit {
   }
 
   changeState(){
-    if(this.play == "Play")
-    {
-      this.play = "Pause",      
-      this.videodisabled = false
-    }
-    else
-    {      
-      this.play = "Play",
-      this.videodisabled = true
-    }
+    this.videodisabled=true
   }
 }
