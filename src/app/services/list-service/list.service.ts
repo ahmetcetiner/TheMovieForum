@@ -1,3 +1,4 @@
+import { ResponseMessage } from 'src/app/model/responseMessage';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -50,5 +51,17 @@ getListByUserAndTypeId(userId: string,listType:string) {
     headers = headers.append('token', tokenGetter());
 
     return this.httpClient.delete( HEROKU_API_URL + 'message/'+id, { headers: headers })
+  }
+
+  checkMoviOnList(userId:number,listType:number,movieId:number):Observable<ResponseMessage>{
+    let headers = new HttpHeaders();
+ 
+    headers = headers.append('Content-Type', 'application/json');
+    headers = headers.append('token', tokenGetter());
+
+    return this.httpClient.get<ResponseMessage>(
+       `${HEROKU_API_URL}userList/${userId}/${listType}/${movieId}`, {headers:headers}                 
+    );
+    
   }
 }
