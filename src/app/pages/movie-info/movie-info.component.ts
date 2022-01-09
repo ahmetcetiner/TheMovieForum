@@ -6,6 +6,10 @@ import { Movie } from 'src/app/model/movie';
 import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE } from 'src/config';
 import { Crew } from 'src/app/model/crew';
 import { DatePipe } from '@angular/common';
+import { List } from 'src/app/model/list';
+import { ListAdd } from 'src/app/model/listAdd';
+import { idGetter } from 'src/app/app.module';
+import { ListService } from 'src/app/services/list-service/list.service';
 
 @Component({
   selector: 'app-movie-info',
@@ -16,7 +20,8 @@ import { DatePipe } from '@angular/common';
 export class MovieInfoComponent implements OnInit {
   constructor(
     private movieService: MovieService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private listService : ListService
   ) {}
 
   imageUrl: string;
@@ -25,6 +30,8 @@ export class MovieInfoComponent implements OnInit {
   revenue: string;
   budget: string;
   movieId : number;
+  list:ListAdd;
+  userId:number=Number(idGetter()) 
 
   datepipe: DatePipe = new DatePipe('en-US');
   release_date: string;
@@ -41,6 +48,7 @@ export class MovieInfoComponent implements OnInit {
     this.activatedRoute.params.subscribe((params) => {
       this.getMovieById(params['movieId']);
       this.getActorsById(params['movieId']);
+      this.movieId=params['movieId']
     });
 
     
@@ -104,5 +112,10 @@ export class MovieInfoComponent implements OnInit {
       minimumFractionDigits: 0,
     });
     return formatter.format(money);
+  }
+
+  listAdd(type:number){
+    this.list=new ListAdd(type,this.userId,this.movieId)
+    this.listService.addListItem(this.list)
   }
 }
