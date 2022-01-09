@@ -1,3 +1,4 @@
+import { idGetter } from 'src/app/app.module';
 import { User } from './../../model/users';
 import { UserService } from './../../services/user-service/user.service';
 import { Component, OnInit } from '@angular/core';
@@ -17,10 +18,9 @@ export class ProfilePageComponent implements OnInit {
 
   sendModule: string = 'Favory List';
   listId: string = '1'
-  userId: string
+ 
   list: List[]
-  movies: Movie[]
-  movieBuffer:Array<Movie>=Array<Movie>()
+  movies:Array<Movie>=Array<Movie>()
 
   constructor(private activatedRoute: ActivatedRoute,
     private userService: UserService,
@@ -28,17 +28,19 @@ export class ProfilePageComponent implements OnInit {
     private movieService: MovieService) { }
 
   user: User[]
+  userId = idGetter()
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       this.getUser(params['userId']);
-      this.userId = params['userId']
+     // this.userId = params['userId']
     });
   }
 
   getUser(userId) {
     this.userService.getUserById(userId).subscribe(data => {
-      this.user = data
+      this.user = data,
+      console.log(data)
     })
   }
 
@@ -61,9 +63,7 @@ export class ProfilePageComponent implements OnInit {
         this.listId = '1'
         break;
     }
-    this.getList()
   }
-
   getList() {
     this.listService.getListByUserAndTypeId(this.userId, this.listId).subscribe(data => {
       this.list = data
@@ -72,20 +72,15 @@ export class ProfilePageComponent implements OnInit {
   }
 
   getMovies(data) {
-    data.map(Id => {
-      this.movieService.getMovieById(Id.MovieId.toString()).subscribe(data => {
-        this.movieBuffer.push(data)
-        console.log(this.movieBuffer)
-      })
-    })
-    
-    this.setMovies()
-  }
-  setMovies(){
-    for (let i = 0; i < this.movieBuffer.length; i++) {
-      this.movies[i]=this.movieBuffer[i]
+    for(let i=0;i<this.movies.length;i++){
+      this.movies.pop();
+      console.log(this.movies)
     }
-    console.log(this.movies)
-    console.log("mamut")
+    data.map(movie => {
+      this.movieService.getMovieById(movie.MovieId.toString()).subscribe(data => {
+        this.movies.push(data)
+      })
+    }) 
   }
+
 }
