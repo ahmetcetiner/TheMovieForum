@@ -16,6 +16,7 @@ import { MovieInfoComponent } from './pages/movie-info/movie-info.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { DiscussionMessageComponent } from './pages/discussion-message/discussion-message.component';
 import { HomeGuard } from './guards/home.guard';
+import { SearchComponent } from './pages/search/search.component';
 
 
 const routes: Routes = [
@@ -68,6 +69,11 @@ const routes: Routes = [
         path: 'discussion/:movieId',
         component: DiscussionMessageComponent,
         data: { title: 'Discussion' },
+      },
+      {
+        path: 'search/:serchText',
+        component: SearchComponent,
+        data: { title: 'Search' },
       },
     ],
   },
