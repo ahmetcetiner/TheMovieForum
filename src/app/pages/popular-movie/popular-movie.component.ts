@@ -38,8 +38,6 @@ export class PopularMovieComponent implements OnInit {
   getVideos() {
     this.movieService.getVideos(this.movieId.toString()).subscribe(data => {
       this.videoId = data.results[0].key;
-      console.log(data.results[0].key)
-      console.log(this.videoId)
     })
   }
 
