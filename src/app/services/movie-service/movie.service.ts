@@ -48,8 +48,8 @@ export class MovieService {
     return this.httpClient.get<PopularMovie>(POPULAR_BASE_URL)
   }
 
-  searchMovies(searchTerm:string){
-    return this.httpClient.get<PopularMovie>(SEARCH_BASE_URL+searchTerm)    
+  searchMovies(searchTerm:string,page:number){
+    return this.httpClient.get<PopularMovie>(SEARCH_BASE_URL+searchTerm+"&page="+page)    
   
 }
   
