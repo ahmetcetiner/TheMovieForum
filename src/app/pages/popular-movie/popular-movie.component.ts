@@ -19,6 +19,8 @@ export class PopularMovieComponent implements OnInit {
   imageUrl= IMAGE_BASE_URL+BACKDROP_SIZE
   movieId:number;
   videoId:string
+  play:string = "Play";
+  videodisabled:boolean = false;
   ngOnInit(): void {
     this.getPopularMovies()
   }
@@ -38,5 +40,18 @@ export class PopularMovieComponent implements OnInit {
       console.log(data.results[0].key)
       console.log(this.videoId)
     })
+  }
+
+  changeState(){
+    if(this.play == "Play")
+    {
+      this.play = "Pause",      
+      this.videodisabled = false
+    }
+    else
+    {      
+      this.play = "Play",
+      this.videodisabled = true
+    }
   }
 }

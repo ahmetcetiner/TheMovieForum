@@ -35,9 +35,9 @@
     overflow-x: scroll;
 }
 
-.modal-content {
-    width: 900px !important;
-    height: 450px !important;
+.modal-contenta {
+    width: 100% !important;
+    height: 100% !important;
     margin: 0;
     position: absolute;
     top: 50%;
@@ -45,7 +45,7 @@
     transform: translateY(50%);
 }
 
-.modala{
+.modal{
     min-width: 90px;
     min-height: 50px;
     width: 1205px;
