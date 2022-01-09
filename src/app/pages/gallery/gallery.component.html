@@ -1,17 +1,20 @@
 <div class="col page">
-  <div class="row first mb-5">
-    <div class="flip-card"  *ngFor="let mov of movies ">
-      <div  routerLink="/movie/{{mov.movieId}}" class="flip-card-front shadow movie-bg " style="--background:url({{mov.imageUrl}})">
-        <div class="shadow footer mt-6">
-          <div class="row w-100 ml-2">
-            <div class="col col-md-9 mt-3"><div class=" movie-title">{{mov.movieName}}</div></div>
-            <div class="col col-md-4 mt-2 row">
-              <img class="footer-ico mt-2" src="../../../assets/images/icons8_star.ico" />
-              <div class="footer-ico mt-2 ml-2 mr-3 text-align-center">{{mov.movieRate}}</div>
+    <div class="row first mb-5">
+        <button (click)="getdeneme()">mamut</button>
+        <div class="flip-card" *ngFor="let movie of movies ">
+            <div routerLink="/movie/{{movie.id}}" class="flip-card-front shadow movie-bg " style="--background:url({{mov.imageUrl}})">
+                <div class="shadow footer mt-6">
+                    <div class="row w-100 ml-2">
+                        <div class="col col-md-9 mt-3">
+                            <div class=" movie-title">{{movie.title}}</div>
+                        </div>
+                        <div class="col col-md-4 mt-2 row">
+                            <img class="footer-ico mt-2" src="../../../assets/images/icons8_star.ico" />
+                            <div class="footer-ico mt-2 ml-2 mr-3 text-align-center">{{movie.vote_average}}</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
