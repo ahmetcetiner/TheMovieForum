@@ -47,6 +47,11 @@ export class MovieService {
   getBackdropImage():Observable<PopularMovie>{    
     return this.httpClient.get<PopularMovie>(POPULAR_BASE_URL)
   }
+
+  searchMovies(searchTerm:string){
+    return this.httpClient.get<PopularMovie>(SEARCH_BASE_URL+searchTerm)    
+  
+}
   
   handleError(err: HttpErrorResponse) {
     let errorMessage = '';
@@ -58,4 +63,6 @@ export class MovieService {
     }
     return throwError(errorMessage);
   }
+
+
 }
