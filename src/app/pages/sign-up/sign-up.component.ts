@@ -1,3 +1,4 @@
+import { UserService } from 'src/app/services/user-service/user.service';
 import { AvatarService } from './../../services/avatar-service/avatar.service';
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from 'src/app/services/movie-service/movie.service';
@@ -18,11 +19,16 @@ import { AuthService } from 'src/app/services/auth-service/auth.service';
   styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent implements OnInit {
+  interval;
+  timeLeft: number = 60;
+
+
   constructor(
     private movieService: MovieService,
     private authService: AuthService,
     private formBuilder: FormBuilder,
-    private avatarService:AvatarService
+    private avatarService:AvatarService,
+    private userService : UserService
   ) {}
 
   registerForm : FormGroup;
@@ -30,6 +36,8 @@ export class SignUpComponent implements OnInit {
 
   imagePath: string;
   resultIndex: number = Math.floor(Math.random() * 20);
+
+  message : any
 
   ngOnInit() {
     this.createRegisterForm()
@@ -39,6 +47,11 @@ export class SignUpComponent implements OnInit {
         BACKDROP_SIZE +
         data.results[this.resultIndex].backdrop_path;
     });
+    //this.startTimer() 
+    this.userService.verifyUserName("arslan").subscribe(data=>{
+           console.log(data)
+  })
+ 
   }
   createRegisterForm(){
     this.registerForm = this.formBuilder.group(
@@ -75,4 +88,28 @@ export class SignUpComponent implements OnInit {
       this.authService.register(this.registerUser)
     }
   }
+
+  startTimer() {
+    
+
+    this.interval = setInterval(() => {
+      if(this.timeLeft > 0) {
+        if (this.registerForm.controls["UserName"].value){
+          let userName = this.registerForm.controls["UserName"].value
+          
+          this.userService.verifyUserName("arslan").subscribe(data=>{
+              this.message = data;
+              console.log(data)
+          })
+          console.log(userName)
+        }      
+        this.timeLeft--;
+        console.log("123123123123")
+        
+      } else {
+        this.timeLeft = 60;
+      }
+    },3000)
+  }
+  
 }
