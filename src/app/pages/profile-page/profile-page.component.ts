@@ -63,18 +63,17 @@ export class ProfilePageComponent implements OnInit {
         this.listId = '1'
         break;
     }
+    this.getList()
   }
   getList() {
     this.listService.getListByUserAndTypeId(this.userId, this.listId).subscribe(data => {
-      this.list = data
       this.getMovies(data)
     })
   }
 
   getMovies(data) {
-    for(let i=0;i<this.movies.length;i++){
+    while (this.movies.length) {
       this.movies.pop();
-      console.log(this.movies)
     }
     data.map(movie => {
       this.movieService.getMovieById(movie.MovieId.toString()).subscribe(data => {
