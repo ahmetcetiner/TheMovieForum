@@ -41,12 +41,23 @@ export class UserService {
     return this.httpClient.put<User>(HEROKU_API_URL + 'user',user, {headers: headers});
   }
 
- /* deleteUser(user: User){
+  verifyUserName(userName : string ) {
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
-    headers = headers.append('token', tokenGetter());
-    return this.httpClient.delete<User>(HEROKU_API_URL + 'user',user, {headers: headers});
-  }*/
+
+    return this.httpClient.get<string>(HEROKU_API_URL + 'verifyUserName/'+userName, {
+      headers: headers,
+    });
+  }
+
+  verifyEmail(eMail : string) {
+    let headers = new HttpHeaders();
+    headers = headers.append('Content-Type', 'application/json');
+
+    return this.httpClient.get(HEROKU_API_URL + 'verifyEmail/'+eMail, {
+      headers: headers,
+    });
+  }
 
 
   getToken() {
