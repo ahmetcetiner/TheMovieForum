@@ -1,1 +1,18 @@
-<p>search works!</p>
+<div class="containerr">
+    <app-gallery [movies]="movies"></app-gallery>
+    <nav aria-label="Page navigation example ">
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" (click)="getOldPage()" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <h3 class="display">{{pageValue}}</h3>
+            <li class="page-item">
+                <a class="page-link" (click)="getNewPage()" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>

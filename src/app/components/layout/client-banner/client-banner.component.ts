@@ -2,6 +2,9 @@ import { idGetter } from 'src/app/app.module';
 import { UserService } from '../../../services/user-service/user.service';
 import { AuthService } from '../../../services/auth-service/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { MovieService } from 'src/app/services/movie-service/movie.service';
+import { Movie } from 'src/app/model/movie';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-client-banner',
@@ -11,10 +14,12 @@ import { Component, OnInit } from '@angular/core';
 export class ClientBannerComponent implements OnInit {
   constructor(
     private authService: AuthService,
-    private userService: UserService
+    private userService: UserService,
+    private router:Router
   ) {}
   userId : string
-  serchText:string;
+  searchText:string;
+
   ngOnInit(): void {
 
     this.setUserId()
@@ -26,8 +31,13 @@ export class ClientBannerComponent implements OnInit {
   logOut() {
     this.authService.logOut();
   }
-  getSerch(){
-    alert(this.serchText)
+  getSearch(){
+    if(this.searchText!=""){
+      this.router.navigate(['search/'+this.searchText])
+    }
+    else{
+      this.router.navigate(['/'])
+    }
   }
 
   setUserId(){

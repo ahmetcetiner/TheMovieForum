@@ -6,7 +6,7 @@
             </div>
             <div class="col col-md-9">
                 <div class="row center justify-content-center">
-                    <input id="input" class="input shadow" type="text" [(ngModel)]="serchText" (keypress)="getSerch()">
+                    <input id="input" class="input shadow" type="text" [(ngModel)]="searchText" (ngModelChange)="getSearch()">
                 </div>
             </div>
             <div class="row col-md-1">
