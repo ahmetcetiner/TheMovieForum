@@ -17,7 +17,7 @@ export class DiscussionMessageComponent implements OnInit {
     private messageService: MessageService) { }
   discussions: Array<Discussion> = new Array<Discussion>();
   messasges:Message[];
-  discussionId: string;
+  discussionId: number;
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
@@ -31,7 +31,7 @@ export class DiscussionMessageComponent implements OnInit {
     })
   }
   setDiscussionId(discussionId) {
-    this.discussionId = discussionId
+    this.discussionId = Number(discussionId)
     this.messageService.getMessageByDiscussionId(this.discussionId).subscribe(data=>{
       this.messasges=data
     })
