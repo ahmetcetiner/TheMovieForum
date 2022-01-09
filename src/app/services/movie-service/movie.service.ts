@@ -41,7 +41,6 @@ export class MovieService {
   }
 
   getVideos(movieId:string):Observable<Video>{
-    console.log("mamut3")
     return this.httpClient.get<Video>( API_URL+"movie/"+movieId+"/videos"+"?api_key="+API_KEY+"&language=en-US")
   }
 
