@@ -27,7 +27,7 @@ export class ProfilePageComponent implements OnInit {
     private listService: ListService,
     private movieService: MovieService) { }
 
-  user: User[]
+  user: User
   userId = idGetter()
 
   ngOnInit(): void {
@@ -39,7 +39,7 @@ export class ProfilePageComponent implements OnInit {
 
   getUser(userId) {
     this.userService.getUserById(userId).subscribe(data => {
-      this.user = data,
+      this.user = data[0],
       console.log(data)
     })
   }
