@@ -38,14 +38,12 @@ export class HomepageComponent implements OnInit {
   getReviews() {
     this.reviewService.getReviews().subscribe((data) => {
       this.reviews = data;
-      console.log(data);
       this.getDates(data);
       this.getMovieImage(data);
     });
   }
 
   getDates(data) {
-    console.log(data);
     data.map((review) => {
       let release_date = this.datepipe.transform(
         review.CreatedDate,
@@ -55,7 +53,6 @@ export class HomepageComponent implements OnInit {
     });
   }
   getMovieImage(data) {
-    console.log(data);
     data.map((review) => {
       this.movieService
         .getMovieById(review.MovieId.toString())
