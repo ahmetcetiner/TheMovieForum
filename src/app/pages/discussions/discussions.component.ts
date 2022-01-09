@@ -37,7 +37,6 @@ backdropImageUrl : string
   getDiscussions(movieId){
     this.discussionService.getDiscussionByMovieId(movieId).subscribe(data=>{
       this.discussions=data
-      console.log(data)
       this.getDates(data)
     })    
    }

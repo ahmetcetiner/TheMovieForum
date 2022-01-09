@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Discussion } from 'src/app/model/discussion';
+import { Message } from 'src/app/model/message';
 import { DiscussionService } from 'src/app/services/discussion-service/discussion.service';
+import { MessageService } from 'src/app/services/message-service/message.service';
 
 @Component({
   selector: 'app-discussion-message',
@@ -10,8 +12,11 @@ import { DiscussionService } from 'src/app/services/discussion-service/discussio
 })
 export class DiscussionMessageComponent implements OnInit {
 
-  constructor(private discussionService: DiscussionService, private activatedRoute: ActivatedRoute) { }
+  constructor(private discussionService: DiscussionService, 
+    private activatedRoute: ActivatedRoute, 
+    private messageService: MessageService) { }
   discussions: Array<Discussion> = new Array<Discussion>();
+  messasges:Message[];
   discussionId: string;
 
   ngOnInit(): void {
@@ -27,5 +32,8 @@ export class DiscussionMessageComponent implements OnInit {
   }
   setDiscussionId(discussionId) {
     this.discussionId = discussionId
+    this.messageService.getMessageByDiscussionId(this.discussionId).subscribe(data=>{
+      this.messasges=data
+    })
   }
 }
