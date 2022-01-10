@@ -241,3 +241,17 @@ ul {
   text-align: right;
   margin-bottom: 25px;
 }
+
+.watchIcon{
+  position: relative;
+  top: 0;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1em;
+  min-height: 1em;
+  width: 1em;
+  height: 1em;
+  line-height: inherit;
+}
