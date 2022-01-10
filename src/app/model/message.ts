@@ -3,7 +3,7 @@ export class Message {
     UserId : number;  
     MessageText: string;
     DiscussionId: number;
-    CreatedDate: Date;
+    CreatedDate: string;
     FirstName !: string;
     LastName !: string;  
     UserName!: string;
