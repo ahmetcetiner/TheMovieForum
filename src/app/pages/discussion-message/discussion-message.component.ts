@@ -22,6 +22,7 @@ export class DiscussionMessageComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       this.getDiscussions(params['movieId']);
+      this.setDiscussionId(params['discussionId'])
     });
   }
 
