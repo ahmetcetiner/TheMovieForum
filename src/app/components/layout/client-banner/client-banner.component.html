@@ -5,8 +5,9 @@
                 <a [routerLink]="['/']" class="text-light text-underline-none wrap-text"><img class="image" src="../../../../assets/images/beyazKalin2.png" alt="" /></a>
             </div>
             <div class="col col-md-9">
-                <div class="row center justify-content-center">
-                    <input id="input" class="input shadow" type="text" [(ngModel)]="searchText" (ngModelChange)="getSearch()">
+                <div class="row center justify-content-center inputCase">
+                    <input id="input" class="input" type="text" [(ngModel)]="searchText" (ngModelChange)="getSearch()" aria-describedby="inputGroup-sizing-sm">
+                    <img src="../../../../assets/images/icons8_search_1.ico">
                 </div>
             </div>
             <div class="row col-md-1">
