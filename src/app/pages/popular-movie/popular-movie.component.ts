@@ -1,6 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Movie } from 'src/app/model/movie';
 import { PopularMovie } from 'src/app/model/popularMovie';
 import { MovieService } from 'src/app/services/movie-service/movie.service';
 import { BACKDROP_SIZE, IMAGE_BASE_URL } from 'src/config';
@@ -37,10 +35,19 @@ export class PopularMovieComponent implements OnInit {
 
   getVideos() {
     this.movieService.getVideos(this.movieId.toString()).subscribe(data => {
-      this.videoId = data.results[0].key;
+      this.selectTrailer(data.results)   
     })
   }
-
+  selectTrailer(results){
+    for(let i =0;i<results.length;i++){
+      if(results[i].type == "Trailer"){
+        this.videoId=results[i].key
+        break;
+      }else{
+        this.videoId=results[0].key
+      }
+    }     
+}
   changeState(){
     this.videodisabled=true
   }
