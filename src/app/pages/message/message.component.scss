@@ -126,6 +126,7 @@ label {
     color: #8D99AE;
     font-weight: bold;
     letter-spacing: 1px;
+    margin-top:10px ;
 }
 
 .btn-outline-primary {
@@ -155,7 +156,14 @@ label {
     color: #8D99AE;
 }
 
-.form-comment .form-control {
+.message-title{
+    margin-top: 30px ;  
+    font-size: 35px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    color: #EDF2F4;
+}
+.form-message .form-control {
     position: relative;
     box-sizing: border-box;
     height: auto;
@@ -163,7 +171,7 @@ label {
     font-size: 16px;
 }
 
-.form-comment .form-control:focus {
+.form-message .form-control:focus {
     z-index: 2;
 }
 
@@ -195,4 +203,12 @@ label {
 .userName {
     font-size: 20px;
     font-weight: bold;
+}
+.date{
+    float: right;
+    font-size: 15px ;
+    font-weight: bold;
+    margin-top: -30px;
+    margin-right: -10px;
+
 }

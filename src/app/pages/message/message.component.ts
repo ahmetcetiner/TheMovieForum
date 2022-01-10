@@ -18,6 +18,7 @@ export class MessageComponent implements OnInit {
     private activatedRoute: ActivatedRoute,) { }
 
   @Input() messasges: Array<Message>
+  @Input() dates: Array<string>
 
   datePipe: DatePipe = new DatePipe('en-US');
 
