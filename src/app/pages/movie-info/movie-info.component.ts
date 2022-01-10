@@ -103,12 +103,17 @@ export class MovieInfoComponent implements OnInit {
   listAdd(type: number) {
     this.list = new List(type, this.userId, this.movieId);
     this.listService.addListItem(this.list);
+    setTimeout(() => {
+      window.location.reload()
+    }, 200)
   }
 
   deleteList(type: number){
     this.list = new List(type, this.userId, this.movieId);
     this.listService.deleteListItem(this.list);
-    console.log(this.list)
+    setTimeout(() => {
+      window.location.reload()
+    }, 200)
   }
 
   checkFavoriteList(movieId) {
