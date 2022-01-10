@@ -3,11 +3,9 @@ import { DatePipe, formatDate } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { idGetter } from 'src/app/app.module';
 import { Review } from 'src/app/model/review';
-import { MovieService } from 'src/app/services/movie-service/movie.service';
 import { ReviewService } from 'src/app/services/review-service/review.service';
-import { BACKDROP_SIZE, IMAGE_BASE_URL } from 'src/config';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { async } from 'rxjs';
+
 
 @Component({
   selector: 'app-comment',
@@ -16,9 +14,7 @@ import { async } from 'rxjs';
 })
 export class CommentComponent implements OnInit {
   constructor(
-    private movieService: MovieService,
     private reviewService: ReviewService,
-    private router: Router,
     private formBuilder: FormBuilder
   ) { }
 
@@ -39,7 +35,6 @@ export class CommentComponent implements OnInit {
 
   ngOnInit(): void {
     this.createCommentForm();
-    //this.getReviewArea(this.reviewInput)
   }
   createCommentForm() {
     this.commentForm = this.formBuilder.group({

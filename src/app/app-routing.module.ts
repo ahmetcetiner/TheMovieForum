@@ -66,7 +66,7 @@ const routes: Routes = [
         data: { title: 'Actors' },
       },
       {
-        path: 'discussion/:movieId',
+        path: 'discussion/:movieId/:discussionId',
         component: DiscussionMessageComponent,
         data: { title: 'Discussion' },
       },

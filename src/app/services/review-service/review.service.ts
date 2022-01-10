@@ -1,3 +1,4 @@
+import { AlertifyService } from './../alertify-service/alertify.service';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -11,7 +12,7 @@ import { HEROKU_API_URL } from 'src/config';
 })
 export class ReviewService {
   constructor(private httpClient: HttpClient,
-    private router: Router) {}
+    private alertifyService: AlertifyService) {}
 
   
   getReviewById(id: number) {
@@ -82,7 +83,9 @@ export class ReviewService {
         "CreatedDate":review.CreatedDate
       },
       { headers: headers }
-    ).subscribe(data=>{});
+    ).subscribe(data=>{}, (error)=>{
+      this.alertifyService.error("Bir hata oluştu.")
+    });
    
   }
 

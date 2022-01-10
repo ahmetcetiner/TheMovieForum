@@ -29,7 +29,7 @@ export class MovieService {
       tap(data=>{
       }),
       catchError(this.handleError)
-    )   
+    )
   }
 
   getActorsByMovieId(movieId:string):Observable<Credits>{

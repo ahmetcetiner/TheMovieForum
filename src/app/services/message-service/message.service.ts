@@ -1,3 +1,4 @@
+import { AlertifyService } from './../alertify-service/alertify.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -11,7 +12,8 @@ import { HEROKU_API_URL } from 'src/config';
 })
 export class MessageService {
 
-constructor(private httpClient: HttpClient) { }
+constructor(private httpClient: HttpClient,
+  private alertifyService : AlertifyService) { }
 getMessageById(id: number) {
     let headers = new HttpHeaders();
  
@@ -52,16 +54,16 @@ getMessageById(id: number) {
     headers = headers.append('Content-Type', 'application/json');
     headers = headers.append('token', tokenGetter());
 
-    return this.httpClient.put<Message>(
-      HEROKU_API_URL + 'message',
-      {
-        UserId: message.UserId,
-        MessageText: message.MessageText,
-        DiscussionId: message.DiscussionId,
-        CreatedDate:message.CreatedDate
-      },
-      { headers: headers }
-    );
+    return this.httpClient.post<Message>(
+      HEROKU_API_URL + 'message', {
+        "UserId": message.UserId,
+        "DiscussionId": message.DiscussionId,
+        "MessageText": message.MessageText,
+        "CreatedDate":message.CreatedDate
+      }, { headers: headers }
+    ).subscribe(data=>{}, (error)=>{
+      this.alertifyService.error("Bir hata oluştu.")
+    });
   }
 
   deleteMessage(messageId:number){

@@ -1,6 +1,6 @@
 <div class="container mb-5">
     <div class="card text-white bg-secondary mt-3 mb-3 container" *ngFor="let discussion of discussions;let i = index">
-        <div class="row card-background" routerLink="/discussion/{{discussion.MovieId}}" style="--background: url({{backdropImageUrl}})">           
+        <div class="row card-background" routerLink="/discussion/{{discussion.MovieId}}/{{discussion.Id}}" style="--background: url({{backdropImageUrl}})">           
             <div class="col-sm-10">
                 <div class="container">
                     <div class="row">
