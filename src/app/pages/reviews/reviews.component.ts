@@ -22,7 +22,7 @@ export class ReviewsComponent implements OnInit {
     private userService: UserService
   ) {}
 
-  myMovieId: number;
+  movieId: number;
   backdropImageUrl: string;
   reviews: Review[];
   reviewId: number;
@@ -36,13 +36,13 @@ export class ReviewsComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe((params) => {
       this.getMovieImage(params['movieId']);
-      this.getReview();
+      this.getReview(params['movieId']);
+      this.movieId=params['movieId']
     });
-
   }
 
-  getReview() {
-    this.reviewService.getReviewByMovieId(this.myMovieId).subscribe((data) => {
+  getReview(movieId) {
+    this.reviewService.getReviewByMovieId(movieId).subscribe((data) => {
       this.reviews = data;
       this.getDates(data);
     });

@@ -1,7 +1,7 @@
-<app-comment [movieId] = "myMovieId"></app-comment>
+<app-comment [movieId]="movieId"></app-comment>
 <div class=" container">
     <div class="card text-white mt-3" *ngFor="let review of reviews;let i = index">
-        <div class="row card-background" style="--background: url({{backdropImageUrl}})">            
+        <div class="row card-background" style="--background: url({{backdropImageUrl}})">
             <div class="col-sm-10">
                 <div class="container">
                     <div class="row">
