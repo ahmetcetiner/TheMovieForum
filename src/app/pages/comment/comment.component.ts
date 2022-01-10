@@ -16,9 +16,7 @@ import { async } from 'rxjs';
 })
 export class CommentComponent implements OnInit {
   constructor(
-    private movieService: MovieService,
     private reviewService: ReviewService,
-    private router: Router,
     private formBuilder: FormBuilder
   ) { }
 
@@ -39,7 +37,6 @@ export class CommentComponent implements OnInit {
 
   ngOnInit(): void {
     this.createCommentForm();
-    //this.getReviewArea(this.reviewInput)
   }
   createCommentForm() {
     this.commentForm = this.formBuilder.group({
