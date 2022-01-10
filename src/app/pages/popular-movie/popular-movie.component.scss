@@ -68,3 +68,39 @@
     height: 50px;
     left: calc(100% - 30px);
 }
+
+
+/* width */
+
+::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 7px;
+    height: 10px;
+}
+
+
+/* Track */
+
+ ::-webkit-scrollbar-track {
+    background: #8d99ae;
+    border-radius: 7px;
+    height: 10px;
+}
+
+
+/* Handle */
+
+ ::-webkit-scrollbar-thumb {
+    background: #2b2d42;
+    border-radius: 7px;
+    height: 10px;
+}
+
+
+/* Handle on hover */
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: #d80032;
+    border-radius: 7px;
+    height: 10px;
+}
