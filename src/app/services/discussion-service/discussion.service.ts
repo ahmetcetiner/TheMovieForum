@@ -1,3 +1,4 @@
+import { AlertifyService } from './../alertify-service/alertify.service';
 import { Discussion } from 'src/app/model/discussion';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -10,7 +11,8 @@ import { HEROKU_API_URL } from 'src/config';
 })
 export class DiscussionService {
 
-constructor(private httpClient: HttpClient) { }
+constructor(private httpClient: HttpClient,
+  private alertifyService:AlertifyService) { }
  getDiscussionById(id: number) {
     let headers = new HttpHeaders();
    
@@ -79,6 +81,8 @@ constructor(private httpClient: HttpClient) { }
         "CreatedDate":discussion.CreatedDate
       },
       { headers: headers }
-    );
+    ).subscribe(data=>{}, (error)=>{
+      this.alertifyService.error("Bir hata oluştu.")
+    });
   }
 }
