@@ -7,7 +7,6 @@ import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE } from 'src/config';
 import { Crew } from 'src/app/model/crew';
 import { DatePipe } from '@angular/common';
 import { List } from 'src/app/model/list';
-import { ListAdd } from 'src/app/model/listAdd';
 import { idGetter } from 'src/app/app.module';
 import { ListService } from 'src/app/services/list-service/list.service';
 
@@ -21,7 +20,7 @@ export class MovieInfoComponent implements OnInit {
   constructor(
     private movieService: MovieService,
     private activatedRoute: ActivatedRoute,
-    private listService : ListService
+    private listService: ListService
   ) {}
 
   imageUrl: string;
@@ -29,9 +28,13 @@ export class MovieInfoComponent implements OnInit {
   runtime: string;
   revenue: string;
   budget: string;
-  movieId : number;
-  list:ListAdd;
-  userId:number=Number(idGetter()) 
+  movieId: number;
+  list: List;
+  userId: number = Number(idGetter());
+
+  isFavorite: boolean = false;
+  isWatch: boolean = false;
+  isWatched: boolean = false;
 
   datepipe: DatePipe = new DatePipe('en-US');
   release_date: string;
@@ -42,41 +45,41 @@ export class MovieInfoComponent implements OnInit {
   sendModule: string = 'actor';
 
   movie!: Movie;
- 
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params) => {
       this.getMovieById(params['movieId']);
       this.getActorsById(params['movieId']);
-      this.movieId=params['movieId']
+      this.movieId = params['movieId'];
+      this.checkFavoriteList(params['movieId']);
+      this.checWatchList(params['movieId']);
+      this.checWatchedList(params['movieId']);
     });
 
-    
     this.runtime = this.calcTime(this.movie.runtime);
     this.revenue = this.calcTime(this.movie.revenue);
     this.budget = this.calcTime(this.movie.budget);
   }
 
-  getActorsById(movieId){
+  getActorsById(movieId) {
     this.movieService
-    .getActorsByMovieId(movieId.toString())
-    .subscribe((data) => {
-      this.actors = data.cast;
-      this.directors = data.crew.filter((member) => member.job == 'Director');
-    });
+      .getActorsByMovieId(movieId.toString())
+      .subscribe((data) => {
+        this.actors = data.cast;
+        this.directors = data.crew.filter((member) => member.job == 'Director');
+      });
   }
 
   getMovieById(movieId) {
     this.movieService.getMovieById(movieId).subscribe((data) => {
       this.movie = data;
-      this.movieId = data.id
+      this.movieId = data.id;
       this.imageUrl = IMAGE_BASE_URL + BACKDROP_SIZE + data.backdrop_path;
       this.backdropImageUrl = IMAGE_BASE_URL + BACKDROP_SIZE + data.poster_path;
       this.release_date = this.datepipe.transform(
         data.release_date,
         'dd/MM/yyyy'
       );
-      
     });
   }
 
@@ -97,6 +100,41 @@ export class MovieInfoComponent implements OnInit {
     }
   }
 
+  listAdd(type: number) {
+    this.list = new List(type, this.userId, this.movieId);
+    this.listService.addListItem(this.list);
+  }
+
+  deleteList(type: number){
+    this.list = new List(type, this.userId, this.movieId);
+    this.listService.deleteListItem(this.list);
+    console.log(this.list)
+  }
+
+  checkFavoriteList(movieId) {
+    this.listService
+      .checkMoviOnList(this.userId, 1, movieId)
+      .subscribe((data) => {
+        this.isFavorite = data.isExist;
+      });
+  }
+
+  checWatchList(movieId) {
+    this.listService
+      .checkMoviOnList(this.userId, 3, movieId)
+      .subscribe((data) => {
+        this.isWatch = data.isExist;
+      });
+  }
+
+  checWatchedList(movieId) {
+    this.listService
+      .checkMoviOnList(this.userId, 2, movieId)
+      .subscribe((data) => {
+        this.isWatched = data.isExist;
+      });
+  }
+
   // Convert time to hours and minutes
   calcTime(time) {
     let hours = Math.floor(time / 60);
@@ -112,10 +150,5 @@ export class MovieInfoComponent implements OnInit {
       minimumFractionDigits: 0,
     });
     return formatter.format(money);
-  }
-
-  listAdd(type:number){
-    this.list=new ListAdd(type,this.userId,this.movieId)
-    this.listService.addListItem(this.list)
   }
 }

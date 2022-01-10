@@ -2,11 +2,11 @@ export class List {
     Id: number;
     ListType: number;
     UserId: number;
-    MovieId: Array<number>;
+    MovieId: number;
 
-    constructor(){
-        this.MovieId = new Array<number>()
+    constructor( ListType: number, UserId: number, MovieId: number) {
+        this.ListType = ListType;
+        this.UserId = UserId;
+        this.MovieId = MovieId;
     }
-
-
 }
