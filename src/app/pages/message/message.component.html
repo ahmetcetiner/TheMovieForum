@@ -1,83 +1,62 @@
-<div class="discussion-messages">
-  <div class="container">
-    <div>
-      <button
-        class="btn btn-outline-primary column p-2"
-        (click)="getMessageArea(true)"
-        data-toggle="collapse"
-      >
+<div class="container">
+    <div class="container">
+        <div>
+            <button class="btn btn-outline-primary column p-2" (click)="getMessageArea(true)" data-toggle="collapse">
         New Message
       </button>
-    </div>
-    <div *ngIf="messageInput">
-      <div class="container background">
-        <div class="row">
-          <div class="col-lg-12 col-md-8 message-box">
-            <div class="col-lg-12 message-title">
-              <h1>Message</h1>
-            </div>
-            <div class="col-lg-12 message-form">
-              <form
-                [formGroup]="messageForm"
-                (ngSubmit)="sengMessage()"
-                class="form-message"
-              >               
-                <div class="form-group">
-                  <label class="form-control-label">Message Text</label>
-                  <textarea
-                    type="text"
-                    id="Text"
-                    name="Text"
-                    formControlName="Text"
-                    class="form-control"
-                    placeholder="Message Text"
-                    rows="4"
-                  ></textarea>
-                  <span
-                    class="help-block"
-                    *ngIf="
+        </div>
+        <div *ngIf="messageInput">
+            <div class="container background">
+                <div class="row">
+                    <div class="col-lg-12 col-md-8 message-box">
+                        <div class="col-lg-12 message-title">
+                            <h1>Message</h1>
+                        </div>
+                        <div class="col-lg-12 message-form">
+                            <form [formGroup]="messageForm" (ngSubmit)="sengMessage()" class="form-message">
+                                <div class="form-group">
+                                    <label class="form-control-label">Message Text</label>
+                                    <textarea type="text" id="Text" name="Text" formControlName="Text" class="form-control" placeholder="Message Text" rows="4"></textarea>
+                                    <span class="help-block" *ngIf="
                     messageForm.get('Text').hasError('required') &&
                     messageForm.get('Text').dirty
-                    "
-                  >
+                    ">
                     Lastname is required
                   </span>
-                </div>
-                <div class="message-btn">
-                  <div class="col-lg-6 message-btm message-text">
-                    <!-- Error Message -->
-                  </div>
-                  <div>
-                    <button
-                      type="submit"
-                      class="btn btn-outline-primary send"
-                      [disabled]="!messageForm.valid"
-                    >
+                                </div>
+                                <div class="message-btn">
+                                    <div class="col-lg-6 message-btm message-text">
+                                        <!-- Error Message -->
+                                    </div>
+                                    <div>
+                                        <button type="submit" class="btn btn-outline-primary send" [disabled]="!messageForm.valid">
                       Send
                     </button>
-                    <button
-                      class="btn btn-outline-primary cancel"
-                      (click)="getMessageArea(false)"
-                    >
+                                        <button class="btn btn-outline-primary cancel" (click)="getMessageArea(false)">
                       Cancel
                     </button>
-                  </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-lg-3 col-md-2"></div>
+                    </div>
                 </div>
-              </form>
             </div>
-            <div class="col-lg-3 col-md-2"></div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
-  <div class="container">
-    <div class="row ml-2" *ngFor="let messasge of messasges">
-      <img src="{{ messasge.AvatarUrl }}" class="userImage" />
-      <div class="col-sm-9">
-        <p class="text mt-3">{{ messasge.UserName }}</p>
-        <p class="text mt-2">{{ messasge.MessageText }}</p>
-      </div>
+    <div *ngFor="let messasge of messasges">
+        <div class="discussion-messages" [ngStyle]="{'background': getRandomColor()}">
+            <div class="container">
+                <div class="row ml-2">
+                    <img src="{{ messasge.AvatarUrl }}" class="userImage" />
+                    <div class="col-sm-9">
+                        <p class=" userName text mt-3">{{ messasge.UserName }}</p>
+                        <p class="text mt-2">{{ messasge.MessageText }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
+<div class="mt-3"></div>
