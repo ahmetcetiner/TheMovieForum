@@ -1,3 +1,4 @@
+import { ResponseMessage } from './../../model/responseMessage';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -41,22 +42,18 @@ export class UserService {
     return this.httpClient.put<User>(HEROKU_API_URL + 'user',user, {headers: headers});
   }
 
-  verifyUserName(userName : string ) {
+  verifyUserName(userName : string ): Observable<ResponseMessage> {
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
 
-    return this.httpClient.get<string>(HEROKU_API_URL + 'verifyUserName/'+userName, {
-      headers: headers,
-    });
+    return this.httpClient.get<ResponseMessage>(HEROKU_API_URL + 'verifyUserName/'+userName,{headers: headers});
   }
 
-  verifyEmail(eMail : string) {
+  verifyEmail(eMail : string):Observable<ResponseMessage> {
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
 
-    return this.httpClient.get(HEROKU_API_URL + 'verifyEmail/'+eMail, {
-      headers: headers,
-    });
+    return this.httpClient.get<ResponseMessage>(HEROKU_API_URL + 'verifyEmail/'+eMail,{headers: headers});
   }
 
 
