@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Discussion } from 'src/app/model/discussion';
@@ -18,6 +19,10 @@ export class DiscussionMessageComponent implements OnInit {
   discussions: Array<Discussion> = new Array<Discussion>();
   messasges:Message[];
   discussionId: string;
+  
+  datepipe: DatePipe = new DatePipe('en-US');
+  messageDates: Array<string> = new Array<string>();
+  discussionDates: Array<string> = new Array<string>();
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
@@ -29,12 +34,32 @@ export class DiscussionMessageComponent implements OnInit {
   getDiscussions(movieId) {
     this.discussionService.getDiscussionByMovieId(movieId).subscribe(data => {
       this.discussions = data;
+      this.getDiscussionDates(data);
     })
   }
   setDiscussionId(discussionId) {
     this.discussionId = discussionId
     this.messageService.getMessageByDiscussionId(this.discussionId).subscribe(data=>{
       this.messasges=data
+      this.getMessageDates(data);
     })
+  }
+  getMessageDates(data) {
+    data.map((message) => {
+      let release_date = this.datepipe.transform(
+        message.CreatedDate,
+        'dd/MM/yy HH:mm'
+      );
+      this.messageDates.push(release_date);
+    });
+  }
+  getDiscussionDates(data) {
+    data.map((discussion) => {
+      let release_date = this.datepipe.transform(
+        discussion.CreatedDate,
+        'dd/MM/yy'
+      );
+      this.discussionDates.push(release_date);    
+    });
   }
 }

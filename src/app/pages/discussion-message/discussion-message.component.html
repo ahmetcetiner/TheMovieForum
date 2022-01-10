@@ -1,13 +1,14 @@
 <div class="row">
     <div class="col-md-3">
-        <div class="discussions shadow m-1" *ngFor="let discussion of discussions">
+        <div class="discussions shadow m-1" *ngFor="let discussion of discussions;let i = index">
             <div class="p-1" (click)="setDiscussionId(discussion.Id)" routerLink="/discussion/{{discussion.MovieId}}/{{discussion.Id}}">
-                <p>{{discussion.Name}}</p>
+                <p class="title">{{discussion.Name}}</p>
+                <p  class="date">{{discussionDates[i]}}</p>
                 <p class="userName">{{discussion.UserName}}</p>
             </div>
         </div>
     </div>   
     <div class="col-md-8">      
-        <app-message [messasges]="messasges"></app-message>
+        <app-message [messasges]="messasges" [dates]="messageDates"></app-message>
     </div>
 </div>
