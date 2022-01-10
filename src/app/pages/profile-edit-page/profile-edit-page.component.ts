@@ -19,16 +19,23 @@ export class ProfileEditPageComponent implements OnInit {
     private userService: UserService,
     private alertifyService: AlertifyService
   ) {}
+
   userId = idGetter();
+
   profileEditForm: FormGroup;
+
   editUser: User = new User();
-  userName: string;
   currentUser: User = new User();
+  
   eMail: string;
+  userName: string;
+
   responseMessageUserName: ResponseMessage;
   responseMessageEmail: ResponseMessage;
+  
   disableMessageUserName = true;
   disableMessageEmail = true;
+
   ngOnInit(): void {
     this.createProfileEditForm();
     this.setForm();
@@ -42,14 +49,13 @@ export class ProfileEditPageComponent implements OnInit {
       this.profileEditForm.get('Email')?.setValue(data[0].Email);
       this.profileEditForm.get('Password')?.setValue(data[0].Password);
       this.profileEditForm.get('confirmPassword')?.setValue(data[0].Password);
-
     });
   }
 
   createProfileEditForm() {
     this.profileEditForm = this.formBuilder.group(
       {
-        Id :  [''],
+        Id: [''],
         UserName: ['', Validators.required],
         FirstName: ['', Validators.required],
         LastName: ['', Validators.required],
@@ -70,7 +76,7 @@ export class ProfileEditPageComponent implements OnInit {
   }
 
   updateUser() {
-    if (this.profileEditForm.valid){
+    if (this.profileEditForm.valid) {
       let firstName = this.profileEditForm.controls['FirstName'].value;
       let lastName = this.profileEditForm.controls['LastName'].value;
 
@@ -80,19 +86,15 @@ export class ProfileEditPageComponent implements OnInit {
 
       this.profileEditForm.controls['Id'].setValue(this.userId);
 
-      this.userService.getUserById(this.userId).subscribe(data=>{
-  
-        if(this.userName==data[0].UserName && this.eMail == data[0].Email){
+      this.userService.getUserById(this.userId).subscribe((data) => {
+        if (this.userName == data[0].UserName && this.eMail == data[0].Email) {
           this.editUser = Object.assign({}, this.profileEditForm.value);
-          console.log(this.editUser)
-          this.userService.updateUser(this.editUser).subscribe(data=>{console.log(data)});
+          this.userService.updateUser(this.editUser).subscribe((data) => {});
+        } else {
+          this.alertifyService.warning('Hatalı alanları değiştiriniz.');
         }
-        else{
-          this.alertifyService.warning("Hatalı alanları değiştiriniz.")
-        }
-     })
+      });
     }
-   
   }
 
   passwordMatchValidator(g: FormGroup) {
@@ -109,20 +111,16 @@ export class ProfileEditPageComponent implements OnInit {
 
   checkEmail() {
     this.userService.verifyEmail(this.eMail).subscribe((data) => {
-      console.log(data);
-      this.checkCurrentEmail(data.isExist)
+      this.checkCurrentEmail(data.isExist);
     });
-    
   }
 
   checkCurrentUserName(isExist) {
     if (isExist) {
       this.userService.getUserById(this.userId).subscribe((data) => {
-        console.log(this.userName);
         if (this.userName == data[0].UserName)
           this.disableMessageUserName = true;
-          else
-          this.disableMessageUserName=false
+        else this.disableMessageUserName = false;
       });
     }
   }
@@ -130,7 +128,6 @@ export class ProfileEditPageComponent implements OnInit {
   checkCurrentEmail(isExist) {
     if (isExist) {
       this.userService.getUserById(this.userId).subscribe((data) => {
-        console.log(this.eMail);
         if (this.eMail == data[0].Email) this.disableMessageEmail = true;
         else this.disableMessageEmail = false;
       });
