@@ -22,16 +22,9 @@ export class GalleryComponent implements OnInit {
     private activatedRoute: ActivatedRoute) { }
     @Input() movies: Array<Movie>
   
-
-
     imageUrl = IMAGE_BASE_URL + BACKDROP_SIZE;
 
-  ngOnInit(): void {
-  console.log(this.movies)
-    
-    
+  ngOnInit(): void {    
   }
-
-  
 
 }
