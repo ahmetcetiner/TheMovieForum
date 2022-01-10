@@ -3,11 +3,13 @@ import { RegisterUser } from '../../model/registerUser';
 import { LoginUser } from '../../model/loginUser';
 import { Injectable } from '@angular/core';
 
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { AlertifyService } from '../alertify-service/alertify.service';
 import { TOKEN_KEY, HEROKU_API_URL } from 'src/config';
+import { throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -34,7 +36,9 @@ export class AuthService {
         this.saveToken(data.token, data.user.Id);
         this.userToken = data['token'];
         this.router.navigateByUrl('/');
-        this.alertifyService.success('Sisteme giriş yapıldı.');
+        this.alertifyService.success('Sisteme giriş yapıldı.'); 
+      }, (error)=>{
+        this.alertifyService.error("Kullanıcı adı veya şifre hatalı.")
       });
   }
 
@@ -43,7 +47,9 @@ export class AuthService {
     headers = headers.append('Content-Type', 'application/json');
     this.httpClient
       .post(HEROKU_API_URL + 'user', registerUser, { headers: headers })
-      .subscribe((data) => {});
+      .subscribe((data) => {}, (error)=>{
+        this.alertifyService.error("Bir hata oluştu.")
+      });
       this.alertifyService.success('Sisteme kaydınız yapıldı.');
       this.router.navigateByUrl('/login')
   }
@@ -68,5 +74,5 @@ export class AuthService {
   }
   getCurrentUser() {
     return this.jwtHelper.decodeToken(localStorage.getItem(TOKEN_KEY)).nameid;
-  }
+  }  
 }
