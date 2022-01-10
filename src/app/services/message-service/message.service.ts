@@ -52,16 +52,14 @@ getMessageById(id: number) {
     headers = headers.append('Content-Type', 'application/json');
     headers = headers.append('token', tokenGetter());
 
-    return this.httpClient.put<Message>(
-      HEROKU_API_URL + 'message',
-      {
-        UserId: message.UserId,
-        MessageText: message.MessageText,
-        DiscussionId: message.DiscussionId,
-        CreatedDate:message.CreatedDate
-      },
-      { headers: headers }
-    );
+    return this.httpClient.post<Message>(
+      HEROKU_API_URL + 'message', {
+        "UserId": message.UserId,
+        "DiscussionId": message.DiscussionId,
+        "MessageText": message.MessageText,
+        "CreatedDate":message.CreatedDate
+      }, { headers: headers }
+    ).subscribe(data=>{});
   }
 
   deleteMessage(messageId:number){
