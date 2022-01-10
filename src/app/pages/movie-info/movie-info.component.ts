@@ -46,6 +46,11 @@ export class MovieInfoComponent implements OnInit {
 
   movie!: Movie;
 
+  videoId:string
+  play:string = "Play";
+  videodisabled:boolean = false;
+
+
   ngOnInit() {
     this.activatedRoute.params.subscribe((params) => {
       this.getMovieById(params['movieId']);
@@ -155,5 +160,24 @@ export class MovieInfoComponent implements OnInit {
       minimumFractionDigits: 0,
     });
     return formatter.format(money);
+  }
+
+  getVideos() {
+    this.movieService.getVideos(this.movieId.toString()).subscribe(data => {
+      this.selectTrailer(data.results)    
+    })
+  }
+  selectTrailer(results){
+      for(let i =0;i<results.length;i++){
+        if(results[i].type == "Trailer"){
+          this.videoId=results[i].key
+          break;
+        }else{
+          this.videoId=results[0].key
+        }
+      }     
+  }
+  changeState(){
+    this.videodisabled=true
   }
 }
