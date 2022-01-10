@@ -42,7 +42,9 @@ export class ListService {
 
     this.httpClient
       .post(HEROKU_API_URL + 'list', list, { headers: headers })
-      .subscribe((data) => {});
+      .subscribe((data) => {}, (error)=>{
+        this.alertifyService.error("Bir hata oluştu.")
+      });
     this.alertifyService.success('Seçtiğiniz film listenize eklenmiştir.');
   }
 
@@ -56,9 +58,10 @@ export class ListService {
         `${HEROKU_API_URL}list/${list.UserId}/${list.ListType}/${list.MovieId}`,
         { headers: headers }
       )
-      .subscribe((data) => {});
+      .subscribe((data) => {}, (error)=>{
+        this.alertifyService.error("Bir hata oluştu.")
+      });
     this.alertifyService.error('Seçili film listenizden kaldırılmıştır.');
-    console.log(`${HEROKU_API_URL}list/${list.UserId}/${list.ListType}/${list.MovieId}`);
   }
 
   checkMoviOnList(
