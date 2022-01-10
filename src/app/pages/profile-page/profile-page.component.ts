@@ -1,3 +1,5 @@
+import { map } from 'rxjs/operators';
+import { Genre } from './../../model/genre';
 import { idGetter } from 'src/app/app.module';
 import { User } from './../../model/users';
 import { UserService } from './../../services/user-service/user.service';
@@ -16,11 +18,14 @@ import { SyncAsync } from '@angular/compiler/src/util';
 })
 export class ProfilePageComponent implements OnInit {
 
-  sendModule: string = 'Favory List';
+  sendModule: string = 'Favorite List';
   listId: string = '1'
  
   list: List[]
-  movies:Array<Movie>=Array<Movie>()
+  favoriteList : Array<number>= new Array<number>()
+  genres : Array<Genre>= new Array<Genre>()
+  movies:Array<Movie> =new Array<Movie>()
+  genreNames : Array<string>= new Array<string>()
 
   constructor(private activatedRoute: ActivatedRoute,
     private userService: UserService,
@@ -31,24 +36,20 @@ export class ProfilePageComponent implements OnInit {
   userId = idGetter()
 
   ngOnInit(): void {
-    this.getModule('Favory List')
-    this.activatedRoute.params.subscribe((params) => {
-      this.getUser(params['userId']);
-     // this.userId = params['userId']
-    });
+    this.getModule("Favorite List")
+    this.getUser()
   }
 
-  getUser(userId) {
-    this.userService.getUserById(userId).subscribe(data => {
-      this.user = data[0],
-      console.log(data)
+  getUser() {
+    this.userService.getUserById(this.userId).subscribe(data => {
+      this.user = data[0]
     })
   }
 
   getModule(moduleName) {
     switch (moduleName) {
-      case 'Favory List':
-        this.sendModule = 'Favory List';
+      case 'Favorite List':
+        this.sendModule = 'Favorite List';
         this.listId = '1'
         break;
       case 'Watch List':
@@ -60,7 +61,7 @@ export class ProfilePageComponent implements OnInit {
         this.listId = '3'
         break;
       default:
-        this.sendModule = 'Favory List';
+        this.sendModule = 'Favorite List';
         this.listId = '1'
         break;
     }
@@ -68,7 +69,8 @@ export class ProfilePageComponent implements OnInit {
   }
   getList() {
     this.listService.getListByUserAndTypeId(this.userId, this.listId).subscribe(data => {
-      this.getMovies(data)
+      this.getMovies(data)    
+      this.setListItem(data)
     })
   }
 
@@ -81,6 +83,26 @@ export class ProfilePageComponent implements OnInit {
         this.movies.push(data)
       })
     }) 
+  }
+
+  setListItem(data){
+    data.map(movie=>{
+      this.favoriteList.push(movie.MovieId)
+    })
+    
+    this.favoriteList.map(movieId => {
+      this.movieService.getMovieById(movieId.toString()).subscribe(data=>{
+         this.getGenres(data.genres)
+      })
+    })        
+    
+  }
+
+  getGenres(genres){
+    genres.map(genre=>{
+      this.genreNames.push(genre.name);
+    })  
+    this.genreNames = [...new Set(this.genreNames)];   
   }
 
 }

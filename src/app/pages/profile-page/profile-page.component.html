@@ -9,22 +9,12 @@
                 <button class="edit-btn mt-5 shadow items mr-3" data-toggle="modal" data-target=".bd-example-modal-lg">Edit Profile</button>
             </div>
             <div class="container mt-5">
-                <div class="category row">
-                    <div class="brdr m-1 items">
-                        <div class="item-border ">Science Fiction</div>
+                <div class="category row" >
+                    <div class="brdr m-1 items" *ngFor="let genre of genreNames">
+                        <div class="item-border ">{{genre}}</div>
                     </div>
-                    <div class="brdr m-1 items">
-                        <div class="item-border ">Action</div>
-                    </div>
-                    <div class="brdr m-1 items">
-                        <div class="item-border ">Adventure</div>
-                    </div>
-                    <div class="brdr m-1 items">
-                        <div class="item-border ">Horror</div>
-                    </div>
-                    <div class="brdr m-1 items">
-                        <div class="item-border ">Fantasy</div>
-                    </div>
+                  
+                 
                 </div>
             </div>
         </div>
@@ -33,7 +23,7 @@
 <div class="bar-wrapper">
     <div class="bar-content">
         <div class=" modal-button m-2 row w-100">
-            <button class="btn btn-outline-primary column p-2" (click)="getModule('Favory List')">Favory List</button>
+            <button class="btn btn-outline-primary column p-2" (click)="getModule('Favorite List')">Favorite List</button>
             <button class="btn btn-outline-primary column p-2" (click)="getModule('Watch List')">Watch List</button>
             <button class="btn btn-outline-primary column p-2" (click)="getModule('Watched List')">
                 Watched List
