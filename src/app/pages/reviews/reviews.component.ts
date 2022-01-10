@@ -7,6 +7,7 @@ import { Review } from 'src/app/model/review';
 import { UserService } from 'src/app/services/user-service/user.service';
 import { User } from 'src/app/model/users';
 import { DatePipe } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-reviews',
@@ -17,6 +18,7 @@ export class ReviewsComponent implements OnInit {
   constructor(
     private reviewService: ReviewService,
     private movieService: MovieService,
+    private activatedRoute: ActivatedRoute,
     private userService: UserService
   ) {}
 
@@ -30,13 +32,13 @@ export class ReviewsComponent implements OnInit {
   datepipe: DatePipe = new DatePipe('en-US');
   release_dates: Array<string> = new Array<string>();
 
-  @Input() set movieId(id) {
-    this.myMovieId = id;
-  }
 
   ngOnInit() {
-    this.getReview();
-    this.getMovieImage(this.myMovieId);
+    this.activatedRoute.params.subscribe((params) => {
+      this.getMovieImage(params['movieId']);
+      this.getReview();
+    });
+
   }
 
   getReview() {
