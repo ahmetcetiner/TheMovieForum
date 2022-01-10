@@ -7,6 +7,7 @@ import { MovieService } from 'src/app/services/movie-service/movie.service';
 import { ReviewService } from 'src/app/services/review-service/review.service';
 import { BACKDROP_SIZE, IMAGE_BASE_URL } from 'src/config';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { async } from 'rxjs';
 
 @Component({
   selector: 'app-comment',
@@ -17,8 +18,9 @@ export class CommentComponent implements OnInit {
   constructor(
     private movieService: MovieService,
     private reviewService: ReviewService,
+    private router: Router,
     private formBuilder: FormBuilder
-  ) {}
+  ) { }
 
   datePipe: DatePipe = new DatePipe('en-US');
 
@@ -55,6 +57,7 @@ export class CommentComponent implements OnInit {
 
   getReviewArea(reviewInput: boolean) {
     this.reviewInput = reviewInput;
+
   }
 
   setModel() {
@@ -72,5 +75,9 @@ export class CommentComponent implements OnInit {
       this.setModel();
       this.reviewService.addReview(this.review);
     }
+    setTimeout(() => {
+      window.location.reload()
+    }, 1000)
   }
 }
+
