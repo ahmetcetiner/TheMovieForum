@@ -1,102 +1,122 @@
-.profile-img{
+.profile-img {
     border-radius: 100%;
-    object-fit:cover;
+    object-fit: cover;
     object-position: center;
-    width:20vw;
+    width: 20vw;
     height: 20vw;
     min-width: 150px;
     min-height: 150px;
 }
-.row{
+
+.row {
     width: 99%;
 }
-.edit-btn{
+
+.edit-btn {
     border-radius: 7px;
-    width:fit-content;
+    width: fit-content;
     height: fit-content;
     border: none;
     padding: 7px;
 }
-.item-border{
-    height:fit-content;
+
+.item-border {
+    height: fit-content;
 }
-.brdr{
-    border:3px solid #8d99ae;
+
+.brdr {
+    border: 3px solid #8d99ae;
     border-radius: 12px;
-    width:fit-content;
+    width: fit-content;
     padding: 3px;
     background-color: #edf2f4;
 }
-.line{
+
+.line {
     border-bottom: 5px solid #2b2d42;
 }
-.container-down{
-    width: 80% !important;
-    margin-left: 10%;
-  }
-  .container-up{
+
+.container-down {
     width: 80% !important;
     margin-left: 10%;
 }
-.favtext{
+
+.container-up {
+    width: 80% !important;
+    margin-left: 10%;
+}
+
+.favtext {
     font-size: 1.9rem;
     color: #8d99ae;
     text-align: center;
     justify-content: center;
 }
-.category{
+
+.category {
     width: 80%;
 }
-.com-7{
+
+.com-7 {
     width: 50vw;
 }
-.com-3{
+
+.com-3 {
     width: 25vw;
 }
-.items{
-    width:fit-content;
+
+.items {
+    width: fit-content;
     height: fit-content;
     padding: 7px;
-    float:right;
+    float: right;
 }
-.pop-up{
+
+.pop-up {
     width: 60%;
     background-color: white;
 }
-.round{
+
+.round {
     border-radius: 20px !important;
 }
+
 .bar-wrapper {
     margin-top: 30px;
     display: flex;
     align-items: center;
     min-height: 100px;
-    background:rgba(3, 37, 65);
+    background: rgba(3, 37, 65);
     padding: 0 20px;
-  };
-  
+}
+
+;
 .bar-content {
     display: flex;
     max-width: 1280px;
     width: 100%;
     margin: 0 auto;
     .column {
-      border-color: #d80032;
-      color: #ffffff;    
-      font-weight: bold;
-      letter-spacing: 1px;
-      box-shadow: 0 1px 3px rgb(43, 45, 66), 0 1px 2px rgb(43, 45, 66);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 20px;
-      margin: 0 20px;
-      flex: 1; 
-      font-size: 1.2rem;
-   
+        border-color: #d80032;
+        color: #ffffff;
+        font-weight: bold;
+        letter-spacing: 1px;
+        box-shadow: 0 1px 3px rgb(43, 45, 66), 0 1px 2px rgb(43, 45, 66);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 20px;
+        margin: 0 20px;
+        flex: 1;
+        font-size: 1.2rem;
     }
 }
+
 .btn-outline-primary:hover {
-  background-color: #EF233C;
-  right: 0px;
+    background-color: #EF233C;
+    right: 0px;
+}
+
+.modal-content {
+    border-radius: 31px !important;
 }

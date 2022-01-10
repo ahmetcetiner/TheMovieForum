@@ -31,6 +31,7 @@ export class ProfilePageComponent implements OnInit {
   userId = idGetter()
 
   ngOnInit(): void {
+    this.getModule('Favory List')
     this.activatedRoute.params.subscribe((params) => {
       this.getUser(params['userId']);
      // this.userId = params['userId']
