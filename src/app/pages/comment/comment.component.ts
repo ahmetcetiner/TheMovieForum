@@ -1,5 +1,4 @@
-import { Router } from '@angular/router';
-import { DatePipe, formatDate } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { idGetter } from 'src/app/app.module';
 import { Review } from 'src/app/model/review';
@@ -28,7 +27,6 @@ export class CommentComponent implements OnInit {
   commentForm: FormGroup;
   review: Review = new Review();
 
-  model: Review = new Review();
   @Input() set movieId(id) {
     this.myMovieId = id;
   }
@@ -72,7 +70,7 @@ export class CommentComponent implements OnInit {
     }
     setTimeout(() => {
       window.location.reload()
-    }, 1000)
+    }, 200)
   }
 }
 
