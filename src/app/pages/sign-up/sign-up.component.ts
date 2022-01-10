@@ -1,4 +1,4 @@
-import { Message } from 'src/app/model/message';
+import { AlertifyService } from './../../services/alertify-service/alertify.service';
 import { UserService } from 'src/app/services/user-service/user.service';
 import { AvatarService } from './../../services/avatar-service/avatar.service';
 import { Component, OnInit } from '@angular/core';
@@ -7,11 +7,8 @@ import { BACKDROP_SIZE, IMAGE_BASE_URL } from 'src/config';
 import {
   FormBuilder,
   FormGroup,
-  Validators,
-  FormControl,
-  FormArray,
+  Validators
 } from '@angular/forms';
-import { User } from 'src/app/model/users';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { ResponseMessage } from 'src/app/model/responseMessage';
 
@@ -27,7 +24,8 @@ export class SignUpComponent implements OnInit {
     private authService: AuthService,
     private formBuilder: FormBuilder,
     private avatarService: AvatarService,
-    private userService: UserService
+    private userService: UserService,
+    private alertifyService : AlertifyService
   ) {}
 
   registerForm: FormGroup;
@@ -39,6 +37,9 @@ export class SignUpComponent implements OnInit {
   eMail : string
   responseMessageUserName: ResponseMessage;
   responseMessageEmail: ResponseMessage;
+
+  isValidEmail = false;
+  isValidUserName = false;
 
   ngOnInit() {
     this.createRegisterForm();
@@ -87,24 +88,34 @@ export class SignUpComponent implements OnInit {
       );
 
       this.registerUser = Object.assign({}, this.registerForm.value);
-      console.log(this.registerUser);
-      this.authService.register(this.registerUser);
+
+      if(this.isValidEmail&&this.isValidUserName){
+        this.authService.register(this.registerUser);
+      }else{
+        this.alertifyService.warning("Hatalı alanları düzeltiniz.")
+      }
+      
+      
     }
   }
 
-  checkUserName() {
-   // this.userName = this.registerForm.controls['UserName'].value;
+  checkUserName() {   
     this.userService.verifyUserName(this.userName).subscribe((data) => {
       this.responseMessageUserName = data;
-      console.log(data)
+      if(data.isExist)
+        this.isValidUserName=false
+      else
+        this.isValidUserName=true
     });
   }
 
-  checkEmail() {
-  //  this.eMail = this.registerForm.controls['Email'].value;
+  checkEmail() {  
     this.userService.verifyEmail(this.eMail).subscribe((data) => {
       this.responseMessageEmail = data;
-      console.log(data)
+      if(data.isExist)
+        this.isValidEmail=false
+      else
+        this.isValidEmail=true
     });
   }
 }
