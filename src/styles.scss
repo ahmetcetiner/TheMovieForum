@@ -1,10 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import url(./assets/fontawesome-free/css/all.css);
-@import url('https://fonts.googleapis.com/css?family=Abel');
 
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Cairo:wght@300&display=swap');
 *{
     box-sizing: border-box;
-    font-family : Abel, sans-serif ;
+    font-family: 'Abel', sans-serif;
+    font-family: 'Cairo', sans-serif;
 }
 
 body{
