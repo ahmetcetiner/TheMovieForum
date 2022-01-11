@@ -7,7 +7,7 @@ import { environment } from './environments/environment';
 const API_URL = 'https://api.themoviedb.org/3/';
 const API_KEY = environment.KEY;
 const TOKEN_KEY = 'token'
-const HEROKU_API_URL = 'https://the-movie-forum.herokuapp.com/';
+const HEROKU_API_URL = 'https://the-movie-forum-api.herokuapp.com/';
 const SEARCH_BASE_URL = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query=`;
 const POPULAR_BASE_URL = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US`;
 // For login and voting
