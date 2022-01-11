@@ -1,16 +1,16 @@
 import { AlertifyService } from './../../services/alertify-service/alertify.service';
-import { UserService } from 'src/app/services/user-service/user.service';
+import { UserService } from '../../services/user-service/user.service';
 import { AvatarService } from './../../services/avatar-service/avatar.service';
 import { Component, OnInit } from '@angular/core';
-import { MovieService } from 'src/app/services/movie-service/movie.service';
-import { BACKDROP_SIZE, IMAGE_BASE_URL } from 'src/config';
+import { MovieService } from '../../services/movie-service/movie.service';
+import { BACKDROP_SIZE, IMAGE_BASE_URL } from '../../../config';
 import {
   FormBuilder,
   FormGroup,
   Validators
 } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth-service/auth.service';
-import { ResponseMessage } from 'src/app/model/responseMessage';
+import { AuthService } from '../../services/auth-service/auth.service';
+import { ResponseMessage } from '../../model/responseMessage';
 
 @Component({
   selector: 'app-sign-up',

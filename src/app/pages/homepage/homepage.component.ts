@@ -1,12 +1,10 @@
 import { AuthService } from './../../services/auth-service/auth.service';
 import { UserService } from './../../services/user-service/user.service';
-import { Component, Input, OnInit } from '@angular/core';
-import { User } from 'src/app/model/users';
-import { idGetter } from 'src/app/app.module';
+import { Component, OnInit } from '@angular/core';
 import { BACKDROP_SIZE, IMAGE_BASE_URL } from 'src/config';
 import { Review } from 'src/app/model/review';
-import { MovieService } from 'src/app/services/movie-service/movie.service';
-import { ReviewService } from 'src/app/services/review-service/review.service';
+import { MovieService } from '../../services/movie-service/movie.service';
+import { ReviewService } from '../../services/review-service/review.service';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -18,7 +16,6 @@ export class HomepageComponent implements OnInit {
   constructor(
     private reviewService: ReviewService,
     private movieService: MovieService,
-    private userService: UserService,
     private authService: AuthService
   ) {}
 

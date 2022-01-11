@@ -2,8 +2,8 @@ import { ResponseMessage } from './../../model/responseMessage';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User } from 'src/app/model/users';
-import { HEROKU_API_URL } from 'src/config';
+import { User } from '../../model/users';
+import { HEROKU_API_URL } from '../../../config';
 import { tokenGetter } from '../../app.module';
 
 @Injectable({

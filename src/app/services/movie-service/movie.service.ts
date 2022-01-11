@@ -6,12 +6,12 @@ import {
   POPULAR_BASE_URL,
   API_URL,
   API_KEY,
-} from 'src/config';
+} from '../../../config';
 import { Observable,throwError  } from 'rxjs';
 import { Movie } from '../../model/movie';
 import { Credits } from '../../model/credit';
 import { catchError,tap } from 'rxjs/operators';
-import { Video } from 'src/app/model/video';
+import { Video } from '../../model/video';
 @Injectable({
   providedIn: 'root'
 })

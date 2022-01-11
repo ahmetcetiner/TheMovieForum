@@ -4,7 +4,6 @@ import { DiscussionService } from 'src/app/services/discussion-service/discussio
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/model/users';
-import { UserService } from 'src/app/services/user-service/user.service';
 import { DatePipe } from '@angular/common';
 import { BACKDROP_SIZE, IMAGE_BASE_URL } from 'src/config';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';

@@ -1,12 +1,10 @@
-import { ResponseMessage } from 'src/app/model/responseMessage';
+import { ResponseMessage } from '../../model/responseMessage';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { tokenGetter } from 'src/app/app.module';
-import { Discussion } from 'src/app/model/discussion';
-import { List } from 'src/app/model/list';
-import { Message } from 'src/app/model/message';
-import { HEROKU_API_URL } from 'src/config';
+import { tokenGetter } from '../../app.module';
+import { List } from '../../model/list';
+import { HEROKU_API_URL } from '../../../config';
 import { AlertifyService } from '../alertify-service/alertify.service';
 
 @Injectable({
