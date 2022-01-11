@@ -1,6 +1,6 @@
-.userImage{
+.userImage {
     border-radius: 100%;
-    object-fit:cover;
+    object-fit: cover;
     object-position: center;
     width: 5vw;
     height: 5vw;
@@ -10,44 +10,57 @@
     max-height: 120px;
     margin: 20px;
 }
-.discussions{
+
+.discussions {
     background-color: #2B2D42;
     border-radius: 10px;
-    &:hover{
+    &:hover {
         border: 2px solid #EF233C;
     }
 }
-.container,.col-md-3{
+
+.container,
+.col-md-3 {
     padding-left: 0px !important;
     padding-right: 0px !important;
 }
-.col-md-3{
+
+.col-md-3 {
     margin-left: 15px !important;
     background-color: #2B2D42;
     min-height: 650px;
 }
-p{
+
+p {
     padding-left: 20px !important;
     margin-bottom: 5px !important;
 }
-.userName{
+
+.userName {
     font-size: 0.9rem;
     padding-left: 30px !important;
 }
-.discussion-messages{
+
+.discussion-messages {
     border-radius: 25px;
     background-color: #EDF2F4;
     margin-top: 20px;
 }
-.text{
-    color:black
-}
-.date{    
-    float: right;
-    font-size: 12px ;
-    margin-right: 10px;
 
+.text {
+    color: black
 }
+
+.date {
+    float: right;
+    font-size: 12px;
+    margin-right: 10px;
+}
+
 .title {
     font-size: 1.1rem;
+}
+
+.containerr {
+    width: 100%;
 }

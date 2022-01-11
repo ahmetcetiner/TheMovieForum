@@ -8,11 +8,11 @@
             <h1>{{ movie.title }}</h1>
             <div class="facts row">
                 <span class="release">
-          {{ release_date }}
-        </span>
+                    {{ release_date }}
+                </span>
                 <div class="circle"></div>
                 <span class="genres" *ngFor="let genre of movie.genres">
-          <span>{{ genre.name }}</span>
+                    <span>{{ genre.name }}</span>
                 </span>
                 <div class="circle"></div>
                 <span class="runtime">2h 23m</span>
@@ -20,35 +20,41 @@
             <ul class="actions row">
                 <div>
                     <li title="Remove from your favourite list" *ngIf="isFavorite">
-                        <a id="favoritelist" href="/movie/{{movieId}}" (click)="deleteList(1)"><span class="icons" style="background-image: url('https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-13-heart-selected-7d05ac729b7f41ab22db83dba29b73f81da2c0a2b1c5fc938fb333d34adf965e.svg')"></span></a>
+                        <a id="favoritelist" href="/movie/{{movieId}}" (click)="deleteList(1)"><span class="icons"
+                                style="background-image: url('https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-13-heart-selected-7d05ac729b7f41ab22db83dba29b73f81da2c0a2b1c5fc938fb333d34adf965e.svg')"></span></a>
                     </li>
                     <li title="Add to your favourite list" *ngIf="!isFavorite">
-                        <a id="favoritelist" href="/movie/{{movieId}}" (click)="listAdd(1)"><span class="icons" style="background-image: url('https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-13-heart-white-28d2cc2d6418c5047efcfd2438bfc5d109192671263c270993c05f130cc4584e.svg')"></span></a>
+                        <a id="favoritelist" href="/movie/{{movieId}}" (click)="listAdd(1)"><span class="icons"
+                                style="background-image: url('https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-13-heart-white-28d2cc2d6418c5047efcfd2438bfc5d109192671263c270993c05f130cc4584e.svg')"></span></a>
                     </li>
                 </div>
-               
-                <div>                   
+
+                <div>
                     <li title="Remove from your watched list" *ngIf="isWatched">
-                        <a id="watchlist" href="/movie/{{movieId}}" (click)="deleteList(2)"><img class="watchIcon" src='../../../assets/images/icons8-list-watch.png'/></a>
+                        <a id="watchlist" href="/movie/{{movieId}}" (click)="deleteList(2)"><img class="watchIcon" src='../../../assets/images/icons8-list-watch.png' /></a>
                     </li>
                     <li title="Add to your watched list" *ngIf="!isWatched">
-                        <a id="watchlist" href="/movie/{{movieId}}" (click)="listAdd(2)"><img class="watchIcon" src='../../../assets/images/icons8-list-notwatch.png'/></a>
+                        <a id="watchlist" href="/movie/{{movieId}}" (click)="listAdd(2)"><img class="watchIcon" src='../../../assets/images/icons8-list-notwatch.png' /></a>
                     </li>
                 </div>
                 <div>
                     <li title="Remove from your watch list" *ngIf="isWatch">
-                        <a id="watchedlist" href="/movie/{{movieId}}" (click)="deleteList(3)"><span class="icons" style="background-image: url('https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-73-bookmark-selected-ddcb9a1fcb04650d6879314313b71e397521c2e41e07b1405b30d4244deb52f8.svg');"></span></a>
+                        <a id="watchedlist" href="/movie/{{movieId}}" (click)="deleteList(3)"><span class="icons"
+                                style="background-image: url('https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-73-bookmark-selected-ddcb9a1fcb04650d6879314313b71e397521c2e41e07b1405b30d4244deb52f8.svg');"></span></a>
                     </li>
                     <li title="Watch later" *ngIf="!isWatch">
-                        <a id="watchedlist" href="/movie/{{movieId}}" (click)="listAdd(3)"><span class="icons" style="background-image: url('https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-73-bookmark-white-432e98d550b7e4c80b06272c49475b0db85a60f6fae450420713004b3c9d3ffd.svg');"></span></a>
+                        <a id="watchedlist" href="/movie/{{movieId}}" (click)="listAdd(3)"><span class="icons"
+                                style="background-image: url('https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-73-bookmark-white-432e98d550b7e4c80b06272c49475b0db85a60f6fae450420713004b3c9d3ffd.svg');"></span></a>
                     </li>
                 </div>
                 <div (click)="getVideos()" data-backdrop="static" data-keyboard="false" data-toggle="modal" data-target=".bd-example-modal-lg">
                     <li class="video none">
-                        <a class="no_click play_trailer"  ><span style="background-image: url('https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-175-play-806cb05551791b8dedd7f8d38fd3bd806e2d397fcfeaa00a5cc9129f0819fd07.svg')" class="glyphicons_v2 play"></span> Play Trailer</a>
+                        <a class="no_click play_trailer">
+                            <img src="../../../assets/images/icons8_play.ico" class="play"> Play Trailer
+                        </a>
                     </li>
                 </div>
-               
+
             </ul>
 
             <h3>Overview</h3>
@@ -71,8 +77,8 @@
                 <button class="btn btn-outline-primary column p-2" (click)="getModule('actor')">Actors</button>
                 <button class="btn btn-outline-primary column p-2" (click)="getModule('reviews')">Reviews</button>
                 <button class="btn btn-outline-primary column p-2" (click)="getModule('discussions')">
-          Discussions
-        </button>
+                    Discussions
+                </button>
             </div>
         </div>
     </div>
@@ -97,7 +103,8 @@
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class=" modal-dialog modal-lg round">
         <div class="modal-content round">
-            <button (click)="changeState()" data-dismiss="modal" class="close"><span aria-hidden="true">&times;</span></button>
+            <button (click)="changeState()" data-dismiss="modal" class="close"><span
+                    aria-hidden="true">&times;</span></button>
             <figure>
                 <ng-container *ngIf="videodisabled; else videoblock">
                 </ng-container>

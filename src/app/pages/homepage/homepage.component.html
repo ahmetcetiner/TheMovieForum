@@ -1,23 +1,23 @@
 <div>
     <app-popular-movie></app-popular-movie>
 </div>
-<div class=" container" >
-  <div class="card text-white mt-3" *ngFor="let review of reviews;let i = index">
-      <div class="row card-background" routerLink="/movie/{{review.MovieId}}" style="--background: url({{imageUrls[i]}})">
-          <div class="col-sm-10">
-              <div class="container">
-                  <div class="row">
-                      <img class="profile-img" src={{review.AvatarUrl}}>
-                      <div class="card-info col-sm-9">
-                          <div class="title">{{review.Title}}</div>
-                          <div class="userName">{{review.UserName}} adlı kullanıcının {{release_dates[i]}} tarihli yorumu.</div>
-                      </div>
-                  </div>
-                  <div class="card-body">
-                      <p class="card-text">{{review.MessageText}}</p>
-                  </div>
-              </div>
-          </div>     
-      </div>
-  </div>
+<div class=" container">
+    <div class="card text-white mt-3" *ngFor="let review of reviews;let i = index">
+        <div class="row card-background" routerLink="/movie/{{review.MovieId}}" style="--background: url({{imageUrls[i]}})">
+            <div class="col-sm-10">
+                <div class="container">
+                    <div class="row">
+                        <img class="profile-img" src={{review.AvatarUrl}}>
+                        <div class="card-info col-sm-9">
+                            <div class="title">{{review.Title}}</div>
+                            <div class="userName">Written by {{review.UserName}} on {{release_dates[i]}}.</div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{review.MessageText}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
