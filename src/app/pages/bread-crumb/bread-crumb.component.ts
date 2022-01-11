@@ -1,6 +1,5 @@
 import { MovieService } from '../../services/movie-service/movie.service';
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-bread-crumb',
@@ -10,11 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BreadCrumbComponent implements OnInit {
   constructor(
-    private movieService: MovieService,
-    private activatedRoute: ActivatedRoute
   ) {}
-
-  //movieTitle: string;
 
   @Input() movieTitle = '';
 

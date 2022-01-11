@@ -1,6 +1,5 @@
 import { UserService } from './../user-service/user.service';
 import { Injectable } from '@angular/core';
-import { first } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'

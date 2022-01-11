@@ -2,14 +2,12 @@ import { LoginResponse } from '../../model/loginResponse';
 import { RegisterUser } from '../../model/registerUser';
 import { LoginUser } from '../../model/loginUser';
 import { Injectable } from '@angular/core';
-
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { AlertifyService } from '../alertify-service/alertify.service';
-import { TOKEN_KEY, HEROKU_API_URL } from 'src/config';
-import { throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { TOKEN_KEY, HEROKU_API_URL } from '../../../config';
+
 
 @Injectable({
   providedIn: 'root',

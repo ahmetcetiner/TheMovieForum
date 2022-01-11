@@ -1,11 +1,10 @@
 import { AlertifyService } from './../alertify-service/alertify.service';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { tokenGetter } from 'src/app/app.module';
-import { Review } from 'src/app/model/review';
-import { HEROKU_API_URL } from 'src/config';
+import { tokenGetter } from '../../app.module';
+import { Review } from '../../model/review';
+import { HEROKU_API_URL } from '../../../config';
 
 @Injectable({
   providedIn: 'root',

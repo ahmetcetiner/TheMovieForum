@@ -2,22 +2,17 @@ import { ActorComponent } from './pages/actor/actor.component';
 import { NgModule } from '@angular/core';
 import {
   HomepageComponent,
-  GalleryComponent,
-  AboutUsComponent,
-  ContactUsComponent,
   LoginComponent,
   SignUpComponent,
-  CommentComponent,
+  ProfilePageComponent,
+  SearchComponent,
+  MovieInfoComponent,
+  DiscussionMessageComponent
 } from './pages';
 import { Routes, RouterModule } from '@angular/router';
 import { ClientLayoutComponent } from './components';
-import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
-import { MovieInfoComponent } from './pages/movie-info/movie-info.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
-import { DiscussionMessageComponent } from './pages/discussion-message/discussion-message.component';
 import { HomeGuard } from './guards/home.guard';
-import { SearchComponent } from './pages/search/search.component';
-
 
 const routes: Routes = [
   {
@@ -26,26 +21,21 @@ const routes: Routes = [
     data: { title: '' },
     children: [
       {
-        path: 'products',
-        component: GalleryComponent,
-        data: { title: 'Ürünler' },
-      },
-      {
         path: '',
         component: HomepageComponent,
-        data: { title: 'Anasayfa' },
+        data: { title: 'Home page' },
         canActivate:[HomeGuard]
       },
       {
         path: 'login',
         component: LoginComponent,
-        data: { title: 'Giriş' },
+        data: { title: 'Login' },
         canActivate:[AuthGuard]
       },
       {
         path: 'signup',
         component: SignUpComponent,
-        data: { title: 'Kayıt Ol' },
+        data: { title: 'Sign Up' },
         canActivate:[AuthGuard]
       },
       {
