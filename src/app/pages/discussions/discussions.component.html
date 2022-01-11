@@ -1,97 +1,63 @@
 <div class="container mb-5">
-  <div>
-    <button
-      class="btn btn-outline-primary column p-2"
-      (click)="getDiscussionArea(true)"
-      data-toggle="collapse"
-    >
+    <div>
+        <button class="btn btn-outline-primary column p-2" (click)="getDiscussionArea(true)" data-toggle="collapse">
       New discussion
     </button>
-  </div>
-  <div *ngIf="discussionInput">
-    <div class="container background">
-      <div class="row">
-        <div class="col-lg-12 col-md-8 discussion-box">
-          <div class="col-lg-12 discussion-title">
-            <h1>Discussion</h1>
-          </div>
-          <div class="col-lg-12 discussion-form">
-            <form
-              [formGroup]="discussionForm"
-              (ngSubmit)="newDiscussion()"
-              class="form-discussion"
-            >
-              <div class="form-group">
-                <label class="form-control-label">Discussion Name</label>
-                <input
-                  type="text"
-                  id="Name"
-                  name="Name"
-                  formControlName="Name"
-                  class="form-control"
-                  placeholder="Discussion Name"
-                  autofocus
-                />
-                <span
-                  class="help-block"
-                  *ngIf="
+    </div>
+    <div *ngIf="discussionInput">
+        <div class="container background">
+            <div class="row">
+                <div class="col-lg-12 col-md-8 discussion-box">
+                    <div class="col-lg-12 discussion-title">
+                        <h1>Discussion</h1>
+                    </div>
+                    <div class="col-lg-12 discussion-form">
+                        <form [formGroup]="discussionForm" (ngSubmit)="newDiscussion()" class="form-discussion">
+                            <div class="form-group">
+                                <label class="form-control-label">Discussion Name</label>
+                                <input type="text" id="Name" name="Name" formControlName="Name" class="form-control" placeholder="Discussion Name" autofocus />
+                                <span class="help-block" *ngIf="
                   discussionForm.get('Name').hasError('required') &&
                   discussionForm.get('Name').dirty
-                  "
-                >
+                  ">
                   Name is required
                 </span>
-              </div>
-              <div class="discussion-btn">
-                <div class="col-lg-6 discussion-btm discussion-text">
-                  <!-- Error Message -->
-                </div>
-                <div>
-                  <button
-                    type="submit"
-                    class="btn btn-outline-primary send"
-                    [disabled]="!discussionForm.valid"
-                  >
+                            </div>
+                            <div class="discussion-btn">
+                                <div class="col-lg-6 discussion-btm discussion-text">
+                                    <!-- Error Message -->
+                                </div>
+                                <div>
+                                    <button type="submit" class="btn btn-outline-primary send" [disabled]="!discussionForm.valid">
                     New Discussion
                   </button>
-                  <button
-                    class="btn btn-outline-primary cancel"
-                    (click)="getDiscussionArea(false)"
-                  >
+                                    <button class="btn btn-outline-primary cancel" (click)="getDiscussionArea(false)">
                     Cancel
                   </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-3 col-md-2"></div>
                 </div>
-              </div>
-            </form>
-          </div>
-          <div class="col-lg-3 col-md-2"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    class="card text-white bg-secondary mt-3 mb-3 container"
-    *ngFor="let discussion of discussions; let i = index"
-  >
-    <div
-      class="row card-background"
-      routerLink="/discussion/{{ discussion.MovieId }}/{{ discussion.Id }}"
-      style="--background: url({{ backdropImageUrl }})"
-    >
-      <div class="col-sm-10">
-        <div class="container">
-          <div class="row">
-            <img class="profile-img" src="{{ discussion.AvatarUrl }}" />
-            <div class="card-info col-sm-9">
-              <div class="title">{{ discussion.Name }}</div>
-              <div class="userName">
-                {{ discussion.UserName }} tarafından
-                {{ release_dates[i] }} oluşturuldu.
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
+    <div class="card text-white bg-secondary mt-3 mb-3 container" *ngFor="let discussion of discussions; let i = index">
+        <div class="row card-background" routerLink="/discussion/{{ discussion.MovieId }}/{{ discussion.Id }}" style="--background: url({{ backdropImageUrl }})">
+            <div class="col-sm-10">
+                <div class="container">
+                    <div class="row">
+                        <img class="profile-img" src="{{ discussion.AvatarUrl }}" />
+                        <div class="card-info col-sm-9">
+                            <div class="title">{{ discussion.Name }}</div>
+                            <div class="userName">
+                                Written by {{ discussion.UserName }} on {{ release_dates[i] }}.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
