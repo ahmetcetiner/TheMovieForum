@@ -70,7 +70,7 @@ export class CommentComponent implements OnInit {
     }
     setTimeout(() => {
       window.location.reload()
-    }, 200)
+    }, 300)
   }
 }
 
