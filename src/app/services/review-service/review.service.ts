@@ -11,52 +11,56 @@ import { HEROKU_API_URL } from 'src/config';
   providedIn: 'root',
 })
 export class ReviewService {
-  constructor(private httpClient: HttpClient,
-    private alertifyService: AlertifyService) {}
+  constructor(
+    private httpClient: HttpClient,
+    private alertifyService: AlertifyService
+  ) {}
 
-  
   getReviewById(id: number) {
     let headers = new HttpHeaders();
- 
+
     headers = headers.append('Content-Type', 'application/json');
     headers = headers.append('token', tokenGetter());
 
     return this.httpClient.get<Review>(
-      HEROKU_API_URL + 'review/'+id.toString(),
-      {headers:headers}                 
+      HEROKU_API_URL + 'review/' + id.toString(),
+      { headers: headers }
     );
   }
 
-  getReviewByMovieId(movieId: number):Observable<Review[]> {
-    let headers = new HttpHeaders();;
+  getReviewByMovieId(movieId: number): Observable<Review[]> {
+    let headers = new HttpHeaders();
 
     headers = headers.append('Content-Type', 'application/json');
     headers = headers.append('token', tokenGetter());
 
     return this.httpClient.get<Review[]>(
-      HEROKU_API_URL + 'movieReviewAll/'+movieId.toString(),
-      {headers:headers}
-                 
+      HEROKU_API_URL + 'movieReviewAll/' + movieId.toString(),
+      { headers: headers }
     );
   }
 
   getReviewByUserId(id: number) {
     let headers = new HttpHeaders();
- 
+
     headers = headers.append('Content-Type', 'application/json');
     headers = headers.append('token', tokenGetter());
 
     return this.httpClient.get<Review>(
-      HEROKU_API_URL + 'reviews/'+id.toString(),
-      {headers:headers}
-                 
+      HEROKU_API_URL + 'reviews/' + id.toString(),
+      { headers: headers }
     );
   }
 
   getReviews(): Observable<Review[]> {
-    let headers = new HttpHeaders();    
+    let headers = new HttpHeaders();
 
-    return this.httpClient.get<Review[]>(HEROKU_API_URL + 'reviewAll');
+    headers = headers.append('Content-Type', 'application/json');
+    headers = headers.append('token', tokenGetter());
+
+    return this.httpClient.get<Review[]>(HEROKU_API_URL + 'reviewAll', {
+      headers: headers,
+    });
   }
 
   updateReview(review: Review) {
@@ -73,28 +77,35 @@ export class ReviewService {
     headers = headers.append('Content-Type', 'application/json');
     headers = headers.append('token', tokenGetter());
 
-    this.httpClient.post(
-      HEROKU_API_URL + 'review',
-      {
-        "UserId": review.UserId,
-        "Title": review.Title,
-        "MovieId": review.MovieId,
-        "MessageText": review.MessageText,
-        "CreatedDate":review.CreatedDate
-      },
-      { headers: headers }
-    ).subscribe(data=>{}, (error)=>{
-      this.alertifyService.error("Bir hata oluştu.")
-    });
-   
+    this.httpClient
+      .post(
+        HEROKU_API_URL + 'review',
+        {
+          UserId: review.UserId,
+          Title: review.Title,
+          MovieId: review.MovieId,
+          MessageText: review.MessageText,
+          CreatedDate: review.CreatedDate,
+        },
+        { headers: headers }
+      )
+      .subscribe(
+        (data) => {},
+        (error) => {
+          this.alertifyService.error('Bir hata oluştu.');
+        }
+      );
   }
 
-  deletReview(reviewId: number){
+  deletReview(reviewId: number) {
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
     headers = headers.append('token', tokenGetter());
 
-    return this.httpClient.delete<Review>(HEROKU_API_URL + 'review/'+reviewId.toString() , {headers: headers});
+    return this.httpClient.delete<Review>(
+      HEROKU_API_URL + 'review/' + reviewId.toString(),
+      { headers: headers }
+    );
   }
 
   getToken() {
