@@ -1,20 +1,15 @@
 import { PopularMovie } from '../../model/popularMovie';
 import { Injectable } from '@angular/core';
-import API from '../../../API';
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import {
   SEARCH_BASE_URL,
   POPULAR_BASE_URL,
   API_URL,
   API_KEY,
-  REQUEST_TOKEN_URL,
-  LOGIN_URL,
-  SESSION_ID_URL
 } from 'src/config';
 import { Observable,throwError  } from 'rxjs';
 import { Movie } from '../../model/movie';
 import { Credits } from '../../model/credit';
-import { stringify } from 'querystring';
 import { catchError,tap } from 'rxjs/operators';
 import { Video } from 'src/app/model/video';
 @Injectable({
