@@ -58,6 +58,7 @@ export class AuthService {
   }
 
   logOut() {
+    localStorage.removeItem("ID");
     localStorage.removeItem(TOKEN_KEY);
     this.router.navigateByUrl('/login');
     this.alertifyService.error('Sistemden çıkış yapıldı.');
